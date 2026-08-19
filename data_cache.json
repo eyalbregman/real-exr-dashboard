@@ -1911,7 +1911,8 @@
   ],
   "meta": {
     "baseYear": 2024,
-    "generatedAt": "2026-08-19T15:57:52+00:00",
+    "generatedAt": "2026-08-19T16:11:26+00:00",
+    "nextUpdate": "2026-09-01",
     "sources": {
       "usCpi": "FRED CPIAUCSL (Consumer Price Index for All Urban Consumers)",
       "usPcepi": "FRED PCEPI (Personal Consumption Expenditures Price Index)",

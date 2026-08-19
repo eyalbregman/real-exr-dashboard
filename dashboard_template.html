@@ -1,0 +1,725 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Real Exchange Rate: ILS/USD</title>
+<style>
+  :root {
+    color-scheme: light;
+    --surface-1:      #fcfcfb;
+    --page-plane:     #f9f9f7;
+    --text-primary:   #0b0b0b;
+    --text-secondary: #52514e;
+    --text-muted:     #898781;
+    --gridline:       #e1e0d9;
+    --baseline:       #c3c2b7;
+    --border:         rgba(11,11,11,0.10);
+    --series-1:       #4F81BD;
+    --series-2:       #B9CDE5;
+    --series-3:       #C97B3D;
+    --tooltip-bg:     #ffffff;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:where(:not([data-theme="light"])) {
+      color-scheme: dark;
+      --surface-1:      #1a1a19;
+      --page-plane:     #0d0d0d;
+      --text-primary:   #ffffff;
+      --text-secondary: #c3c2b7;
+      --text-muted:     #898781;
+      --gridline:       #2c2c2a;
+      --baseline:       #383835;
+      --border:         rgba(255,255,255,0.10);
+      --series-1:       #4F81BD;
+      --series-2:       #B9CDE5;
+      --series-3:       #C97B3D;
+      --tooltip-bg:     #232322;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --surface-1:      #1a1a19;
+    --page-plane:     #0d0d0d;
+    --text-primary:   #ffffff;
+    --text-secondary: #c3c2b7;
+    --text-muted:     #898781;
+    --gridline:       #2c2c2a;
+    --baseline:       #383835;
+    --border:         rgba(255,255,255,0.10);
+    --series-1:       #4F81BD;
+    --series-2:       #B9CDE5;
+    --series-3:       #C97B3D;
+    --tooltip-bg:     #232322;
+  }
+
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: var(--page-plane);
+    color: var(--text-primary);
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  .wrap {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 28px 20px 40px;
+  }
+  header.head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 4px;
+  }
+  h1 {
+    font-size: 19px;
+    font-weight: 600;
+    margin: 0;
+    color: var(--text-primary);
+  }
+  .updated {
+    font-size: 12px;
+    color: var(--text-muted);
+    white-space: nowrap;
+  }
+  .card {
+    background: var(--surface-1);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px 20px 14px;
+    margin-top: 14px;
+  }
+  .legend {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 13px;
+    color: var(--text-secondary);
+    cursor: pointer;
+    user-select: none;
+    background: none;
+    border: none;
+    padding: 4px 2px;
+  }
+  .legend-item[aria-pressed="false"] {
+    opacity: 0.4;
+  }
+  .legend-swatch {
+    width: 16px;
+    height: 3px;
+    border-radius: 2px;
+    flex: none;
+  }
+  .chart-area {
+    position: relative;
+  }
+  svg#chart {
+    display: block;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+  }
+  .axis-label {
+    font-size: 11px;
+    fill: var(--text-muted);
+  }
+  .gridline { stroke: var(--gridline); stroke-width: 1; }
+  .baseline { stroke: var(--baseline); stroke-width: 1; }
+  .series-line {
+    fill: none;
+    stroke-width: 2;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+  }
+  .crosshair {
+    stroke: var(--baseline);
+    stroke-width: 1;
+    pointer-events: none;
+  }
+  .hover-dot {
+    pointer-events: none;
+  }
+  .hit-layer {
+    fill: transparent;
+    cursor: crosshair;
+  }
+  .tooltip {
+    position: absolute;
+    pointer-events: none;
+    background: var(--tooltip-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 12px;
+    color: var(--text-secondary);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    opacity: 0;
+    transition: opacity 0.08s;
+    min-width: 150px;
+    z-index: 5;
+  }
+  .tooltip.visible { opacity: 1; }
+  .tooltip .t-date {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-bottom: 5px;
+  }
+  .tooltip .t-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 3px;
+  }
+  .tooltip .t-key {
+    width: 12px;
+    height: 2px;
+    border-radius: 2px;
+    flex: none;
+  }
+  .tooltip .t-val {
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-left: auto;
+    font-variant-numeric: tabular-nums;
+  }
+  .tooltip .t-name {
+    color: var(--text-secondary);
+  }
+
+  .range-controls {
+    margin-top: 18px;
+    padding-top: 14px;
+    border-top: 1px solid var(--border);
+  }
+  .range-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 10px;
+  }
+  .range-header .lbl {
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+  .range-years {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-primary);
+    font-variant-numeric: tabular-nums;
+  }
+  .reset-link {
+    font-size: 12px;
+    color: var(--series-1);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+  .slider-track-wrap {
+    position: relative;
+    height: 28px;
+  }
+  .slider-track {
+    position: absolute;
+    top: 12px;
+    left: 0;
+    right: 0;
+    height: 4px;
+    border-radius: 2px;
+    background: var(--gridline);
+  }
+  .slider-fill {
+    position: absolute;
+    top: 12px;
+    height: 4px;
+    border-radius: 2px;
+    background: var(--series-1);
+    opacity: 0.55;
+  }
+  input[type="range"].thumb {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 28px;
+    margin: 0;
+    background: transparent;
+    -webkit-appearance: none;
+    appearance: none;
+    pointer-events: none;
+  }
+  input[type="range"].thumb::-webkit-slider-thumb {
+    pointer-events: auto;
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--series-1);
+    border: 2px solid var(--surface-1);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    cursor: pointer;
+    margin-top: 3px;
+  }
+  input[type="range"].thumb::-moz-range-thumb {
+    pointer-events: auto;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--series-1);
+    border: 2px solid var(--surface-1);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    cursor: pointer;
+  }
+  input[type="range"].thumb::-webkit-slider-runnable-track { background: transparent; }
+  input[type="range"].thumb::-moz-range-track { background: transparent; }
+
+  footer.foot {
+    margin-top: 14px;
+    font-size: 11.5px;
+    line-height: 1.6;
+    color: var(--text-muted);
+  }
+  .table-toggle {
+    background: none;
+    border: none;
+    color: var(--series-1);
+    font-size: 12px;
+    cursor: pointer;
+    padding: 0;
+    margin-top: 10px;
+  }
+  .data-table-wrap {
+    display: none;
+    margin-top: 12px;
+    max-height: 320px;
+    overflow: auto;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+  .data-table-wrap.open { display: block; }
+  table.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+    font-variant-numeric: tabular-nums;
+  }
+  table.data-table th, table.data-table td {
+    text-align: right;
+    padding: 6px 12px;
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+  }
+  table.data-table th:first-child, table.data-table td:first-child { text-align: left; }
+  table.data-table thead th {
+    position: sticky;
+    top: 0;
+    background: var(--surface-1);
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="head">
+    <h1>Real Exchange Rate: ILS / USD</h1>
+    <span class="updated" id="updatedLabel"></span>
+  </header>
+
+  <div class="card">
+    <div class="legend" id="legend"></div>
+
+    <div class="chart-area">
+      <svg id="chart" viewBox="0 0 900 420" preserveAspectRatio="xMidYMid meet"></svg>
+      <div class="tooltip" id="tooltip"></div>
+    </div>
+
+    <div class="range-controls">
+      <div class="range-header">
+        <span class="lbl">Year range</span>
+        <span class="range-years" id="rangeYears"></span>
+        <button class="reset-link" id="resetRange" type="button">Reset</button>
+      </div>
+      <div class="slider-track-wrap">
+        <div class="slider-track"></div>
+        <div class="slider-fill" id="sliderFill"></div>
+        <input type="range" class="thumb" id="thumbFrom">
+        <input type="range" class="thumb" id="thumbTo">
+      </div>
+    </div>
+  </div>
+
+  <button class="table-toggle" id="tableToggle" type="button">Show data table</button>
+  <div class="data-table-wrap" id="tableWrap">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Month</th>
+          <th>Nominal EXR</th>
+          <th>Real EXR (US CPI)</th>
+          <th>Real EXR (US PCEPI)</th>
+        </tr>
+      </thead>
+      <tbody id="tableBody"></tbody>
+    </table>
+  </div>
+
+  <footer class="foot" id="sourcesFoot"></footer>
+</div>
+
+<script>
+const DASHBOARD_DATA = __DASHBOARD_DATA__;
+
+(function () {
+  const rows = DASHBOARD_DATA.rows;
+  const meta = DASHBOARD_DATA.meta;
+
+  const SERIES = [
+    { key: "realCPI", name: "Real EXR (vs US CPI)", color: "var(--series-1)", colorVarName: "--series-1", axis: "left" },
+    { key: "realPCEPI", name: "Real EXR (vs US PCEPI)", color: "var(--series-2)", colorVarName: "--series-2", axis: "left" },
+    { key: "nominal", name: "Nominal EXR (ILS/USD)", color: "var(--series-3)", colorVarName: "--series-3", axis: "right" },
+  ];
+
+  const visible = { realCPI: true, realPCEPI: true, nominal: true };
+
+  function ymToIndex(ym) {
+    const [y, m] = ym.split("-").map(Number);
+    return y * 12 + (m - 1);
+  }
+  function indexToYear(idx) {
+    return Math.floor(idx / 12);
+  }
+  const allIndices = rows.map(r => ymToIndex(r.date));
+  const fullMinYear = indexToYear(allIndices[0]);
+  const fullMaxYear = indexToYear(allIndices[allIndices.length - 1]);
+
+  let fromYear = fullMinYear;
+  let toYear = fullMaxYear;
+
+  // ---------- header / footer text ----------
+  const updatedLabel = document.getElementById("updatedLabel");
+  const genDate = new Date(meta.generatedAt);
+  updatedLabel.textContent = "Updated " + genDate.toLocaleDateString("en-GB", { year: "numeric", month: "short", day: "numeric" }) +
+    " · base year " + meta.baseYear + " = 100";
+
+  const sourcesFoot = document.getElementById("sourcesFoot");
+  const srcLines = [
+    "Nominal USD/ILS: " + meta.sources.nominalExr,
+    "US CPI: " + meta.sources.usCpi,
+    "US PCEPI: " + meta.sources.usPcepi,
+    "Israel CPI: " + meta.sources.israelCpi,
+  ];
+  srcLines.forEach(line => {
+    const div = document.createElement("div");
+    div.textContent = line;
+    sourcesFoot.appendChild(div);
+  });
+
+  // ---------- legend ----------
+  const legendEl = document.getElementById("legend");
+  SERIES.forEach(s => {
+    const btn = document.createElement("button");
+    btn.className = "legend-item";
+    btn.type = "button";
+    btn.setAttribute("aria-pressed", "true");
+    const sw = document.createElement("span");
+    sw.className = "legend-swatch";
+    sw.style.background = s.color;
+    const label = document.createElement("span");
+    label.textContent = s.name;
+    btn.appendChild(sw);
+    btn.appendChild(label);
+    btn.addEventListener("click", () => {
+      visible[s.key] = !visible[s.key];
+      btn.setAttribute("aria-pressed", String(visible[s.key]));
+      draw();
+    });
+    legendEl.appendChild(btn);
+  });
+
+  // ---------- data table ----------
+  const tableBody = document.getElementById("tableBody");
+  rows.forEach(r => {
+    const tr = document.createElement("tr");
+    const cells = [r.date, fmt(r.nominal), fmt(r.realCPI), fmt(r.realPCEPI)];
+    cells.forEach((val, i) => {
+      const td = document.createElement("td");
+      td.textContent = val === null ? "–" : String(val);
+      tr.appendChild(td);
+    });
+    tableBody.appendChild(tr);
+  });
+  document.getElementById("tableToggle").addEventListener("click", (e) => {
+    const wrap = document.getElementById("tableWrap");
+    wrap.classList.toggle("open");
+    e.target.textContent = wrap.classList.contains("open") ? "Hide data table" : "Show data table";
+  });
+
+  function fmt(v) {
+    return v === null || v === undefined ? null : Math.round(v * 1000) / 1000;
+  }
+
+  // ---------- slider ----------
+  const thumbFrom = document.getElementById("thumbFrom");
+  const thumbTo = document.getElementById("thumbTo");
+  const sliderFill = document.getElementById("sliderFill");
+  const rangeYears = document.getElementById("rangeYears");
+
+  thumbFrom.min = fullMinYear; thumbFrom.max = fullMaxYear; thumbFrom.value = fullMinYear;
+  thumbTo.min = fullMinYear; thumbTo.max = fullMaxYear; thumbTo.value = fullMaxYear;
+
+  function updateSliderVisual() {
+    const span = fullMaxYear - fullMinYear || 1;
+    const pctFrom = ((fromYear - fullMinYear) / span) * 100;
+    const pctTo = ((toYear - fullMinYear) / span) * 100;
+    sliderFill.style.left = pctFrom + "%";
+    sliderFill.style.width = (pctTo - pctFrom) + "%";
+    rangeYears.textContent = fromYear + " – " + toYear;
+  }
+
+  thumbFrom.addEventListener("input", () => {
+    fromYear = Math.min(Number(thumbFrom.value), toYear);
+    thumbFrom.value = fromYear;
+    updateSliderVisual();
+    draw();
+  });
+  thumbTo.addEventListener("input", () => {
+    toYear = Math.max(Number(thumbTo.value), fromYear);
+    thumbTo.value = toYear;
+    updateSliderVisual();
+    draw();
+  });
+  document.getElementById("resetRange").addEventListener("click", () => {
+    fromYear = fullMinYear; toYear = fullMaxYear;
+    thumbFrom.value = fromYear; thumbTo.value = toYear;
+    updateSliderVisual();
+    draw();
+  });
+
+  // ---------- chart ----------
+  const svg = document.getElementById("chart");
+  const tooltip = document.getElementById("tooltip");
+  const chartArea = document.querySelector(".chart-area");
+  const VB_W = 900, VB_H = 420;
+  const MARGIN = { top: 16, right: 46, bottom: 28, left: 44 };
+  const plotW = VB_W - MARGIN.left - MARGIN.right;
+  const plotH = VB_H - MARGIN.top - MARGIN.bottom;
+
+  function niceStep(range) {
+    const steps = [0.02, 0.05, 0.1, 0.2, 0.25, 0.5, 1, 2, 5, 10];
+    const target = range / 5;
+    let best = steps[0];
+    let bestDiff = Infinity;
+    steps.forEach(s => {
+      const diff = Math.abs(s - target);
+      if (diff < bestDiff) { bestDiff = diff; best = s; }
+    });
+    return best;
+  }
+
+  function draw() {
+    while (svg.firstChild) svg.removeChild(svg.firstChild);
+    svg.setAttribute("viewBox", "0 0 " + VB_W + " " + VB_H);
+
+    const filtered = rows.filter(r => {
+      const y = indexToYear(ymToIndex(r.date));
+      return y >= fromYear && y <= toYear;
+    });
+    if (filtered.length === 0) return;
+
+    const idxs = filtered.map(r => ymToIndex(r.date));
+    const xMin = idxs[0], xMax = idxs[idxs.length - 1];
+
+    function axisRange(axisName) {
+      let yMin = Infinity, yMax = -Infinity;
+      filtered.forEach(r => {
+        SERIES.forEach(s => {
+          if (s.axis !== axisName || !visible[s.key]) return;
+          const v = r[s.key];
+          if (v !== null && v !== undefined) {
+            if (v < yMin) yMin = v;
+            if (v > yMax) yMax = v;
+          }
+        });
+      });
+      if (!isFinite(yMin) || !isFinite(yMax)) { yMin = 0; yMax = 1; }
+      const pad = (yMax - yMin) * 0.12 || 0.5;
+      yMin -= pad; yMax += pad;
+      const step = niceStep(yMax - yMin);
+      yMin = Math.floor(yMin / step) * step;
+      yMax = Math.ceil(yMax / step) * step;
+      return { yMin, yMax, step };
+    }
+    const left = axisRange("left");
+    const right = axisRange("right");
+    const yMin = left.yMin, yMax = left.yMax, step = left.step;
+
+    function xScale(idx) {
+      if (xMax === xMin) return MARGIN.left + plotW / 2;
+      return MARGIN.left + ((idx - xMin) / (xMax - xMin)) * plotW;
+    }
+    function yScale(v) {
+      return MARGIN.top + plotH - ((v - yMin) / (yMax - yMin)) * plotH;
+    }
+    function yScaleRight(v) {
+      return MARGIN.top + plotH - ((v - right.yMin) / (right.yMax - right.yMin)) * plotH;
+    }
+    function yScaleFor(s) {
+      return s.axis === "right" ? yScaleRight : yScale;
+    }
+
+    const ns = "http://www.w3.org/2000/svg";
+    function el(tag, attrs) {
+      const e = document.createElementNS(ns, tag);
+      for (const k in attrs) e.setAttribute(k, attrs[k]);
+      return e;
+    }
+
+    // gridlines + y labels
+    for (let v = yMin; v <= yMax + 1e-9; v += step) {
+      const y = yScale(v);
+      svg.appendChild(el("line", { x1: MARGIN.left, x2: VB_W - MARGIN.right, y1: y, y2: y, class: "gridline" }));
+      const label = el("text", { x: MARGIN.left - 8, y: y + 3, class: "axis-label", "text-anchor": "end" });
+      label.textContent = (Math.round(v * 1000) / 1000).toString();
+      svg.appendChild(label);
+    }
+    svg.appendChild(el("line", { x1: MARGIN.left, x2: MARGIN.left, y1: MARGIN.top, y2: MARGIN.top + plotH, class: "baseline" }));
+
+    // right-axis (nominal) labels — independent scale, no gridlines to avoid clutter
+    if (visible.nominal) {
+      for (let v = right.yMin; v <= right.yMax + 1e-9; v += right.step) {
+        const y = yScaleRight(v);
+        const label = el("text", { x: VB_W - MARGIN.right + 8, y: y + 3, class: "axis-label", "text-anchor": "start" });
+        label.textContent = (Math.round(v * 1000) / 1000).toString();
+        svg.appendChild(label);
+      }
+    }
+
+    // x-axis year ticks
+    const yearSpan = toYear - fromYear;
+    let tickStep = 1;
+    if (yearSpan > 10) tickStep = 2;
+    if (yearSpan > 20) tickStep = 5;
+    for (let y = Math.ceil(fromYear / tickStep) * tickStep; y <= toYear; y += tickStep) {
+      const idx = y * 12;
+      if (idx < xMin || idx > xMax) continue;
+      const x = xScale(idx);
+      const label = el("text", { x: x, y: VB_H - MARGIN.bottom + 18, class: "axis-label", "text-anchor": "middle" });
+      label.textContent = String(y);
+      svg.appendChild(label);
+    }
+    svg.appendChild(el("line", { x1: MARGIN.left, x2: VB_W - MARGIN.right, y1: MARGIN.top + plotH, y2: MARGIN.top + plotH, class: "baseline" }));
+
+    // series lines
+    const seriesPaths = {};
+    SERIES.forEach(s => {
+      if (!visible[s.key]) return;
+      const scale = yScaleFor(s);
+      let d = "";
+      let open = false;
+      filtered.forEach((r, i) => {
+        const v = r[s.key];
+        const x = xScale(idxs[i]);
+        if (v === null || v === undefined) { open = false; return; }
+        const y = scale(v);
+        d += (open ? " L " : " M ") + x.toFixed(2) + " " + y.toFixed(2);
+        open = true;
+      });
+      seriesPaths[s.key] = d;
+      svg.appendChild(el("path", { d: d, class: "series-line", stroke: s.color }));
+    });
+
+    // hover layer
+    const crosshair = el("line", { class: "crosshair", y1: MARGIN.top, y2: MARGIN.top + plotH, x1: -100, x2: -100 });
+    svg.appendChild(crosshair);
+    const dots = {};
+    SERIES.forEach(s => {
+      const c = el("circle", { r: 4, fill: s.color, stroke: "var(--surface-1)", "stroke-width": 2, class: "hover-dot", cx: -100, cy: -100 });
+      svg.appendChild(c);
+      dots[s.key] = c;
+    });
+
+    const hit = el("rect", { x: MARGIN.left, y: MARGIN.top, width: plotW, height: plotH, class: "hit-layer" });
+    svg.appendChild(hit);
+
+    function nearestRow(mouseX) {
+      const targetIdx = xMin + ((mouseX - MARGIN.left) / plotW) * (xMax - xMin);
+      let best = filtered[0], bestDiff = Infinity;
+      filtered.forEach((r, i) => {
+        const diff = Math.abs(idxs[i] - targetIdx);
+        if (diff < bestDiff) { bestDiff = diff; best = r; }
+      });
+      return best;
+    }
+
+    function onMove(evt) {
+      const rect = svg.getBoundingClientRect();
+      const scaleX = VB_W / rect.width;
+      const mouseX = (evt.clientX - rect.left) * scaleX;
+      const row = nearestRow(mouseX);
+      const idx = ymToIndex(row.date);
+      const x = xScale(idx);
+      crosshair.setAttribute("x1", x); crosshair.setAttribute("x2", x);
+
+      let html_rows = [];
+      SERIES.forEach(s => {
+        if (!visible[s.key]) { dots[s.key].setAttribute("cx", -100); return; }
+        const v = row[s.key];
+        if (v === null || v === undefined) { dots[s.key].setAttribute("cx", -100); return; }
+        const y = yScaleFor(s)(v);
+        dots[s.key].setAttribute("cx", x); dots[s.key].setAttribute("cy", y);
+        html_rows.push({ name: s.name, color: s.color, val: v });
+      });
+
+      tooltip.innerHTML = "";
+      const dateEl = document.createElement("div");
+      dateEl.className = "t-date";
+      dateEl.textContent = row.date;
+      tooltip.appendChild(dateEl);
+      html_rows.forEach(r => {
+        const rowEl = document.createElement("div");
+        rowEl.className = "t-row";
+        const key = document.createElement("span");
+        key.className = "t-key";
+        key.style.background = r.color;
+        const name = document.createElement("span");
+        name.className = "t-name";
+        name.textContent = r.name;
+        const val = document.createElement("span");
+        val.className = "t-val";
+        val.textContent = (Math.round(r.val * 1000) / 1000).toString();
+        rowEl.appendChild(key); rowEl.appendChild(name); rowEl.appendChild(val);
+        tooltip.appendChild(rowEl);
+      });
+
+      const areaRect = chartArea.getBoundingClientRect();
+      const px = (x / VB_W) * areaRect.width;
+      let left = px + 14;
+      if (left + 170 > areaRect.width) left = px - 170 - 14;
+      tooltip.style.left = left + "px";
+      tooltip.style.top = "8px";
+      tooltip.classList.add("visible");
+    }
+    function onLeave() {
+      tooltip.classList.remove("visible");
+      crosshair.setAttribute("x1", -100); crosshair.setAttribute("x2", -100);
+      SERIES.forEach(s => dots[s.key].setAttribute("cx", -100));
+    }
+    hit.addEventListener("pointermove", onMove);
+    hit.addEventListener("pointerleave", onLeave);
+  }
+
+  updateSliderVisual();
+  draw();
+  window.addEventListener("resize", draw);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+name: Update Dashboard
+
+on:
+  schedule:
+    # Every Tuesday at 06:00 UTC. fetch_and_build.py --scheduled decides
+    # internally whether this particular Tuesday is an actual update day
+    # (the Tuesday of the week containing the 1st of the month).
+    - cron: '0 6 * * 2'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  update-and-deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run dashboard update
+        # Manual runs always regenerate; scheduled runs defer to the
+        # script's own Tuesday-of-the-month logic, which may skip.
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            python fetch_and_build.py
+          else
+            python fetch_and_build.py --scheduled
+          fi
+
+      - name: Commit updated data if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add index.html data_cache.json
+          git diff --cached --quiet || git commit -m "Auto-update dashboard data"
+          git push
+
+      # index.html now reflects either today's fresh data, or (on a
+      # non-update day / fetch skip) whatever was last committed -- either
+      # way a valid file is always present here, so Pages never goes blank.
+      - name: Prepare Pages site
+        run: |
+          mkdir -p _site
+          cp index.html _site/
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

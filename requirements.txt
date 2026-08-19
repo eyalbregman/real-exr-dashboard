@@ -1,0 +1,2 @@
+# fetch_and_build.py uses only the Python standard library (csv, json, re,
+# urllib.request, datetime, pathlib) -- no third-party packages required.

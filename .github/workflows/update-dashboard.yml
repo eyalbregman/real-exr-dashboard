@@ -38,6 +38,8 @@ jobs:
       - name: Run dashboard update
         # Manual runs always regenerate; scheduled runs defer to the
         # script's own Tuesday-of-the-month logic, which may skip.
+        env:
+          FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
         run: |
           if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
             python fetch_and_build.py

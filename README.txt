@@ -28,11 +28,17 @@ Files
                               GitHub Actions workflow that regenerates and
                               publishes index.html on GitHub Pages.
 
-Data sources (all public, no account/API key needed)
-------------------------------------------------------
-- US CPI & PCEPI:  FRED (Federal Reserve Bank of St. Louis)
-- Israel CPI:      CBS (Israel Central Bureau of Statistics), index 120010
-- Nominal USD/ILS: Bank of Israel Fusion Data Browser (representative rate)
+Data sources
+-------------
+- US CPI & PCEPI:  FRED (Federal Reserve Bank of St. Louis) -- via the
+                    authenticated FRED API, which needs a free API key
+                    (fred.stlouisfed.org/docs/api/api_key.html) passed as the
+                    FRED_API_KEY environment variable. (The public
+                    fredgraph.csv endpoint needs no key and works fine from a
+                    home connection, but times out from GitHub Actions'
+                    runner IPs, so the script uses the real API instead.)
+- Israel CPI:      CBS (Israel Central Bureau of Statistics), index 120010 (public)
+- Nominal USD/ILS: Bank of Israel Fusion Data Browser, representative rate (public)
 
 Automatic updates
 ------------------
@@ -41,8 +47,11 @@ three sources and regenerates the dashboard. Just keep the "Real EXR
 Dashboard" folder where it is -- no need to reopen anything for the data to
 refresh; the .html file rewrites itself in place.
 
-To update manually right now, double-click run_update.bat (or run
-"python fetch_and_build.py" from this folder).
+run_update.bat sets FRED_API_KEY before calling the script -- edit that file
+once and replace REPLACE_WITH_YOUR_FRED_API_KEY with your real key.
+
+To update manually right now, double-click run_update.bat (or set
+FRED_API_KEY and run "python fetch_and_build.py" from this folder).
 
 To change the schedule: open Task Scheduler -> Task Scheduler Library ->
 "Real EXR Dashboard Update" -> Properties -> Triggers.
@@ -57,3 +66,8 @@ locally. The script's own --scheduled logic still decides whether that
 particular Tuesday is an actual update day; on off days the workflow just
 redeploys the last generated index.html unchanged. Trigger an update from
 GitHub any time via Actions -> "Update Dashboard" -> "Run workflow".
+
+The workflow reads the FRED key from the repo's FRED_API_KEY secret
+(Settings -> Secrets and variables -> Actions), so it never appears in the
+code. Set it once with:
+  gh secret set FRED_API_KEY --repo eyalbregman/real-exr-dashboard

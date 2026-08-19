@@ -2,19 +2,26 @@
 Fetches live data for the ILS/USD Real Exchange Rate dashboard and regenerates
 "index.html" with the results embedded.
 
-Sources (all public, no API key required):
-  - FRED (St. Louis Fed): US CPI (CPIAUCSL) and US PCEPI (PCEPI)
-  - CBS (Israel Central Bureau of Statistics): Israel CPI, index 120010
-  - Bank of Israel Fusion Data Browser: representative USD/ILS exchange rate
+Sources:
+  - FRED (St. Louis Fed): US CPI (CPIAUCSL) and US PCEPI (PCEPI), via the
+    authenticated FRED API -- requires a free API key
+    (https://fred.stlouisfed.org/docs/api/api_key.html) passed via the
+    FRED_API_KEY environment variable. (The unauthenticated fredgraph.csv
+    endpoint works fine from a home connection but is unreliable/blocked
+    from cloud CI runner IPs, which is why this uses the real API instead.)
+  - CBS (Israel Central Bureau of Statistics): Israel CPI, index 120010 (public)
+  - Bank of Israel Fusion Data Browser: representative USD/ILS exchange rate (public)
 
-Run manually with: python fetch_and_build.py
+Run manually with: FRED_API_KEY=xxxx python fetch_and_build.py
 Intended to also run unattended on a schedule (see README.txt), and via the
-GitHub Actions workflow in .github/workflows for the hosted GitHub Pages copy.
+GitHub Actions workflow in .github/workflows for the hosted GitHub Pages copy
+(where FRED_API_KEY comes from a repo secret).
 """
 
 import csv
 import io
 import json
+import os
 import re
 import sys
 import urllib.request
@@ -24,7 +31,8 @@ from datetime import date, datetime, timedelta, timezone
 START_YEAR = 2000
 HEADERS = {"User-Agent": "Mozilla/5.0 (RealEXRDashboard/1.0)"}
 
-FRED_URL = "https://fred.stlouisfed.org/graph/fredgraph.csv?id=CPIAUCSL,PCEPI"
+FRED_API_KEY = os.environ.get("FRED_API_KEY")
+FRED_API_URL = "https://api.stlouisfed.org/fred/series/observations"
 BOI_URL = (
     "https://edge.boi.org.il/FusionEdgeServer/sdmx/v2/data/dataflow/"
     "BOI.STATISTICS/EXR/1.0/RER_USD_ILS"
@@ -75,18 +83,30 @@ def http_get(url, retries=3):
     raise RuntimeError(f"Failed to fetch {url}: {last_err}")
 
 
+def fetch_fred_series(series_id):
+    if not FRED_API_KEY:
+        raise RuntimeError(
+            "FRED_API_KEY environment variable is not set. Get a free key at "
+            "https://fred.stlouisfed.org/docs/api/api_key.html"
+        )
+    url = (
+        f"{FRED_API_URL}?series_id={series_id}&api_key={FRED_API_KEY}"
+        f"&file_type=json&observation_start={START_YEAR}-01-01"
+    )
+    text = http_get(url)
+    data = json.loads(text)
+    out = {}
+    for obs in data["observations"]:
+        ym = obs["date"][:7]
+        val = (obs.get("value") or "").strip()
+        if val and val != ".":
+            out[ym] = float(val)
+    return out
+
+
 def fetch_fred():
-    text = http_get(FRED_URL)
-    reader = csv.DictReader(io.StringIO(text))
-    cpi, pcepi = {}, {}
-    for row in reader:
-        ym = row["observation_date"][:7]
-        c = (row.get("CPIAUCSL") or "").strip()
-        p = (row.get("PCEPI") or "").strip()
-        if c and c != ".":
-            cpi[ym] = float(c)
-        if p and p != ".":
-            pcepi[ym] = float(p)
+    cpi = fetch_fred_series("CPIAUCSL")
+    pcepi = fetch_fred_series("PCEPI")
     return cpi, pcepi
 
 

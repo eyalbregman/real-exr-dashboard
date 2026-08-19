@@ -1,2 +1,3 @@
 .claude/
 update_log.txt
+__pycache__/

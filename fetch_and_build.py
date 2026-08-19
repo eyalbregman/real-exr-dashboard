@@ -55,20 +55,31 @@ def target_tuesday_for_month(year, month):
     return sunday_of_week + timedelta(days=2)
 
 
+def _month_offset(today, month_offset):
+    y, m = today.year, today.month + month_offset
+    while m < 1:
+        m += 12
+        y -= 1
+    while m > 12:
+        m -= 12
+        y += 1
+    return y, m
+
+
 def is_scheduled_run_day(today):
     """True if `today` is the Tuesday of the week containing the 1st of this,
     the previous, or the next month (covers the week straddling a month boundary)."""
     for month_offset in (-1, 0, 1):
-        y, m = today.year, today.month + month_offset
-        while m < 1:
-            m += 12
-            y -= 1
-        while m > 12:
-            m -= 12
-            y += 1
+        y, m = _month_offset(today, month_offset)
         if target_tuesday_for_month(y, m) == today:
             return True
     return False
+
+
+def next_scheduled_update(today):
+    """The next upcoming target Tuesday strictly after `today`."""
+    candidates = [target_tuesday_for_month(*_month_offset(today, off)) for off in range(-1, 4)]
+    return min(d for d in candidates if d > today)
 
 
 def http_get(url, retries=3):
@@ -205,6 +216,7 @@ def build_dataset():
     meta = {
         "baseYear": base_year,
         "generatedAt": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+        "nextUpdate": next_scheduled_update(date.today()).isoformat(),
         "sources": {
             "usCpi": "FRED CPIAUCSL (Consumer Price Index for All Urban Consumers)",
             "usPcepi": "FRED PCEPI (Personal Consumption Expenditures Price Index)",

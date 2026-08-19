@@ -78,6 +78,12 @@
     margin: 0;
     color: var(--text-primary);
   }
+  .head-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 2px;
+  }
   .updated {
     font-size: 12px;
     color: var(--text-muted);
@@ -128,7 +134,7 @@
   }
   .axis-label {
     font-size: 11px;
-    fill: var(--text-muted);
+    fill: var(--text-primary);
   }
   .gridline { stroke: var(--gridline); stroke-width: 1; }
   .baseline { stroke: var(--baseline); stroke-width: 1; }
@@ -330,7 +336,10 @@
 <div class="wrap">
   <header class="head">
     <h1>Real Exchange Rate: ILS / USD</h1>
-    <span class="updated" id="updatedLabel"></span>
+    <div class="head-meta">
+      <span class="updated" id="updatedLabel"></span>
+      <span class="updated" id="nextUpdateLabel"></span>
+    </div>
   </header>
 
   <div class="card">
@@ -404,10 +413,24 @@ const DASHBOARD_DATA = __DASHBOARD_DATA__;
   let toYear = fullMaxYear;
 
   // ---------- header / footer text ----------
+  const MONTH_ABBR = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+  function formatYMD(ymd) {
+    // Formats a plain "YYYY-MM-DD" string without going through Date/timezone
+    // parsing, so the calendar date shown never shifts by a day for viewers
+    // west of UTC.
+    const [y, m, d] = ymd.split("-").map(Number);
+    return d + " " + MONTH_ABBR[m - 1] + " " + y;
+  }
+
   const updatedLabel = document.getElementById("updatedLabel");
   const genDate = new Date(meta.generatedAt);
   updatedLabel.textContent = "Updated " + genDate.toLocaleDateString("en-GB", { year: "numeric", month: "short", day: "numeric" }) +
     " · base year " + meta.baseYear + " = 100";
+
+  const nextUpdateLabel = document.getElementById("nextUpdateLabel");
+  if (meta.nextUpdate) {
+    nextUpdateLabel.textContent = "Next update: " + formatYMD(meta.nextUpdate);
+  }
 
   const sourcesFoot = document.getElementById("sourcesFoot");
   const srcLines = [

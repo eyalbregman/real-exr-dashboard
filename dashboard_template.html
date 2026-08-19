@@ -531,7 +531,7 @@ const DASHBOARD_DATA = __DASHBOARD_DATA__;
   const tooltip = document.getElementById("tooltip");
   const chartArea = document.querySelector(".chart-area");
   const VB_W = 900, VB_H = 420;
-  const MARGIN = { top: 16, right: 46, bottom: 28, left: 44 };
+  const MARGIN = { top: 16, right: 16, bottom: 28, left: 44 };
   const plotW = VB_W - MARGIN.left - MARGIN.right;
   const plotH = VB_H - MARGIN.top - MARGIN.bottom;
 
@@ -614,16 +614,6 @@ const DASHBOARD_DATA = __DASHBOARD_DATA__;
       svg.appendChild(label);
     }
     svg.appendChild(el("line", { x1: MARGIN.left, x2: MARGIN.left, y1: MARGIN.top, y2: MARGIN.top + plotH, class: "baseline" }));
-
-    // right-axis (nominal) labels — independent scale, no gridlines to avoid clutter
-    if (visible.nominal) {
-      for (let v = right.yMin; v <= right.yMax + 1e-9; v += right.step) {
-        const y = yScaleRight(v);
-        const label = el("text", { x: VB_W - MARGIN.right + 8, y: y + 3, class: "axis-label", "text-anchor": "start" });
-        label.textContent = (Math.round(v * 1000) / 1000).toString();
-        svg.appendChild(label);
-      }
-    }
 
     // x-axis year ticks
     const yearSpan = toYear - fromYear;

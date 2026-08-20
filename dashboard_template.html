@@ -640,11 +640,8 @@ const DASHBOARD_DATA = __DASHBOARD_DATA__;
     }
     svg.appendChild(el("line", { x1: MARGIN.left, x2: MARGIN.left, y1: MARGIN.top, y2: MARGIN.top + plotH, class: "baseline" }));
 
-    // x-axis year ticks
-    const yearSpan = toYear - fromYear;
-    let tickStep = 1;
-    if (yearSpan > 10) tickStep = 2;
-    if (yearSpan > 20) tickStep = 5;
+    // x-axis year ticks — always one label per year
+    const tickStep = 1;
     for (let y = Math.ceil(fromYear / tickStep) * tickStep; y <= toYear; y += tickStep) {
       const idx = y * 12;
       if (idx < xMin || idx > xMax) continue;

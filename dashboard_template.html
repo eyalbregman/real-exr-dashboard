@@ -286,6 +286,27 @@
   input[type="range"].thumb::-webkit-slider-runnable-track { background: transparent; }
   input[type="range"].thumb::-moz-range-track { background: transparent; }
 
+  .formulas {
+    margin-top: 18px;
+    padding-top: 14px;
+    border-top: 1px solid var(--border);
+    font-size: 12.5px;
+    line-height: 1.8;
+    color: var(--text-secondary);
+  }
+  .formulas-title {
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 2px;
+  }
+  .formula {
+    font-variant-numeric: tabular-nums;
+  }
+  .formula-note {
+    margin-top: 6px;
+    font-size: 11.5px;
+    color: var(--text-muted);
+  }
   footer.foot {
     margin-top: 14px;
     font-size: 11.5px;
@@ -380,6 +401,13 @@
     </table>
   </div>
 
+  <div class="formulas" id="formulas">
+    <div class="formulas-title">How Real EXR is calculated</div>
+    <div class="formula">Real EXR (US CPI) &nbsp;=&nbsp; Nominal EXR &times; (US CPI &divide; Israel CPI)</div>
+    <div class="formula">Real EXR (US PCEPI) =&nbsp; Nominal EXR &times; (US PCEPI &divide; Israel CPI)</div>
+    <div class="formula-note" id="formulaNote"></div>
+  </div>
+
   <footer class="foot" id="sourcesFoot"></footer>
 </div>
 
@@ -391,9 +419,9 @@ const DASHBOARD_DATA = __DASHBOARD_DATA__;
   const meta = DASHBOARD_DATA.meta;
 
   const SERIES = [
-    { key: "realCPI", name: "Real EXR (vs US CPI)", color: "var(--series-1)", colorVarName: "--series-1", axis: "left" },
-    { key: "realPCEPI", name: "Real EXR (vs US PCEPI)", color: "var(--series-2)", colorVarName: "--series-2", axis: "left" },
-    { key: "nominal", name: "Nominal EXR (ILS/USD)", color: "var(--series-3)", colorVarName: "--series-3", axis: "right" },
+    { key: "realCPI", name: "Real EXR (vs US CPI)", color: "var(--series-1)", colorVarName: "--series-1" },
+    { key: "realPCEPI", name: "Real EXR (vs US PCEPI)", color: "var(--series-2)", colorVarName: "--series-2" },
+    { key: "nominal", name: "Nominal EXR (ILS/USD)", color: "var(--series-3)", colorVarName: "--series-3" },
   ];
 
   const visible = { realCPI: true, realPCEPI: true, nominal: true };
@@ -431,6 +459,9 @@ const DASHBOARD_DATA = __DASHBOARD_DATA__;
   if (meta.nextUpdate) {
     nextUpdateLabel.textContent = "Next update: " + formatYMD(meta.nextUpdate);
   }
+
+  document.getElementById("formulaNote").textContent =
+    "US CPI and US PCEPI are rebased so " + meta.baseYear + " = 100, matching Israel CPI's own base year.";
 
   const sourcesFoot = document.getElementById("sourcesFoot");
   const srcLines = [
@@ -560,11 +591,13 @@ const DASHBOARD_DATA = __DASHBOARD_DATA__;
     const idxs = filtered.map(r => ymToIndex(r.date));
     const xMin = idxs[0], xMax = idxs[idxs.length - 1];
 
-    function axisRange(axisName) {
+    // Single shared axis across all series, computed from every series'
+    // values regardless of legend toggle state, so hiding a series never
+    // rescales the axis for the ones still shown.
+    function axisRange() {
       let yMin = Infinity, yMax = -Infinity;
       filtered.forEach(r => {
         SERIES.forEach(s => {
-          if (s.axis !== axisName || !visible[s.key]) return;
           const v = r[s.key];
           if (v !== null && v !== undefined) {
             if (v < yMin) yMin = v;
@@ -580,9 +613,7 @@ const DASHBOARD_DATA = __DASHBOARD_DATA__;
       yMax = Math.ceil(yMax / step) * step;
       return { yMin, yMax, step };
     }
-    const left = axisRange("left");
-    const right = axisRange("right");
-    const yMin = left.yMin, yMax = left.yMax, step = left.step;
+    const { yMin, yMax, step } = axisRange();
 
     function xScale(idx) {
       if (xMax === xMin) return MARGIN.left + plotW / 2;
@@ -590,12 +621,6 @@ const DASHBOARD_DATA = __DASHBOARD_DATA__;
     }
     function yScale(v) {
       return MARGIN.top + plotH - ((v - yMin) / (yMax - yMin)) * plotH;
-    }
-    function yScaleRight(v) {
-      return MARGIN.top + plotH - ((v - right.yMin) / (right.yMax - right.yMin)) * plotH;
-    }
-    function yScaleFor(s) {
-      return s.axis === "right" ? yScaleRight : yScale;
     }
 
     const ns = "http://www.w3.org/2000/svg";
@@ -634,14 +659,13 @@ const DASHBOARD_DATA = __DASHBOARD_DATA__;
     const seriesPaths = {};
     SERIES.forEach(s => {
       if (!visible[s.key]) return;
-      const scale = yScaleFor(s);
       let d = "";
       let open = false;
       filtered.forEach((r, i) => {
         const v = r[s.key];
         const x = xScale(idxs[i]);
         if (v === null || v === undefined) { open = false; return; }
-        const y = scale(v);
+        const y = yScale(v);
         d += (open ? " L " : " M ") + x.toFixed(2) + " " + y.toFixed(2);
         open = true;
       });
@@ -686,7 +710,7 @@ const DASHBOARD_DATA = __DASHBOARD_DATA__;
         if (!visible[s.key]) { dots[s.key].setAttribute("cx", -100); return; }
         const v = row[s.key];
         if (v === null || v === undefined) { dots[s.key].setAttribute("cx", -100); return; }
-        const y = yScaleFor(s)(v);
+        const y = yScale(v);
         dots[s.key].setAttribute("cx", x); dots[s.key].setAttribute("cy", y);
         html_rows.push({ name: s.name, color: s.color, val: v });
       });

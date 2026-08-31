@@ -486,6 +486,28 @@
       </div>
     </div>
 
+    <button class="table-toggle" id="tableTogglePrices" type="button">Show data table</button>
+    <div class="data-table-wrap" id="tableWrapPrices">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Month</th>
+            <th>Israel CPI</th>
+            <th>US CPI</th>
+            <th>US CPI (NSA)</th>
+            <th>US PCE</th>
+            <th>US Core PCE</th>
+            <th>Israel Infl.</th>
+            <th>US CPI Infl.</th>
+            <th>US CPI (NSA) Infl.</th>
+            <th>US PCE Infl.</th>
+            <th>US Core PCE Infl.</th>
+          </tr>
+        </thead>
+        <tbody id="tableBodyPrices"></tbody>
+      </table>
+    </div>
+
     <div class="formulas" id="formulasPrices">
       <div class="formulas-title">How these are calculated</div>
       <div class="formula">Annual inflation &nbsp;=&nbsp; (Index this month &divide; Index 12 months earlier &minus; 1) &times; 100%</div>
@@ -594,27 +616,43 @@ const DASHBOARD_DATA = __DASHBOARD_DATA__;
     });
   });
 
-  // ---------- data table ----------
-  const tableBody = document.getElementById("tableBody");
-  rows.forEach(r => {
-    const tr = document.createElement("tr");
-    const cells = [r.date, fmt(r.nominal), fmt(r.realCPI), fmt(r.realPCEPI)];
-    cells.forEach((val, i) => {
-      const td = document.createElement("td");
-      td.textContent = val === null ? "–" : String(val);
-      tr.appendChild(td);
-    });
-    tableBody.appendChild(tr);
-  });
-  document.getElementById("tableToggle").addEventListener("click", (e) => {
-    const wrap = document.getElementById("tableWrap");
-    wrap.classList.toggle("open");
-    e.target.textContent = wrap.classList.contains("open") ? "Hide data table" : "Show data table";
-  });
-
+  // ---------- data tables ----------
   function fmt(v) {
     return v === null || v === undefined ? null : Math.round(v * 1000) / 1000;
   }
+
+  function buildDataTable({ dataRows, keys, toggleId, wrapId, bodyId }) {
+    const tableBody = document.getElementById(bodyId);
+    dataRows.forEach(r => {
+      const tr = document.createElement("tr");
+      const cells = [r.date, ...keys.map(k => fmt(r[k]))];
+      cells.forEach(val => {
+        const td = document.createElement("td");
+        td.textContent = val === null ? "–" : String(val);
+        tr.appendChild(td);
+      });
+      tableBody.appendChild(tr);
+    });
+    document.getElementById(toggleId).addEventListener("click", (e) => {
+      const wrap = document.getElementById(wrapId);
+      wrap.classList.toggle("open");
+      e.target.textContent = wrap.classList.contains("open") ? "Hide data table" : "Show data table";
+    });
+  }
+
+  buildDataTable({
+    dataRows: rows, keys: ["nominal", "realCPI", "realPCEPI"],
+    toggleId: "tableToggle", wrapId: "tableWrap", bodyId: "tableBody",
+  });
+
+  buildDataTable({
+    dataRows: priceRows,
+    keys: [
+      "israelCPI", "usCPIAUCSL", "usCPIAUCNS", "usPCEPI", "usPCEPILFE",
+      "israelInflation", "usCPIAUCSLInflation", "usCPIAUCNSInflation", "usPCEPIInflation", "usPCEPILFEInflation",
+    ],
+    toggleId: "tableTogglePrices", wrapId: "tableWrapPrices", bodyId: "tableBodyPrices",
+  });
 
   // ---------- reusable year-range slider ----------
   function createSlider({ thumbFromId, thumbToId, sliderFillId, rangeYearsId, resetId, fullMinYear, fullMaxYear }) {

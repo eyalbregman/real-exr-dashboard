@@ -2,8 +2,12 @@
 Fetches live data for the ILS/USD Real Exchange Rate dashboard and regenerates
 "index.html" with the results embedded.
 
+Also builds a second dataset (Israel CPI vs. four US price indices, plus
+year-over-year inflation for each) used by the "Price Indices" tab.
+
 Sources:
-  - FRED (St. Louis Fed): US CPI (CPIAUCSL) and US PCEPI (PCEPI), via the
+  - FRED (St. Louis Fed): US CPI (CPIAUCSL), US CPI not seasonally adjusted
+    (CPIAUCNS), US PCEPI (PCEPI), and US core PCEPI (PCEPILFE), via the
     authenticated FRED API -- requires a free API key
     (https://fred.stlouisfed.org/docs/api/api_key.html) passed via the
     FRED_API_KEY environment variable. (The unauthenticated fredgraph.csv
@@ -118,7 +122,9 @@ def fetch_fred_series(series_id):
 def fetch_fred():
     cpi = fetch_fred_series("CPIAUCSL")
     pcepi = fetch_fred_series("PCEPI")
-    return cpi, pcepi
+    cpi_ns = fetch_fred_series("CPIAUCNS")
+    pcepilfe = fetch_fred_series("PCEPILFE")
+    return cpi, pcepi, cpi_ns, pcepilfe
 
 
 def fetch_boi():
@@ -179,10 +185,25 @@ def rebase_to_year(series, year):
     return {k: (v / avg) * 100 for k, v in series.items()}
 
 
+def yoy_inflation_pct(series, ym):
+    """Year-over-year % change (as percentage points, e.g. 3.2 meaning 3.2%).
+    Scale-invariant, so it doesn't matter whether `series` is raw or rebased."""
+    y, m = map(int, ym.split("-"))
+    prev_ym = f"{y - 1:04d}-{m:02d}"
+    prev = series.get(prev_ym)
+    cur = series.get(ym)
+    if prev is None or cur is None or prev == 0:
+        return None
+    return round((cur / prev - 1) * 100, 3)
+
+
 def build_dataset():
-    print("Fetching FRED (US CPI, US PCEPI)...")
-    cpi_us_raw, pcepi_us_raw = fetch_fred()
-    print(f"  {len(cpi_us_raw)} CPI months, {len(pcepi_us_raw)} PCEPI months")
+    print("Fetching FRED (US CPI, PCEPI, CPI-NS, PCEPILFE)...")
+    cpi_us_raw, pcepi_us_raw, cpi_us_ns_raw, pcepilfe_us_raw = fetch_fred()
+    print(
+        f"  {len(cpi_us_raw)} CPI months, {len(pcepi_us_raw)} PCEPI months, "
+        f"{len(cpi_us_ns_raw)} CPI-NS months, {len(pcepilfe_us_raw)} PCEPILFE months"
+    )
 
     print("Fetching Bank of Israel (nominal USD/ILS)...")
     nominal = fetch_boi()
@@ -194,6 +215,8 @@ def build_dataset():
 
     cpi_us = rebase_to_year(cpi_us_raw, base_year)
     pcepi_us = rebase_to_year(pcepi_us_raw, base_year)
+    cpi_us_ns = rebase_to_year(cpi_us_ns_raw, base_year)
+    pcepilfe_us = rebase_to_year(pcepilfe_us_raw, base_year)
 
     common_dates = sorted(set(nominal) & set(cpi_us) & set(cpi_isr))
     rows = []
@@ -213,6 +236,30 @@ def build_dataset():
             }
         )
 
+    # Second dataset: Israel CPI vs. the four US price indices, all rebased
+    # so `base_year` = 100, plus each series' year-over-year inflation.
+    # Independent of the nominal EXR's date coverage.
+    price_common_dates = sorted(
+        set(cpi_isr) & set(cpi_us) & set(cpi_us_ns) & set(pcepi_us) & set(pcepilfe_us)
+    )
+    price_rows = []
+    for ym in price_common_dates:
+        price_rows.append(
+            {
+                "date": ym,
+                "israelCPI": round(cpi_isr[ym], 3),
+                "usCPIAUCSL": round(cpi_us[ym], 3),
+                "usCPIAUCNS": round(cpi_us_ns[ym], 3),
+                "usPCEPI": round(pcepi_us[ym], 3),
+                "usPCEPILFE": round(pcepilfe_us[ym], 3),
+                "israelInflation": yoy_inflation_pct(cpi_isr, ym),
+                "usCPIAUCSLInflation": yoy_inflation_pct(cpi_us, ym),
+                "usCPIAUCNSInflation": yoy_inflation_pct(cpi_us_ns, ym),
+                "usPCEPIInflation": yoy_inflation_pct(pcepi_us, ym),
+                "usPCEPILFEInflation": yoy_inflation_pct(pcepilfe_us, ym),
+            }
+        )
+
     meta = {
         "baseYear": base_year,
         "generatedAt": datetime.now(timezone.utc).isoformat(timespec="seconds"),
@@ -220,16 +267,20 @@ def build_dataset():
         "sources": {
             "usCpi": "FRED CPIAUCSL (Consumer Price Index for All Urban Consumers)",
             "usPcepi": "FRED PCEPI (Personal Consumption Expenditures Price Index)",
+            "usCpiNs": "FRED CPIAUCNS (Consumer Price Index for All Urban Consumers, Not Seasonally Adjusted)",
+            "usPcepiLfe": "FRED PCEPILFE (Personal Consumption Expenditures Excluding Food and Energy, Chain-Type Price Index)",
             "israelCpi": f"CBS (Israel Central Bureau of Statistics) index {CBS_INDEX_ID}",
             "nominalExr": "Bank of Israel Fusion Data Browser, representative USD/ILS rate",
         },
     }
-    return rows, meta
+    return rows, price_rows, meta
 
 
-def render_html(rows, meta):
+def render_html(rows, price_rows, meta):
     template = TEMPLATE.read_text(encoding="utf-8")
-    payload = json.dumps({"rows": rows, "meta": meta}, ensure_ascii=False)
+    payload = json.dumps(
+        {"rows": rows, "priceRows": price_rows, "meta": meta}, ensure_ascii=False
+    )
     html = template.replace("__DASHBOARD_DATA__", payload)
     HTML_OUT.write_text(html, encoding="utf-8")
 
@@ -244,17 +295,25 @@ def main():
             )
             return
 
-    rows, meta = build_dataset()
-    if not rows:
-        print("No overlapping data across all three sources — aborting.", file=sys.stderr)
+    rows, price_rows, meta = build_dataset()
+    if not rows or not price_rows:
+        print("No overlapping data across all sources — aborting.", file=sys.stderr)
         sys.exit(1)
 
     CACHE_OUT.write_text(
-        json.dumps({"rows": rows, "meta": meta}, indent=2, ensure_ascii=False),
+        json.dumps(
+            {"rows": rows, "priceRows": price_rows, "meta": meta},
+            indent=2,
+            ensure_ascii=False,
+        ),
         encoding="utf-8",
     )
-    render_html(rows, meta)
+    render_html(rows, price_rows, meta)
     print(f"Wrote {len(rows)} months ({rows[0]['date']} to {rows[-1]['date']})")
+    print(
+        f"Wrote {len(price_rows)} price-index months "
+        f"({price_rows[0]['date']} to {price_rows[-1]['date']})"
+    )
     print(f"Dashboard updated: {HTML_OUT}")
 
 

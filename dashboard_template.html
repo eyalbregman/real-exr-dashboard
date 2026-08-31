@@ -17,6 +17,8 @@
     --series-1:       #4F81BD;
     --series-2:       #B9CDE5;
     --series-3:       #C97B3D;
+    --series-4:       #6FA872;
+    --series-5:       #A472A8;
     --tooltip-bg:     #ffffff;
   }
   @media (prefers-color-scheme: dark) {
@@ -33,6 +35,8 @@
       --series-1:       #4F81BD;
       --series-2:       #B9CDE5;
       --series-3:       #C97B3D;
+      --series-4:       #6FA872;
+      --series-5:       #A472A8;
       --tooltip-bg:     #232322;
     }
   }
@@ -49,6 +53,8 @@
     --series-1:       #4F81BD;
     --series-2:       #B9CDE5;
     --series-3:       #C97B3D;
+    --series-4:       #6FA872;
+    --series-5:       #A472A8;
     --tooltip-bg:     #232322;
   }
 
@@ -89,12 +95,42 @@
     color: var(--text-muted);
     white-space: nowrap;
   }
+  .tabs {
+    display: flex;
+    gap: 8px;
+    margin-top: 18px;
+  }
+  .tab-btn {
+    font-size: 13px;
+    font-weight: 600;
+    font-family: inherit;
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--surface-1);
+    color: var(--text-secondary);
+    cursor: pointer;
+  }
+  .tab-btn[aria-pressed="true"] {
+    background: var(--series-1);
+    color: #ffffff;
+    border-color: var(--series-1);
+  }
+  .tab-page[hidden] {
+    display: none;
+  }
   .card {
     background: var(--surface-1);
     border: 1px solid var(--border);
     border-radius: 12px;
     padding: 18px 20px 14px;
     margin-top: 14px;
+  }
+  .card-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 12px;
   }
   .legend {
     display: flex;
@@ -126,7 +162,7 @@
   .chart-area {
     position: relative;
   }
-  svg#chart {
+  svg.chart-svg {
     display: block;
     width: 100%;
     height: auto;
@@ -356,59 +392,108 @@
 <body>
 <div class="wrap">
   <header class="head">
-    <h1>Real Exchange Rate: ILS / USD</h1>
+    <h1 id="pageTitle">Real Exchange Rate: ILS / USD</h1>
     <div class="head-meta">
       <span class="updated" id="updatedLabel"></span>
       <span class="updated" id="nextUpdateLabel"></span>
     </div>
   </header>
 
-  <div class="card">
-    <div class="legend" id="legend"></div>
+  <div class="tabs" id="tabs">
+    <button class="tab-btn" type="button" data-tab="exr" data-title="Real Exchange Rate: ILS / USD" aria-pressed="true">Real EXR</button>
+    <button class="tab-btn" type="button" data-tab="prices" data-title="Israel vs. US Price Indices" aria-pressed="false">Price Indices</button>
+  </div>
 
-    <div class="chart-area">
-      <svg id="chart" viewBox="0 0 900 420" preserveAspectRatio="xMidYMid meet"></svg>
-      <div class="tooltip" id="tooltip"></div>
+  <section class="tab-page" id="page-exr">
+    <div class="card">
+      <div class="legend" id="legend"></div>
+
+      <div class="chart-area" id="chartAreaExr">
+        <svg id="chart" class="chart-svg" viewBox="0 0 900 420" preserveAspectRatio="xMidYMid meet"></svg>
+        <div class="tooltip" id="tooltip"></div>
+      </div>
+
+      <div class="range-controls">
+        <div class="range-header">
+          <span class="lbl">Year range</span>
+          <span class="range-years" id="rangeYears"></span>
+          <button class="reset-link" id="resetRange" type="button">Reset</button>
+        </div>
+        <div class="slider-track-wrap">
+          <div class="slider-track"></div>
+          <div class="slider-fill" id="sliderFill"></div>
+          <input type="range" class="thumb" id="thumbFrom">
+          <input type="range" class="thumb" id="thumbTo">
+        </div>
+      </div>
+    </div>
+
+    <button class="table-toggle" id="tableToggle" type="button">Show data table</button>
+    <div class="data-table-wrap" id="tableWrap">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Month</th>
+            <th>Nominal EXR</th>
+            <th>Real EXR (US CPI)</th>
+            <th>Real EXR (US PCEPI)</th>
+          </tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+      </table>
+    </div>
+
+    <div class="formulas" id="formulas">
+      <div class="formulas-title">How Real EXR is calculated</div>
+      <div class="formula">Real EXR (US CPI) &nbsp;=&nbsp; Nominal EXR &times; (US CPI &divide; Israel CPI)</div>
+      <div class="formula">Real EXR (US PCEPI) =&nbsp; Nominal EXR &times; (US PCEPI &divide; Israel CPI)</div>
+      <div class="formula-note" id="formulaNote"></div>
+    </div>
+
+    <footer class="foot" id="sourcesFoot"></footer>
+  </section>
+
+  <section class="tab-page" id="page-prices" hidden>
+    <div class="card">
+      <div class="card-title">Annual Inflation: Israel vs. United States</div>
+      <div class="legend" id="legendInflation"></div>
+      <div class="chart-area" id="chartAreaInflation">
+        <svg id="chartInflation" class="chart-svg" viewBox="0 0 900 420" preserveAspectRatio="xMidYMid meet"></svg>
+        <div class="tooltip" id="tooltipInflation"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Price Indices: Israel CPI vs. US Price Indices</div>
+      <div class="legend" id="legendPrices"></div>
+      <div class="chart-area" id="chartAreaPrices">
+        <svg id="chartPrices" class="chart-svg" viewBox="0 0 900 420" preserveAspectRatio="xMidYMid meet"></svg>
+        <div class="tooltip" id="tooltipPrices"></div>
+      </div>
     </div>
 
     <div class="range-controls">
       <div class="range-header">
-        <span class="lbl">Year range</span>
-        <span class="range-years" id="rangeYears"></span>
-        <button class="reset-link" id="resetRange" type="button">Reset</button>
+        <span class="lbl">Year range (both charts)</span>
+        <span class="range-years" id="rangeYearsPrices"></span>
+        <button class="reset-link" id="resetRangePrices" type="button">Reset</button>
       </div>
       <div class="slider-track-wrap">
         <div class="slider-track"></div>
-        <div class="slider-fill" id="sliderFill"></div>
-        <input type="range" class="thumb" id="thumbFrom">
-        <input type="range" class="thumb" id="thumbTo">
+        <div class="slider-fill" id="sliderFillPrices"></div>
+        <input type="range" class="thumb" id="thumbFromPrices">
+        <input type="range" class="thumb" id="thumbToPrices">
       </div>
     </div>
-  </div>
 
-  <button class="table-toggle" id="tableToggle" type="button">Show data table</button>
-  <div class="data-table-wrap" id="tableWrap">
-    <table class="data-table">
-      <thead>
-        <tr>
-          <th>Month</th>
-          <th>Nominal EXR</th>
-          <th>Real EXR (US CPI)</th>
-          <th>Real EXR (US PCEPI)</th>
-        </tr>
-      </thead>
-      <tbody id="tableBody"></tbody>
-    </table>
-  </div>
+    <div class="formulas" id="formulasPrices">
+      <div class="formulas-title">How these are calculated</div>
+      <div class="formula">Annual inflation &nbsp;=&nbsp; (Index this month &divide; Index 12 months earlier &minus; 1) &times; 100%</div>
+      <div class="formula-note" id="formulaNotePrices"></div>
+    </div>
 
-  <div class="formulas" id="formulas">
-    <div class="formulas-title">How Real EXR is calculated</div>
-    <div class="formula">Real EXR (US CPI) &nbsp;=&nbsp; Nominal EXR &times; (US CPI &divide; Israel CPI)</div>
-    <div class="formula">Real EXR (US PCEPI) =&nbsp; Nominal EXR &times; (US PCEPI &divide; Israel CPI)</div>
-    <div class="formula-note" id="formulaNote"></div>
-  </div>
-
-  <footer class="foot" id="sourcesFoot"></footer>
+    <footer class="foot" id="sourcesFootPrices"></footer>
+  </section>
 </div>
 
 <script>
@@ -416,6 +501,7 @@ const DASHBOARD_DATA = __DASHBOARD_DATA__;
 
 (function () {
   const rows = DASHBOARD_DATA.rows;
+  const priceRows = DASHBOARD_DATA.priceRows;
   const meta = DASHBOARD_DATA.meta;
 
   const SERIES = [
@@ -424,7 +510,21 @@ const DASHBOARD_DATA = __DASHBOARD_DATA__;
     { key: "nominal", name: "Nominal EXR (ILS/USD)", color: "var(--series-3)", colorVarName: "--series-3" },
   ];
 
-  const visible = { realCPI: true, realPCEPI: true, nominal: true };
+  const INFLATION_SERIES = [
+    { key: "israelInflation", name: "Israel CPI", color: "var(--series-3)" },
+    { key: "usCPIAUCSLInflation", name: "US CPI (CPIAUCSL)", color: "var(--series-1)" },
+    { key: "usCPIAUCNSInflation", name: "US CPI, NSA (CPIAUCNS)", color: "var(--series-2)" },
+    { key: "usPCEPIInflation", name: "US PCE Price Index (PCEPI)", color: "var(--series-4)" },
+    { key: "usPCEPILFEInflation", name: "US Core PCE (PCEPILFE)", color: "var(--series-5)" },
+  ];
+
+  const PRICE_SERIES = [
+    { key: "israelCPI", name: "Israel CPI", color: "var(--series-3)" },
+    { key: "usCPIAUCSL", name: "US CPI (CPIAUCSL)", color: "var(--series-1)" },
+    { key: "usCPIAUCNS", name: "US CPI, NSA (CPIAUCNS)", color: "var(--series-2)" },
+    { key: "usPCEPI", name: "US PCE Price Index (PCEPI)", color: "var(--series-4)" },
+    { key: "usPCEPILFE", name: "US Core PCE (PCEPILFE)", color: "var(--series-5)" },
+  ];
 
   function ymToIndex(ym) {
     const [y, m] = ym.split("-").map(Number);
@@ -433,12 +533,6 @@ const DASHBOARD_DATA = __DASHBOARD_DATA__;
   function indexToYear(idx) {
     return Math.floor(idx / 12);
   }
-  const allIndices = rows.map(r => ymToIndex(r.date));
-  const fullMinYear = indexToYear(allIndices[0]);
-  const fullMaxYear = indexToYear(allIndices[allIndices.length - 1]);
-
-  let fromYear = fullMinYear;
-  let toYear = fullMaxYear;
 
   // ---------- header / footer text ----------
   const MONTH_ABBR = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
@@ -463,39 +557,41 @@ const DASHBOARD_DATA = __DASHBOARD_DATA__;
   document.getElementById("formulaNote").textContent =
     "US CPI and US PCEPI are rebased so " + meta.baseYear + " = 100, matching Israel CPI's own base year.";
 
-  const sourcesFoot = document.getElementById("sourcesFoot");
-  const srcLines = [
+  function appendLines(el, lines) {
+    lines.forEach(line => {
+      const div = document.createElement("div");
+      div.textContent = line;
+      el.appendChild(div);
+    });
+  }
+
+  appendLines(document.getElementById("sourcesFoot"), [
     "Nominal USD/ILS: " + meta.sources.nominalExr,
     "US CPI: " + meta.sources.usCpi,
     "US PCEPI: " + meta.sources.usPcepi,
     "Israel CPI: " + meta.sources.israelCpi,
-  ];
-  srcLines.forEach(line => {
-    const div = document.createElement("div");
-    div.textContent = line;
-    sourcesFoot.appendChild(div);
-  });
+  ]);
 
-  // ---------- legend ----------
-  const legendEl = document.getElementById("legend");
-  SERIES.forEach(s => {
-    const btn = document.createElement("button");
-    btn.className = "legend-item";
-    btn.type = "button";
-    btn.setAttribute("aria-pressed", "true");
-    const sw = document.createElement("span");
-    sw.className = "legend-swatch";
-    sw.style.background = s.color;
-    const label = document.createElement("span");
-    label.textContent = s.name;
-    btn.appendChild(sw);
-    btn.appendChild(label);
+  document.getElementById("formulaNotePrices").textContent =
+    "All five indices are rebased so " + meta.baseYear + " = 100. Annual inflation is each index's year-over-year % change.";
+
+  appendLines(document.getElementById("sourcesFootPrices"), [
+    "Israel CPI: " + meta.sources.israelCpi,
+    "US CPI: " + meta.sources.usCpi,
+    "US CPI (not seasonally adjusted): " + meta.sources.usCpiNs,
+    "US PCE Price Index: " + meta.sources.usPcepi,
+    "US Core PCE Price Index: " + meta.sources.usPcepiLfe,
+  ]);
+
+  // ---------- tabs ----------
+  const pageTitle = document.getElementById("pageTitle");
+  document.querySelectorAll(".tab-btn").forEach(btn => {
     btn.addEventListener("click", () => {
-      visible[s.key] = !visible[s.key];
-      btn.setAttribute("aria-pressed", String(visible[s.key]));
-      draw();
+      document.querySelectorAll(".tab-btn").forEach(b => b.setAttribute("aria-pressed", String(b === btn)));
+      document.getElementById("page-exr").hidden = btn.dataset.tab !== "exr";
+      document.getElementById("page-prices").hidden = btn.dataset.tab !== "prices";
+      pageTitle.textContent = btn.dataset.title;
     });
-    legendEl.appendChild(btn);
   });
 
   // ---------- data table ----------
@@ -520,52 +616,53 @@ const DASHBOARD_DATA = __DASHBOARD_DATA__;
     return v === null || v === undefined ? null : Math.round(v * 1000) / 1000;
   }
 
-  // ---------- slider ----------
-  const thumbFrom = document.getElementById("thumbFrom");
-  const thumbTo = document.getElementById("thumbTo");
-  const sliderFill = document.getElementById("sliderFill");
-  const rangeYears = document.getElementById("rangeYears");
+  // ---------- reusable year-range slider ----------
+  function createSlider({ thumbFromId, thumbToId, sliderFillId, rangeYearsId, resetId, fullMinYear, fullMaxYear }) {
+    const state = { fromYear: fullMinYear, toYear: fullMaxYear };
+    const listeners = [];
+    const thumbFrom = document.getElementById(thumbFromId);
+    const thumbTo = document.getElementById(thumbToId);
+    const sliderFill = document.getElementById(sliderFillId);
+    const rangeYears = document.getElementById(rangeYearsId);
 
-  thumbFrom.min = fullMinYear; thumbFrom.max = fullMaxYear; thumbFrom.value = fullMinYear;
-  thumbTo.min = fullMinYear; thumbTo.max = fullMaxYear; thumbTo.value = fullMaxYear;
+    thumbFrom.min = fullMinYear; thumbFrom.max = fullMaxYear; thumbFrom.value = fullMinYear;
+    thumbTo.min = fullMinYear; thumbTo.max = fullMaxYear; thumbTo.value = fullMaxYear;
 
-  function updateSliderVisual() {
-    const span = fullMaxYear - fullMinYear || 1;
-    const pctFrom = ((fromYear - fullMinYear) / span) * 100;
-    const pctTo = ((toYear - fullMinYear) / span) * 100;
-    sliderFill.style.left = pctFrom + "%";
-    sliderFill.style.width = (pctTo - pctFrom) + "%";
-    rangeYears.textContent = fromYear + " – " + toYear;
+    function updateVisual() {
+      const span = fullMaxYear - fullMinYear || 1;
+      const pctFrom = ((state.fromYear - fullMinYear) / span) * 100;
+      const pctTo = ((state.toYear - fullMinYear) / span) * 100;
+      sliderFill.style.left = pctFrom + "%";
+      sliderFill.style.width = (pctTo - pctFrom) + "%";
+      rangeYears.textContent = state.fromYear + " – " + state.toYear;
+    }
+
+    function notify() {
+      updateVisual();
+      listeners.forEach(fn => fn());
+    }
+
+    thumbFrom.addEventListener("input", () => {
+      state.fromYear = Math.min(Number(thumbFrom.value), state.toYear);
+      thumbFrom.value = state.fromYear;
+      notify();
+    });
+    thumbTo.addEventListener("input", () => {
+      state.toYear = Math.max(Number(thumbTo.value), state.fromYear);
+      thumbTo.value = state.toYear;
+      notify();
+    });
+    document.getElementById(resetId).addEventListener("click", () => {
+      state.fromYear = fullMinYear; state.toYear = fullMaxYear;
+      thumbFrom.value = state.fromYear; thumbTo.value = state.toYear;
+      notify();
+    });
+
+    updateVisual();
+    return { state, onChange(fn) { listeners.push(fn); } };
   }
 
-  thumbFrom.addEventListener("input", () => {
-    fromYear = Math.min(Number(thumbFrom.value), toYear);
-    thumbFrom.value = fromYear;
-    updateSliderVisual();
-    draw();
-  });
-  thumbTo.addEventListener("input", () => {
-    toYear = Math.max(Number(thumbTo.value), fromYear);
-    thumbTo.value = toYear;
-    updateSliderVisual();
-    draw();
-  });
-  document.getElementById("resetRange").addEventListener("click", () => {
-    fromYear = fullMinYear; toYear = fullMaxYear;
-    thumbFrom.value = fromYear; thumbTo.value = toYear;
-    updateSliderVisual();
-    draw();
-  });
-
-  // ---------- chart ----------
-  const svg = document.getElementById("chart");
-  const tooltip = document.getElementById("tooltip");
-  const chartArea = document.querySelector(".chart-area");
-  const VB_W = 900, VB_H = 420;
-  const MARGIN = { top: 16, right: 16, bottom: 28, left: 44 };
-  const plotW = VB_W - MARGIN.left - MARGIN.right;
-  const plotH = VB_H - MARGIN.top - MARGIN.bottom;
-
+  // ---------- reusable chart (legend + SVG line chart + hover tooltip) ----------
   function niceStep(range) {
     const steps = [0.02, 0.05, 0.1, 0.2, 0.25, 0.5, 1, 2, 5, 10];
     const target = range / 5;
@@ -578,181 +675,256 @@ const DASHBOARD_DATA = __DASHBOARD_DATA__;
     return best;
   }
 
-  function draw() {
-    while (svg.firstChild) svg.removeChild(svg.firstChild);
-    svg.setAttribute("viewBox", "0 0 " + VB_W + " " + VB_H);
+  function createChart({ rows, series, svgId, tooltipId, legendId, chartAreaId, getRange, unit }) {
+    const visible = {};
+    series.forEach(s => { visible[s.key] = true; });
 
-    const filtered = rows.filter(r => {
-      const y = indexToYear(ymToIndex(r.date));
-      return y >= fromYear && y <= toYear;
+    function fmtVal(v) {
+      const n = Math.round(v * 1000) / 1000;
+      return unit ? n + unit : String(n);
+    }
+
+    // legend
+    const legendEl = document.getElementById(legendId);
+    series.forEach(s => {
+      const btn = document.createElement("button");
+      btn.className = "legend-item";
+      btn.type = "button";
+      btn.setAttribute("aria-pressed", "true");
+      const sw = document.createElement("span");
+      sw.className = "legend-swatch";
+      sw.style.background = s.color;
+      const label = document.createElement("span");
+      label.textContent = s.name;
+      btn.appendChild(sw);
+      btn.appendChild(label);
+      btn.addEventListener("click", () => {
+        visible[s.key] = !visible[s.key];
+        btn.setAttribute("aria-pressed", String(visible[s.key]));
+        draw();
+      });
+      legendEl.appendChild(btn);
     });
-    if (filtered.length === 0) return;
 
-    const idxs = filtered.map(r => ymToIndex(r.date));
-    const xMin = idxs[0], xMax = idxs[idxs.length - 1];
+    const svg = document.getElementById(svgId);
+    const tooltip = document.getElementById(tooltipId);
+    const chartArea = document.getElementById(chartAreaId);
+    const VB_W = 900, VB_H = 420;
+    const MARGIN = { top: 16, right: 16, bottom: 28, left: 44 };
+    const plotW = VB_W - MARGIN.left - MARGIN.right;
+    const plotH = VB_H - MARGIN.top - MARGIN.bottom;
 
-    // Single shared axis across all series, computed from every series'
-    // values regardless of legend toggle state, so hiding a series never
-    // rescales the axis for the ones still shown.
-    function axisRange() {
-      let yMin = Infinity, yMax = -Infinity;
-      filtered.forEach(r => {
-        SERIES.forEach(s => {
-          const v = r[s.key];
-          if (v !== null && v !== undefined) {
-            if (v < yMin) yMin = v;
-            if (v > yMax) yMax = v;
-          }
+    function draw() {
+      const { fromYear, toYear } = getRange();
+      while (svg.firstChild) svg.removeChild(svg.firstChild);
+      svg.setAttribute("viewBox", "0 0 " + VB_W + " " + VB_H);
+
+      const filtered = rows.filter(r => {
+        const y = indexToYear(ymToIndex(r.date));
+        return y >= fromYear && y <= toYear;
+      });
+      if (filtered.length === 0) return;
+
+      const idxs = filtered.map(r => ymToIndex(r.date));
+      const xMin = idxs[0], xMax = idxs[idxs.length - 1];
+
+      // Single shared axis across all series, computed from every series'
+      // values regardless of legend toggle state, so hiding a series never
+      // rescales the axis for the ones still shown.
+      function axisRange() {
+        let yMin = Infinity, yMax = -Infinity;
+        filtered.forEach(r => {
+          series.forEach(s => {
+            const v = r[s.key];
+            if (v !== null && v !== undefined) {
+              if (v < yMin) yMin = v;
+              if (v > yMax) yMax = v;
+            }
+          });
         });
-      });
-      if (!isFinite(yMin) || !isFinite(yMax)) { yMin = 0; yMax = 1; }
-      const pad = (yMax - yMin) * 0.12 || 0.5;
-      yMin -= pad; yMax += pad;
-      const step = niceStep(yMax - yMin);
-      yMin = Math.floor(yMin / step) * step;
-      yMax = Math.ceil(yMax / step) * step;
-      return { yMin, yMax, step };
-    }
-    const { yMin, yMax, step } = axisRange();
+        if (!isFinite(yMin) || !isFinite(yMax)) { yMin = 0; yMax = 1; }
+        const pad = (yMax - yMin) * 0.12 || 0.5;
+        yMin -= pad; yMax += pad;
+        const step = niceStep(yMax - yMin);
+        yMin = Math.floor(yMin / step) * step;
+        yMax = Math.ceil(yMax / step) * step;
+        return { yMin, yMax, step };
+      }
+      const { yMin, yMax, step } = axisRange();
 
-    function xScale(idx) {
-      if (xMax === xMin) return MARGIN.left + plotW / 2;
-      return MARGIN.left + ((idx - xMin) / (xMax - xMin)) * plotW;
-    }
-    function yScale(v) {
-      return MARGIN.top + plotH - ((v - yMin) / (yMax - yMin)) * plotH;
-    }
+      function xScale(idx) {
+        if (xMax === xMin) return MARGIN.left + plotW / 2;
+        return MARGIN.left + ((idx - xMin) / (xMax - xMin)) * plotW;
+      }
+      function yScale(v) {
+        return MARGIN.top + plotH - ((v - yMin) / (yMax - yMin)) * plotH;
+      }
 
-    const ns = "http://www.w3.org/2000/svg";
-    function el(tag, attrs) {
-      const e = document.createElementNS(ns, tag);
-      for (const k in attrs) e.setAttribute(k, attrs[k]);
-      return e;
-    }
+      const ns = "http://www.w3.org/2000/svg";
+      function el(tag, attrs) {
+        const e = document.createElementNS(ns, tag);
+        for (const k in attrs) e.setAttribute(k, attrs[k]);
+        return e;
+      }
 
-    // gridlines + y labels
-    for (let v = yMin; v <= yMax + 1e-9; v += step) {
-      const y = yScale(v);
-      svg.appendChild(el("line", { x1: MARGIN.left, x2: VB_W - MARGIN.right, y1: y, y2: y, class: "gridline" }));
-      const label = el("text", { x: MARGIN.left - 8, y: y + 3, class: "axis-label", "text-anchor": "end" });
-      label.textContent = (Math.round(v * 1000) / 1000).toString();
-      svg.appendChild(label);
-    }
-    svg.appendChild(el("line", { x1: MARGIN.left, x2: MARGIN.left, y1: MARGIN.top, y2: MARGIN.top + plotH, class: "baseline" }));
-
-    // x-axis year ticks — always one label per year
-    const tickStep = 1;
-    for (let y = Math.ceil(fromYear / tickStep) * tickStep; y <= toYear; y += tickStep) {
-      const idx = y * 12;
-      if (idx < xMin || idx > xMax) continue;
-      const x = xScale(idx);
-      const label = el("text", { x: x, y: VB_H - MARGIN.bottom + 18, class: "axis-label", "text-anchor": "middle" });
-      label.textContent = String(y);
-      svg.appendChild(label);
-    }
-    svg.appendChild(el("line", { x1: MARGIN.left, x2: VB_W - MARGIN.right, y1: MARGIN.top + plotH, y2: MARGIN.top + plotH, class: "baseline" }));
-
-    // series lines
-    const seriesPaths = {};
-    SERIES.forEach(s => {
-      if (!visible[s.key]) return;
-      let d = "";
-      let open = false;
-      filtered.forEach((r, i) => {
-        const v = r[s.key];
-        const x = xScale(idxs[i]);
-        if (v === null || v === undefined) { open = false; return; }
+      // gridlines + y labels
+      for (let v = yMin; v <= yMax + 1e-9; v += step) {
         const y = yScale(v);
-        d += (open ? " L " : " M ") + x.toFixed(2) + " " + y.toFixed(2);
-        open = true;
+        svg.appendChild(el("line", { x1: MARGIN.left, x2: VB_W - MARGIN.right, y1: y, y2: y, class: "gridline" }));
+        const label = el("text", { x: MARGIN.left - 8, y: y + 3, class: "axis-label", "text-anchor": "end" });
+        label.textContent = fmtVal(v);
+        svg.appendChild(label);
+      }
+      svg.appendChild(el("line", { x1: MARGIN.left, x2: MARGIN.left, y1: MARGIN.top, y2: MARGIN.top + plotH, class: "baseline" }));
+
+      // x-axis year ticks — always one label per year
+      const tickStep = 1;
+      for (let y = Math.ceil(fromYear / tickStep) * tickStep; y <= toYear; y += tickStep) {
+        const idx = y * 12;
+        if (idx < xMin || idx > xMax) continue;
+        const x = xScale(idx);
+        const label = el("text", { x: x, y: VB_H - MARGIN.bottom + 18, class: "axis-label", "text-anchor": "middle" });
+        label.textContent = String(y);
+        svg.appendChild(label);
+      }
+      svg.appendChild(el("line", { x1: MARGIN.left, x2: VB_W - MARGIN.right, y1: MARGIN.top + plotH, y2: MARGIN.top + plotH, class: "baseline" }));
+
+      // series lines
+      series.forEach(s => {
+        if (!visible[s.key]) return;
+        let d = "";
+        let open = false;
+        filtered.forEach((r, i) => {
+          const v = r[s.key];
+          const x = xScale(idxs[i]);
+          if (v === null || v === undefined) { open = false; return; }
+          const y = yScale(v);
+          d += (open ? " L " : " M ") + x.toFixed(2) + " " + y.toFixed(2);
+          open = true;
+        });
+        svg.appendChild(el("path", { d: d, class: "series-line", stroke: s.color }));
       });
-      seriesPaths[s.key] = d;
-      svg.appendChild(el("path", { d: d, class: "series-line", stroke: s.color }));
-    });
 
-    // hover layer
-    const crosshair = el("line", { class: "crosshair", y1: MARGIN.top, y2: MARGIN.top + plotH, x1: -100, x2: -100 });
-    svg.appendChild(crosshair);
-    const dots = {};
-    SERIES.forEach(s => {
-      const c = el("circle", { r: 4, fill: s.color, stroke: "var(--surface-1)", "stroke-width": 2, class: "hover-dot", cx: -100, cy: -100 });
-      svg.appendChild(c);
-      dots[s.key] = c;
-    });
-
-    const hit = el("rect", { x: MARGIN.left, y: MARGIN.top, width: plotW, height: plotH, class: "hit-layer" });
-    svg.appendChild(hit);
-
-    function nearestRow(mouseX) {
-      const targetIdx = xMin + ((mouseX - MARGIN.left) / plotW) * (xMax - xMin);
-      let best = filtered[0], bestDiff = Infinity;
-      filtered.forEach((r, i) => {
-        const diff = Math.abs(idxs[i] - targetIdx);
-        if (diff < bestDiff) { bestDiff = diff; best = r; }
+      // hover layer
+      const crosshair = el("line", { class: "crosshair", y1: MARGIN.top, y2: MARGIN.top + plotH, x1: -100, x2: -100 });
+      svg.appendChild(crosshair);
+      const dots = {};
+      series.forEach(s => {
+        const c = el("circle", { r: 4, fill: s.color, stroke: "var(--surface-1)", "stroke-width": 2, class: "hover-dot", cx: -100, cy: -100 });
+        svg.appendChild(c);
+        dots[s.key] = c;
       });
-      return best;
+
+      const hit = el("rect", { x: MARGIN.left, y: MARGIN.top, width: plotW, height: plotH, class: "hit-layer" });
+      svg.appendChild(hit);
+
+      function nearestRow(mouseX) {
+        const targetIdx = xMin + ((mouseX - MARGIN.left) / plotW) * (xMax - xMin);
+        let best = filtered[0], bestDiff = Infinity;
+        filtered.forEach((r, i) => {
+          const diff = Math.abs(idxs[i] - targetIdx);
+          if (diff < bestDiff) { bestDiff = diff; best = r; }
+        });
+        return best;
+      }
+
+      function onMove(evt) {
+        const rect = svg.getBoundingClientRect();
+        const scaleX = VB_W / rect.width;
+        const mouseX = (evt.clientX - rect.left) * scaleX;
+        const row = nearestRow(mouseX);
+        const idx = ymToIndex(row.date);
+        const x = xScale(idx);
+        crosshair.setAttribute("x1", x); crosshair.setAttribute("x2", x);
+
+        let html_rows = [];
+        series.forEach(s => {
+          if (!visible[s.key]) { dots[s.key].setAttribute("cx", -100); return; }
+          const v = row[s.key];
+          if (v === null || v === undefined) { dots[s.key].setAttribute("cx", -100); return; }
+          const y = yScale(v);
+          dots[s.key].setAttribute("cx", x); dots[s.key].setAttribute("cy", y);
+          html_rows.push({ name: s.name, color: s.color, val: v });
+        });
+
+        tooltip.innerHTML = "";
+        const dateEl = document.createElement("div");
+        dateEl.className = "t-date";
+        dateEl.textContent = row.date;
+        tooltip.appendChild(dateEl);
+        html_rows.forEach(r => {
+          const rowEl = document.createElement("div");
+          rowEl.className = "t-row";
+          const key = document.createElement("span");
+          key.className = "t-key";
+          key.style.background = r.color;
+          const name = document.createElement("span");
+          name.className = "t-name";
+          name.textContent = r.name;
+          const val = document.createElement("span");
+          val.className = "t-val";
+          val.textContent = fmtVal(r.val);
+          rowEl.appendChild(key); rowEl.appendChild(name); rowEl.appendChild(val);
+          tooltip.appendChild(rowEl);
+        });
+
+        const areaRect = chartArea.getBoundingClientRect();
+        const px = (x / VB_W) * areaRect.width;
+        let left = px + 14;
+        if (left + 170 > areaRect.width) left = px - 170 - 14;
+        tooltip.style.left = left + "px";
+        tooltip.style.top = "8px";
+        tooltip.classList.add("visible");
+      }
+      function onLeave() {
+        tooltip.classList.remove("visible");
+        crosshair.setAttribute("x1", -100); crosshair.setAttribute("x2", -100);
+        series.forEach(s => dots[s.key].setAttribute("cx", -100));
+      }
+      hit.addEventListener("pointermove", onMove);
+      hit.addEventListener("pointerleave", onLeave);
     }
 
-    function onMove(evt) {
-      const rect = svg.getBoundingClientRect();
-      const scaleX = VB_W / rect.width;
-      const mouseX = (evt.clientX - rect.left) * scaleX;
-      const row = nearestRow(mouseX);
-      const idx = ymToIndex(row.date);
-      const x = xScale(idx);
-      crosshair.setAttribute("x1", x); crosshair.setAttribute("x2", x);
-
-      let html_rows = [];
-      SERIES.forEach(s => {
-        if (!visible[s.key]) { dots[s.key].setAttribute("cx", -100); return; }
-        const v = row[s.key];
-        if (v === null || v === undefined) { dots[s.key].setAttribute("cx", -100); return; }
-        const y = yScale(v);
-        dots[s.key].setAttribute("cx", x); dots[s.key].setAttribute("cy", y);
-        html_rows.push({ name: s.name, color: s.color, val: v });
-      });
-
-      tooltip.innerHTML = "";
-      const dateEl = document.createElement("div");
-      dateEl.className = "t-date";
-      dateEl.textContent = row.date;
-      tooltip.appendChild(dateEl);
-      html_rows.forEach(r => {
-        const rowEl = document.createElement("div");
-        rowEl.className = "t-row";
-        const key = document.createElement("span");
-        key.className = "t-key";
-        key.style.background = r.color;
-        const name = document.createElement("span");
-        name.className = "t-name";
-        name.textContent = r.name;
-        const val = document.createElement("span");
-        val.className = "t-val";
-        val.textContent = (Math.round(r.val * 1000) / 1000).toString();
-        rowEl.appendChild(key); rowEl.appendChild(name); rowEl.appendChild(val);
-        tooltip.appendChild(rowEl);
-      });
-
-      const areaRect = chartArea.getBoundingClientRect();
-      const px = (x / VB_W) * areaRect.width;
-      let left = px + 14;
-      if (left + 170 > areaRect.width) left = px - 170 - 14;
-      tooltip.style.left = left + "px";
-      tooltip.style.top = "8px";
-      tooltip.classList.add("visible");
-    }
-    function onLeave() {
-      tooltip.classList.remove("visible");
-      crosshair.setAttribute("x1", -100); crosshair.setAttribute("x2", -100);
-      SERIES.forEach(s => dots[s.key].setAttribute("cx", -100));
-    }
-    hit.addEventListener("pointermove", onMove);
-    hit.addEventListener("pointerleave", onLeave);
+    return { draw };
   }
 
-  updateSliderVisual();
-  draw();
-  window.addEventListener("resize", draw);
+  function yearRangeOf(dataRows) {
+    const idxs = dataRows.map(r => ymToIndex(r.date));
+    return { fullMinYear: indexToYear(idxs[0]), fullMaxYear: indexToYear(idxs[idxs.length - 1]) };
+  }
+
+  // ---------- Sheet 1: Real EXR ----------
+  const exrRange = yearRangeOf(rows);
+  const sliderExr = createSlider({
+    thumbFromId: "thumbFrom", thumbToId: "thumbTo", sliderFillId: "sliderFill",
+    rangeYearsId: "rangeYears", resetId: "resetRange", ...exrRange,
+  });
+  const chartExr = createChart({
+    rows, series: SERIES, svgId: "chart", tooltipId: "tooltip", legendId: "legend",
+    chartAreaId: "chartAreaExr", getRange: () => sliderExr.state,
+  });
+  sliderExr.onChange(chartExr.draw);
+  chartExr.draw();
+
+  // ---------- Sheet 2: Price Indices (two charts, one shared slider) ----------
+  const pricesRange = yearRangeOf(priceRows);
+  const sliderPrices = createSlider({
+    thumbFromId: "thumbFromPrices", thumbToId: "thumbToPrices", sliderFillId: "sliderFillPrices",
+    rangeYearsId: "rangeYearsPrices", resetId: "resetRangePrices", ...pricesRange,
+  });
+  const chartInflation = createChart({
+    rows: priceRows, series: INFLATION_SERIES, svgId: "chartInflation", tooltipId: "tooltipInflation",
+    legendId: "legendInflation", chartAreaId: "chartAreaInflation", getRange: () => sliderPrices.state, unit: "%",
+  });
+  const chartPrices = createChart({
+    rows: priceRows, series: PRICE_SERIES, svgId: "chartPrices", tooltipId: "tooltipPrices",
+    legendId: "legendPrices", chartAreaId: "chartAreaPrices", getRange: () => sliderPrices.state,
+  });
+  sliderPrices.onChange(() => { chartInflation.draw(); chartPrices.draw(); });
+  chartInflation.draw();
+  chartPrices.draw();
+
+  window.addEventListener("resize", () => { chartExr.draw(); chartInflation.draw(); chartPrices.draw(); });
 })();
 </script>
 </body>

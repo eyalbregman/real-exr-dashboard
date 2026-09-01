@@ -17,9 +17,12 @@ Sources:
   - Bank of Israel Fusion Data Browser: representative USD/ILS exchange rate (public)
 
 Run manually with: FRED_API_KEY=xxxx python fetch_and_build.py
-Intended to also run unattended on a schedule (see README.txt), and via the
-GitHub Actions workflow in .github/workflows for the hosted GitHub Pages copy
-(where FRED_API_KEY comes from a repo secret).
+The GitHub Actions workflow (.github/workflows) runs this daily. There is no
+day-of-month scheduling rule: every run fetches fresh data, and the dashboard
+only actually updates when a new month has become available across *all* of
+the price indices -- see `latest_common_month()` and `main()` below. Pass
+--force to make it adopt whatever it just fetched regardless (e.g. to pick up
+a backward revision to an already-published month).
 """
 
 import csv
@@ -30,7 +33,7 @@ import re
 import sys
 import urllib.request
 import urllib.error
-from datetime import date, datetime, timedelta, timezone
+from datetime import date, datetime, timezone
 
 START_YEAR = 2000
 HEADERS = {"User-Agent": "Mozilla/5.0 (RealEXRDashboard/1.0)"}
@@ -49,41 +52,6 @@ HERE = __import__("pathlib").Path(__file__).resolve().parent
 HTML_OUT = HERE / "index.html"
 CACHE_OUT = HERE / "data_cache.json"
 TEMPLATE = HERE / "dashboard_template.html"
-
-
-def target_tuesday_for_month(year, month):
-    """Tuesday of the (Sunday-Saturday) week that contains the 1st of the given month."""
-    d1 = date(year, month, 1)
-    days_since_sunday = (d1.weekday() + 1) % 7  # Python: Monday=0 ... Sunday=6
-    sunday_of_week = d1 - timedelta(days=days_since_sunday)
-    return sunday_of_week + timedelta(days=2)
-
-
-def _month_offset(today, month_offset):
-    y, m = today.year, today.month + month_offset
-    while m < 1:
-        m += 12
-        y -= 1
-    while m > 12:
-        m -= 12
-        y += 1
-    return y, m
-
-
-def is_scheduled_run_day(today):
-    """True if `today` is the Tuesday of the week containing the 1st of this,
-    the previous, or the next month (covers the week straddling a month boundary)."""
-    for month_offset in (-1, 0, 1):
-        y, m = _month_offset(today, month_offset)
-        if target_tuesday_for_month(y, m) == today:
-            return True
-    return False
-
-
-def next_scheduled_update(today):
-    """The next upcoming target Tuesday strictly after `today`."""
-    candidates = [target_tuesday_for_month(*_month_offset(today, off)) for off in range(-1, 4)]
-    return min(d for d in candidates if d > today)
 
 
 def http_get(url, retries=3):
@@ -218,21 +186,26 @@ def build_dataset():
     cpi_us_ns = rebase_to_year(cpi_us_ns_raw, base_year)
     pcepilfe_us = rebase_to_year(pcepilfe_us_raw, base_year)
 
-    common_dates = sorted(set(nominal) & set(cpi_us) & set(cpi_isr))
+    common_dates = sorted(
+        set(nominal) & set(cpi_us) & set(cpi_us_ns) & set(pcepi_us) & set(pcepilfe_us) & set(cpi_isr)
+    )
     rows = []
     for ym in common_dates:
         n = nominal[ym]
-        c_us = cpi_us[ym]
         c_isr = cpi_isr[ym]
-        p_us = pcepi_us.get(ym)
-        real_cpi = (n * c_us / c_isr) if c_isr else None
-        real_pcepi = (n * p_us / c_isr) if (p_us and c_isr) else None
+
+        def real_exr(us_series):
+            v = us_series.get(ym)
+            return round(n * v / c_isr, 3) if (v is not None and c_isr) else None
+
         rows.append(
             {
                 "date": ym,
                 "nominal": round(n, 3),
-                "realCPI": round(real_cpi, 3) if real_cpi is not None else None,
-                "realPCEPI": round(real_pcepi, 3) if real_pcepi is not None else None,
+                "realCPI": real_exr(cpi_us),
+                "realPCEPI": real_exr(pcepi_us),
+                "realCPIAUCNS": real_exr(cpi_us_ns),
+                "realPCEPILFE": real_exr(pcepilfe_us),
             }
         )
 
@@ -263,7 +236,6 @@ def build_dataset():
     meta = {
         "baseYear": base_year,
         "generatedAt": datetime.now(timezone.utc).isoformat(timespec="seconds"),
-        "nextUpdate": next_scheduled_update(date.today()).isoformat(),
         "sources": {
             "usCpi": "FRED CPIAUCSL (Consumer Price Index for All Urban Consumers)",
             "usPcepi": "FRED PCEPI (Personal Consumption Expenditures Price Index)",
@@ -285,29 +257,48 @@ def render_html(rows, price_rows, meta):
     HTML_OUT.write_text(html, encoding="utf-8")
 
 
-def main():
-    if "--scheduled" in sys.argv[1:]:
-        today = date.today()
-        if not is_scheduled_run_day(today):
-            print(
-                f"{today.isoformat()} is not the scheduled Tuesday "
-                "(week containing the 1st of the month) -- skipping."
-            )
-            return
+def load_cache():
+    if not CACHE_OUT.exists():
+        return None
+    try:
+        return json.loads(CACHE_OUT.read_text(encoding="utf-8"))
+    except (json.JSONDecodeError, OSError):
+        return None
 
-    rows, price_rows, meta = build_dataset()
-    if not rows or not price_rows:
+
+def main():
+    force = "--force" in sys.argv[1:]
+
+    fetched_rows, fetched_price_rows, fetched_meta = build_dataset()
+    if not fetched_rows or not fetched_price_rows:
         print("No overlapping data across all sources — aborting.", file=sys.stderr)
         sys.exit(1)
+    fetched_latest = fetched_price_rows[-1]["date"]
 
-    CACHE_OUT.write_text(
-        json.dumps(
-            {"rows": rows, "priceRows": price_rows, "meta": meta},
-            indent=2,
-            ensure_ascii=False,
-        ),
-        encoding="utf-8",
-    )
+    cached = load_cache()
+    cached_latest = cached["priceRows"][-1]["date"] if cached and cached.get("priceRows") else None
+
+    if cached is not None and not force and cached_latest is not None and fetched_latest <= cached_latest:
+        print(
+            f"Latest month with all price indices available is still {cached_latest} "
+            f"(just-fetched data also tops out at {fetched_latest}) -- keeping existing data."
+        )
+        rows, price_rows, meta = cached["rows"], cached["priceRows"], cached["meta"]
+    else:
+        rows, price_rows, meta = fetched_rows, fetched_price_rows, fetched_meta
+        CACHE_OUT.write_text(
+            json.dumps(
+                {"rows": rows, "priceRows": price_rows, "meta": meta},
+                indent=2,
+                ensure_ascii=False,
+            ),
+            encoding="utf-8",
+        )
+        print(f"New data adopted: price indices now cover through {fetched_latest}.")
+
+    # Always regenerate index.html from the current template, even when the
+    # data itself didn't change -- so template/styling changes go out on the
+    # next run without waiting for new source data.
     render_html(rows, price_rows, meta)
     print(f"Wrote {len(rows)} months ({rows[0]['date']} to {rows[-1]['date']})")
     print(

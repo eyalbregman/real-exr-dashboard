@@ -2,11 +2,17 @@ name: Update Dashboard
 
 on:
   schedule:
-    # Every Tuesday at 06:00 UTC. fetch_and_build.py --scheduled decides
-    # internally whether this particular Tuesday is an actual update day
-    # (the Tuesday of the week containing the 1st of the month).
-    - cron: '0 6 * * 2'
-  workflow_dispatch: {}
+    # Every day at 06:00 UTC. fetch_and_build.py always fetches fresh data
+    # but only adopts it (and only then does this workflow commit/redeploy)
+    # once every price index has actually advanced to a new common month --
+    # there is no day-of-month rule to satisfy first.
+    - cron: '0 6 * * *'
+  workflow_dispatch:
+    inputs:
+      force:
+        description: 'Adopt freshly-fetched data even if no new common month is available (e.g. to pick up a revision)'
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -36,15 +42,13 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Run dashboard update
-        # Manual runs always regenerate; scheduled runs defer to the
-        # script's own Tuesday-of-the-month logic, which may skip.
         env:
           FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
         run: |
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-            python fetch_and_build.py
+          if [ "${{ inputs.force }}" = "true" ]; then
+            python fetch_and_build.py --force
           else
-            python fetch_and_build.py --scheduled
+            python fetch_and_build.py
           fi
 
       - name: Commit updated data if changed
@@ -55,9 +59,10 @@ jobs:
           git diff --cached --quiet || git commit -m "Auto-update dashboard data"
           git push
 
-      # index.html now reflects either today's fresh data, or (on a
-      # non-update day / fetch skip) whatever was last committed -- either
-      # way a valid file is always present here, so Pages never goes blank.
+      # index.html is always regenerated from the current template, using
+      # either freshly-adopted data or (when no new common month is
+      # available yet) the existing cached data -- either way a valid file
+      # is always present here, so Pages never goes blank.
       - name: Prepare Pages site
         run: |
           mkdir -p _site

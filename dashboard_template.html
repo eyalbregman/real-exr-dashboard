@@ -99,6 +99,7 @@
     display: flex;
     gap: 8px;
     margin-top: 18px;
+    flex-wrap: wrap;
   }
   .tab-btn {
     font-size: 13px;
@@ -118,6 +119,19 @@
   }
   .tab-page[hidden] {
     display: none;
+  }
+  .how-to-use {
+    margin: 14px 0 0;
+    padding: 10px 14px;
+    border-radius: 8px;
+    background: var(--surface-1);
+    border: 1px solid var(--border);
+    font-size: 12px;
+    line-height: 1.7;
+    color: var(--text-secondary);
+  }
+  .how-to-use b {
+    color: var(--text-primary);
   }
   .card {
     background: var(--surface-1);
@@ -180,6 +194,18 @@
     stroke-linejoin: round;
     stroke-linecap: round;
   }
+  .trend-line {
+    fill: none;
+    stroke-width: 2;
+    stroke-dasharray: 6 4;
+  }
+  .trend-point {
+    stroke: var(--surface-1);
+    stroke-width: 2;
+  }
+  .trend-point.pending {
+    stroke-dasharray: 2 2;
+  }
   .crosshair {
     stroke: var(--baseline);
     stroke-width: 1;
@@ -233,6 +259,36 @@
   }
   .tooltip .t-name {
     color: var(--text-secondary);
+  }
+
+  .trend-bar {
+    display: none;
+    align-items: center;
+    gap: 8px;
+    margin-top: 10px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    background: var(--page-plane);
+    border: 1px solid var(--border);
+    font-size: 12px;
+    color: var(--text-secondary);
+    flex-wrap: wrap;
+  }
+  .trend-bar.visible { display: flex; }
+  .trend-swatch {
+    width: 16px;
+    height: 3px;
+    border-radius: 2px;
+    flex: none;
+  }
+  .trend-clear {
+    margin-left: auto;
+    background: none;
+    border: none;
+    color: var(--series-1);
+    font-size: 12px;
+    cursor: pointer;
+    padding: 0;
   }
 
   .range-controls {
@@ -387,6 +443,17 @@
     color: var(--text-muted);
     font-weight: 500;
   }
+  .site-credit {
+    margin-top: 28px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+    font-size: 11.5px;
+    color: var(--text-muted);
+    text-align: center;
+  }
+  .site-credit a {
+    color: var(--text-muted);
+  }
 </style>
 </head>
 <body>
@@ -395,16 +462,21 @@
     <h1 id="pageTitle">Real Exchange Rate: ILS / USD</h1>
     <div class="head-meta">
       <span class="updated" id="updatedLabel"></span>
-      <span class="updated" id="nextUpdateLabel"></span>
+      <span class="updated" id="checkNote">Checked daily · updates once a new month is available across all price indices</span>
     </div>
   </header>
 
   <div class="tabs" id="tabs">
     <button class="tab-btn" type="button" data-tab="exr" data-title="Real Exchange Rate: ILS / USD" aria-pressed="true">Real EXR</button>
     <button class="tab-btn" type="button" data-tab="prices" data-title="Israel vs. US Price Indices" aria-pressed="false">Price Indices</button>
+    <button class="tab-btn" type="button" data-tab="inflation" data-title="Annual Inflation: Israel vs. US" aria-pressed="false">Annual Inflation</button>
   </div>
 
   <section class="tab-page" id="page-exr">
+    <div class="how-to-use">
+      <b>How to use this chart:</b> drag the year-range handles below to zoom into a period · click a name in the legend to show or hide that line · click two points on the same line to draw a trend line with its slope and average annual change · click "Show data table" below the chart to see the exact numbers.
+    </div>
+
     <div class="card">
       <div class="legend" id="legend"></div>
 
@@ -435,8 +507,10 @@
           <tr>
             <th>Month</th>
             <th>Nominal EXR</th>
-            <th>Real EXR (US CPI)</th>
-            <th>Real EXR (US PCEPI)</th>
+            <th>Real EXR (CPIAUCSL)</th>
+            <th>Real EXR (PCEPI)</th>
+            <th>Real EXR (CPIAUCNS)</th>
+            <th>Real EXR (PCEPILFE)</th>
           </tr>
         </thead>
         <tbody id="tableBody"></tbody>
@@ -445,8 +519,8 @@
 
     <div class="formulas" id="formulas">
       <div class="formulas-title">How Real EXR is calculated</div>
-      <div class="formula">Real EXR (US CPI) &nbsp;=&nbsp; Nominal EXR &times; (US CPI &divide; Israel CPI)</div>
-      <div class="formula">Real EXR (US PCEPI) =&nbsp; Nominal EXR &times; (US PCEPI &divide; Israel CPI)</div>
+      <div class="formula">Real EXR (X) &nbsp;=&nbsp; Nominal EXR &times; (US price index X &divide; Israel CPI)</div>
+      <div class="formula">...computed for X = CPIAUCSL, PCEPI, CPIAUCNS, and PCEPILFE</div>
       <div class="formula-note" id="formulaNote"></div>
     </div>
 
@@ -454,13 +528,8 @@
   </section>
 
   <section class="tab-page" id="page-prices" hidden>
-    <div class="card">
-      <div class="card-title">Annual Inflation: Israel vs. United States</div>
-      <div class="legend" id="legendInflation"></div>
-      <div class="chart-area" id="chartAreaInflation">
-        <svg id="chartInflation" class="chart-svg" viewBox="0 0 900 420" preserveAspectRatio="xMidYMid meet"></svg>
-        <div class="tooltip" id="tooltipInflation"></div>
-      </div>
+    <div class="how-to-use">
+      <b>How to use this chart:</b> drag the year-range handles below to zoom into a period · click a name in the legend to show or hide that line · click two points on the same line to draw a trend line with its slope and average annual change · click "Show data table" below the chart to see the exact numbers.
     </div>
 
     <div class="card">
@@ -470,19 +539,19 @@
         <svg id="chartPrices" class="chart-svg" viewBox="0 0 900 420" preserveAspectRatio="xMidYMid meet"></svg>
         <div class="tooltip" id="tooltipPrices"></div>
       </div>
-    </div>
 
-    <div class="range-controls">
-      <div class="range-header">
-        <span class="lbl">Year range (both charts)</span>
-        <span class="range-years" id="rangeYearsPrices"></span>
-        <button class="reset-link" id="resetRangePrices" type="button">Reset</button>
-      </div>
-      <div class="slider-track-wrap">
-        <div class="slider-track"></div>
-        <div class="slider-fill" id="sliderFillPrices"></div>
-        <input type="range" class="thumb" id="thumbFromPrices">
-        <input type="range" class="thumb" id="thumbToPrices">
+      <div class="range-controls">
+        <div class="range-header">
+          <span class="lbl">Year range</span>
+          <span class="range-years" id="rangeYearsPrices"></span>
+          <button class="reset-link" id="resetRangePrices" type="button">Reset</button>
+        </div>
+        <div class="slider-track-wrap">
+          <div class="slider-track"></div>
+          <div class="slider-fill" id="sliderFillPrices"></div>
+          <input type="range" class="thumb" id="thumbFromPrices">
+          <input type="range" class="thumb" id="thumbToPrices">
+        </div>
       </div>
     </div>
 
@@ -497,11 +566,6 @@
             <th>US CPI (NSA)</th>
             <th>US PCE</th>
             <th>US Core PCE</th>
-            <th>Israel Infl.</th>
-            <th>US CPI Infl.</th>
-            <th>US CPI (NSA) Infl.</th>
-            <th>US PCE Infl.</th>
-            <th>US Core PCE Infl.</th>
           </tr>
         </thead>
         <tbody id="tableBodyPrices"></tbody>
@@ -509,13 +573,69 @@
     </div>
 
     <div class="formulas" id="formulasPrices">
-      <div class="formulas-title">How these are calculated</div>
-      <div class="formula">Annual inflation &nbsp;=&nbsp; (Index this month &divide; Index 12 months earlier &minus; 1) &times; 100%</div>
+      <div class="formulas-title">How this is calculated</div>
+      <div class="formula">All five indices are rebased so the same base year = 100.</div>
       <div class="formula-note" id="formulaNotePrices"></div>
     </div>
 
     <footer class="foot" id="sourcesFootPrices"></footer>
   </section>
+
+  <section class="tab-page" id="page-inflation" hidden>
+    <div class="how-to-use">
+      <b>How to use this chart:</b> drag the year-range handles below to zoom into a period · click a name in the legend to show or hide that line · click two points on the same line to draw a trend line with its slope and average annual change · click "Show data table" below the chart to see the exact numbers.
+    </div>
+
+    <div class="card">
+      <div class="card-title">Annual Inflation: Israel vs. United States</div>
+      <div class="legend" id="legendInflation"></div>
+      <div class="chart-area" id="chartAreaInflation">
+        <svg id="chartInflation" class="chart-svg" viewBox="0 0 900 420" preserveAspectRatio="xMidYMid meet"></svg>
+        <div class="tooltip" id="tooltipInflation"></div>
+      </div>
+
+      <div class="range-controls">
+        <div class="range-header">
+          <span class="lbl">Year range</span>
+          <span class="range-years" id="rangeYearsInflation"></span>
+          <button class="reset-link" id="resetRangeInflation" type="button">Reset</button>
+        </div>
+        <div class="slider-track-wrap">
+          <div class="slider-track"></div>
+          <div class="slider-fill" id="sliderFillInflation"></div>
+          <input type="range" class="thumb" id="thumbFromInflation">
+          <input type="range" class="thumb" id="thumbToInflation">
+        </div>
+      </div>
+    </div>
+
+    <button class="table-toggle" id="tableToggleInflation" type="button">Show data table</button>
+    <div class="data-table-wrap" id="tableWrapInflation">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Month</th>
+            <th>Israel Infl.</th>
+            <th>US CPI Infl.</th>
+            <th>US CPI (NSA) Infl.</th>
+            <th>US PCE Infl.</th>
+            <th>US Core PCE Infl.</th>
+          </tr>
+        </thead>
+        <tbody id="tableBodyInflation"></tbody>
+      </table>
+    </div>
+
+    <div class="formulas" id="formulasInflation">
+      <div class="formulas-title">How annual inflation is calculated</div>
+      <div class="formula">Annual inflation &nbsp;=&nbsp; (Index this month &divide; Index 12 months earlier &minus; 1) &times; 100%</div>
+      <div class="formula-note" id="formulaNoteInflation"></div>
+    </div>
+
+    <footer class="foot" id="sourcesFootInflation"></footer>
+  </section>
+
+  <footer class="site-credit">Made by Eyal Bregman. Available at the following email address: <a href="mailto:Eyal.Bergman@boi.org.il">Eyal.Bergman@boi.org.il</a></footer>
 </div>
 
 <script>
@@ -527,9 +647,11 @@ const DASHBOARD_DATA = __DASHBOARD_DATA__;
   const meta = DASHBOARD_DATA.meta;
 
   const SERIES = [
-    { key: "realCPI", name: "Real EXR (vs US CPI)", color: "var(--series-1)", colorVarName: "--series-1" },
-    { key: "realPCEPI", name: "Real EXR (vs US PCEPI)", color: "var(--series-2)", colorVarName: "--series-2" },
-    { key: "nominal", name: "Nominal EXR (ILS/USD)", color: "var(--series-3)", colorVarName: "--series-3" },
+    { key: "realCPI", name: "Real EXR (vs US CPI)", color: "var(--series-1)" },
+    { key: "realPCEPI", name: "Real EXR (vs US PCEPI)", color: "var(--series-2)" },
+    { key: "nominal", name: "Nominal EXR (ILS/USD)", color: "var(--series-3)" },
+    { key: "realCPIAUCNS", name: "Real EXR (vs US CPIAUCNS)", color: "var(--series-4)" },
+    { key: "realPCEPILFE", name: "Real EXR (vs US PCEPILFE)", color: "var(--series-5)" },
   ];
 
   const INFLATION_SERIES = [
@@ -557,27 +679,13 @@ const DASHBOARD_DATA = __DASHBOARD_DATA__;
   }
 
   // ---------- header / footer text ----------
-  const MONTH_ABBR = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-  function formatYMD(ymd) {
-    // Formats a plain "YYYY-MM-DD" string without going through Date/timezone
-    // parsing, so the calendar date shown never shifts by a day for viewers
-    // west of UTC.
-    const [y, m, d] = ymd.split("-").map(Number);
-    return d + " " + MONTH_ABBR[m - 1] + " " + y;
-  }
-
   const updatedLabel = document.getElementById("updatedLabel");
   const genDate = new Date(meta.generatedAt);
   updatedLabel.textContent = "Updated " + genDate.toLocaleDateString("en-GB", { year: "numeric", month: "short", day: "numeric" }) +
     " · base year " + meta.baseYear + " = 100";
 
-  const nextUpdateLabel = document.getElementById("nextUpdateLabel");
-  if (meta.nextUpdate) {
-    nextUpdateLabel.textContent = "Next update: " + formatYMD(meta.nextUpdate);
-  }
-
   document.getElementById("formulaNote").textContent =
-    "US CPI and US PCEPI are rebased so " + meta.baseYear + " = 100, matching Israel CPI's own base year.";
+    "US CPI, PCEPI, CPIAUCNS and PCEPILFE are all rebased so " + meta.baseYear + " = 100, matching Israel CPI's own base year.";
 
   function appendLines(el, lines) {
     lines.forEach(line => {
@@ -591,11 +699,13 @@ const DASHBOARD_DATA = __DASHBOARD_DATA__;
     "Nominal USD/ILS: " + meta.sources.nominalExr,
     "US CPI: " + meta.sources.usCpi,
     "US PCEPI: " + meta.sources.usPcepi,
+    "US CPI (not seasonally adjusted): " + meta.sources.usCpiNs,
+    "US Core PCE Price Index: " + meta.sources.usPcepiLfe,
     "Israel CPI: " + meta.sources.israelCpi,
   ]);
 
   document.getElementById("formulaNotePrices").textContent =
-    "All five indices are rebased so " + meta.baseYear + " = 100. Annual inflation is each index's year-over-year % change.";
+    "Rebased so " + meta.baseYear + " = 100.";
 
   appendLines(document.getElementById("sourcesFootPrices"), [
     "Israel CPI: " + meta.sources.israelCpi,
@@ -605,13 +715,24 @@ const DASHBOARD_DATA = __DASHBOARD_DATA__;
     "US Core PCE Price Index: " + meta.sources.usPcepiLfe,
   ]);
 
+  document.getElementById("formulaNoteInflation").textContent =
+    "Computed from the same rebased indices shown on the Price Indices sheet.";
+
+  appendLines(document.getElementById("sourcesFootInflation"), [
+    "Israel CPI: " + meta.sources.israelCpi,
+    "US CPI: " + meta.sources.usCpi,
+    "US CPI (not seasonally adjusted): " + meta.sources.usCpiNs,
+    "US PCE Price Index: " + meta.sources.usPcepi,
+    "US Core PCE Price Index: " + meta.sources.usPcepiLfe,
+  ]);
+
   // ---------- tabs ----------
   const pageTitle = document.getElementById("pageTitle");
+  const TAB_IDS = ["exr", "prices", "inflation"];
   document.querySelectorAll(".tab-btn").forEach(btn => {
     btn.addEventListener("click", () => {
       document.querySelectorAll(".tab-btn").forEach(b => b.setAttribute("aria-pressed", String(b === btn)));
-      document.getElementById("page-exr").hidden = btn.dataset.tab !== "exr";
-      document.getElementById("page-prices").hidden = btn.dataset.tab !== "prices";
+      TAB_IDS.forEach(id => { document.getElementById("page-" + id).hidden = btn.dataset.tab !== id; });
       pageTitle.textContent = btn.dataset.title;
     });
   });
@@ -641,17 +762,19 @@ const DASHBOARD_DATA = __DASHBOARD_DATA__;
   }
 
   buildDataTable({
-    dataRows: rows, keys: ["nominal", "realCPI", "realPCEPI"],
+    dataRows: rows, keys: ["nominal", "realCPI", "realPCEPI", "realCPIAUCNS", "realPCEPILFE"],
     toggleId: "tableToggle", wrapId: "tableWrap", bodyId: "tableBody",
   });
 
   buildDataTable({
-    dataRows: priceRows,
-    keys: [
-      "israelCPI", "usCPIAUCSL", "usCPIAUCNS", "usPCEPI", "usPCEPILFE",
-      "israelInflation", "usCPIAUCSLInflation", "usCPIAUCNSInflation", "usPCEPIInflation", "usPCEPILFEInflation",
-    ],
+    dataRows: priceRows, keys: ["israelCPI", "usCPIAUCSL", "usCPIAUCNS", "usPCEPI", "usPCEPILFE"],
     toggleId: "tableTogglePrices", wrapId: "tableWrapPrices", bodyId: "tableBodyPrices",
+  });
+
+  buildDataTable({
+    dataRows: priceRows,
+    keys: ["israelInflation", "usCPIAUCSLInflation", "usCPIAUCNSInflation", "usPCEPIInflation", "usPCEPILFEInflation"],
+    toggleId: "tableToggleInflation", wrapId: "tableWrapInflation", bodyId: "tableBodyInflation",
   });
 
   // ---------- reusable year-range slider ----------
@@ -700,7 +823,7 @@ const DASHBOARD_DATA = __DASHBOARD_DATA__;
     return { state, onChange(fn) { listeners.push(fn); } };
   }
 
-  // ---------- reusable chart (legend + SVG line chart + hover tooltip) ----------
+  // ---------- reusable chart (legend + SVG line chart + hover tooltip + trend line) ----------
   function niceStep(range) {
     const steps = [0.02, 0.05, 0.1, 0.2, 0.25, 0.5, 1, 2, 5, 10];
     const target = range / 5;
@@ -717,9 +840,17 @@ const DASHBOARD_DATA = __DASHBOARD_DATA__;
     const visible = {};
     series.forEach(s => { visible[s.key] = true; });
 
+    // Trend-line selection state persists across redraws (slider changes,
+    // legend toggles, window resize) so the trend stays put until cleared.
+    let trend = null;        // { key, name, color, a:{date,idx,val}, b:{...}, slopePerYear, cagr }
+    let pendingPoint = null; // { key, name, color, date, idx, val }
+
     function fmtVal(v) {
       const n = Math.round(v * 1000) / 1000;
       return unit ? n + unit : String(n);
+    }
+    function fmtSigned(n, suffix) {
+      return (n >= 0 ? "+" : "") + n + suffix;
     }
 
     // legend
@@ -751,6 +882,37 @@ const DASHBOARD_DATA = __DASHBOARD_DATA__;
     const MARGIN = { top: 16, right: 16, bottom: 28, left: 44 };
     const plotW = VB_W - MARGIN.left - MARGIN.right;
     const plotH = VB_H - MARGIN.top - MARGIN.bottom;
+
+    const trendBar = document.createElement("div");
+    trendBar.className = "trend-bar";
+    chartArea.insertAdjacentElement("afterend", trendBar);
+
+    function updateTrendBar() {
+      trendBar.innerHTML = "";
+      if (trend) {
+        trendBar.classList.add("visible");
+        const sw = document.createElement("span");
+        sw.className = "trend-swatch";
+        sw.style.background = trend.color;
+        const text = document.createElement("span");
+        const slopeTxt = fmtSigned(Math.round(trend.slopePerYear * 1000) / 1000, (unit || "") + "/yr");
+        const cagrTxt = trend.cagr === null ? "n/a" : fmtSigned(Math.round(trend.cagr * 100) / 100, "%/yr");
+        text.textContent = trend.name + " trend, " + trend.a.date + " → " + trend.b.date +
+          "  ·  slope " + slopeTxt + "  ·  avg. annual change " + cagrTxt;
+        const clear = document.createElement("button");
+        clear.type = "button";
+        clear.className = "trend-clear";
+        clear.textContent = "Clear";
+        clear.addEventListener("click", () => { trend = null; pendingPoint = null; updateTrendBar(); draw(); });
+        trendBar.appendChild(sw); trendBar.appendChild(text); trendBar.appendChild(clear);
+      } else if (pendingPoint) {
+        trendBar.classList.add("visible");
+        trendBar.textContent = "Click a second point on “" + pendingPoint.name + "” to complete the trend line.";
+      } else {
+        trendBar.classList.remove("visible");
+      }
+    }
+    updateTrendBar();
 
     function draw() {
       const { fromYear, toYear } = getRange();
@@ -843,6 +1005,30 @@ const DASHBOARD_DATA = __DASHBOARD_DATA__;
         svg.appendChild(el("path", { d: d, class: "series-line", stroke: s.color }));
       });
 
+      // trend-line overlay (drawn after data lines, under the hover layer)
+      function drawTrendPoint(p, color, extraClass) {
+        if (p.idx < xMin || p.idx > xMax) return;
+        const x = xScale(p.idx), y = yScale(p.val);
+        svg.appendChild(el("circle", {
+          cx: x, cy: y, r: 5, fill: color, stroke: "var(--surface-1)", "stroke-width": 2,
+          class: "trend-point" + (extraClass || ""),
+        }));
+      }
+      if (trend && visible[trend.key]) {
+        if (trend.a.idx >= xMin && trend.b.idx <= xMax) {
+          svg.appendChild(el("line", {
+            x1: xScale(trend.a.idx), y1: yScale(trend.a.val),
+            x2: xScale(trend.b.idx), y2: yScale(trend.b.val),
+            class: "trend-line", stroke: trend.color,
+          }));
+        }
+        drawTrendPoint(trend.a, trend.color);
+        drawTrendPoint(trend.b, trend.color);
+      }
+      if (pendingPoint && visible[pendingPoint.key]) {
+        drawTrendPoint(pendingPoint, pendingPoint.color, " pending");
+      }
+
       // hover layer
       const crosshair = el("line", { class: "crosshair", y1: MARGIN.top, y2: MARGIN.top + plotH, x1: -100, x2: -100 });
       svg.appendChild(crosshair);
@@ -919,8 +1105,64 @@ const DASHBOARD_DATA = __DASHBOARD_DATA__;
         crosshair.setAttribute("x1", -100); crosshair.setAttribute("x2", -100);
         series.forEach(s => dots[s.key].setAttribute("cx", -100));
       }
+
+      function nearestSeriesAt(row, idx, mouseY) {
+        let best = null, bestDist = Infinity;
+        series.forEach(s => {
+          if (!visible[s.key]) return;
+          const v = row[s.key];
+          if (v === null || v === undefined) return;
+          const dist = Math.abs(yScale(v) - mouseY);
+          if (dist < bestDist) {
+            bestDist = dist;
+            best = { key: s.key, name: s.name, color: s.color, date: row.date, idx, val: v };
+          }
+        });
+        return best;
+      }
+
+      function onClick(evt) {
+        const rect = svg.getBoundingClientRect();
+        const scaleX = VB_W / rect.width;
+        const scaleY = VB_H / rect.height;
+        const mouseX = (evt.clientX - rect.left) * scaleX;
+        const mouseY = (evt.clientY - rect.top) * scaleY;
+        const row = nearestRow(mouseX);
+        const idx = ymToIndex(row.date);
+
+        if (!pendingPoint) {
+          const picked = nearestSeriesAt(row, idx, mouseY);
+          if (picked) { pendingPoint = picked; trend = null; updateTrendBar(); draw(); }
+          return;
+        }
+
+        const v2 = row[pendingPoint.key];
+        if (v2 === null || v2 === undefined || idx === pendingPoint.idx) {
+          // No data on that date for the pending series, or same point
+          // clicked again -- start a fresh selection at this click instead.
+          const picked = nearestSeriesAt(row, idx, mouseY);
+          pendingPoint = picked;
+          trend = null;
+          updateTrendBar();
+          draw();
+          return;
+        }
+
+        const p1 = pendingPoint;
+        const p2 = { date: row.date, idx, val: v2 };
+        const [a, b] = p1.idx <= p2.idx ? [p1, p2] : [p2, p1];
+        const years = (b.idx - a.idx) / 12;
+        const slopePerYear = (b.val - a.val) / years;
+        const cagr = (a.val > 0 && b.val > 0) ? (Math.pow(b.val / a.val, 1 / years) - 1) * 100 : null;
+        trend = { key: p1.key, name: p1.name, color: p1.color, a, b, slopePerYear, cagr };
+        pendingPoint = null;
+        updateTrendBar();
+        draw();
+      }
+
       hit.addEventListener("pointermove", onMove);
       hit.addEventListener("pointerleave", onLeave);
+      hit.addEventListener("click", onClick);
     }
 
     return { draw };
@@ -944,25 +1186,32 @@ const DASHBOARD_DATA = __DASHBOARD_DATA__;
   sliderExr.onChange(chartExr.draw);
   chartExr.draw();
 
-  // ---------- Sheet 2: Price Indices (two charts, one shared slider) ----------
+  // ---------- Sheet 2: Price Indices ----------
   const pricesRange = yearRangeOf(priceRows);
   const sliderPrices = createSlider({
     thumbFromId: "thumbFromPrices", thumbToId: "thumbToPrices", sliderFillId: "sliderFillPrices",
     rangeYearsId: "rangeYearsPrices", resetId: "resetRangePrices", ...pricesRange,
   });
-  const chartInflation = createChart({
-    rows: priceRows, series: INFLATION_SERIES, svgId: "chartInflation", tooltipId: "tooltipInflation",
-    legendId: "legendInflation", chartAreaId: "chartAreaInflation", getRange: () => sliderPrices.state, unit: "%",
-  });
   const chartPrices = createChart({
     rows: priceRows, series: PRICE_SERIES, svgId: "chartPrices", tooltipId: "tooltipPrices",
     legendId: "legendPrices", chartAreaId: "chartAreaPrices", getRange: () => sliderPrices.state,
   });
-  sliderPrices.onChange(() => { chartInflation.draw(); chartPrices.draw(); });
-  chartInflation.draw();
+  sliderPrices.onChange(chartPrices.draw);
   chartPrices.draw();
 
-  window.addEventListener("resize", () => { chartExr.draw(); chartInflation.draw(); chartPrices.draw(); });
+  // ---------- Sheet 3: Annual Inflation ----------
+  const sliderInflation = createSlider({
+    thumbFromId: "thumbFromInflation", thumbToId: "thumbToInflation", sliderFillId: "sliderFillInflation",
+    rangeYearsId: "rangeYearsInflation", resetId: "resetRangeInflation", ...pricesRange,
+  });
+  const chartInflation = createChart({
+    rows: priceRows, series: INFLATION_SERIES, svgId: "chartInflation", tooltipId: "tooltipInflation",
+    legendId: "legendInflation", chartAreaId: "chartAreaInflation", getRange: () => sliderInflation.state, unit: "%",
+  });
+  sliderInflation.onChange(chartInflation.draw);
+  chartInflation.draw();
+
+  window.addEventListener("resize", () => { chartExr.draw(); chartPrices.draw(); chartInflation.draw(); });
 })();
 </script>
 </body>

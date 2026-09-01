@@ -6683,14 +6683,14 @@
   ],
   "meta": {
     "baseYear": 2024,
-    "generatedAt": "2026-09-01T10:29:47+00:00",
+    "generatedAt": "2026-09-01T10:38:00+00:00",
     "sources": {
-      "usCpi": "FRED CPIAUCSL (Consumer Price Index for All Urban Consumers)",
-      "usPcepi": "FRED PCEPI (Personal Consumption Expenditures, Chain-Type Price Index)",
-      "usCpiNs": "FRED CPIAUCNS (Consumer Price Index for All Urban Consumers)",
-      "usPcepiLfe": "FRED PCEPILFE (Personal Consumption Expenditures Excluding Food and Energy, Chain-Type Price Index)",
-      "israelCpi": "CBS (Israel Central Bureau of Statistics) index 120010, \"Consumer Price Index - General\"",
-      "nominalExr": "Bank of Israel Fusion Data Browser, representative USD/ILS rate"
+      "usCpi": "FRED CPIAUCSL (Consumer Price Index for All Urban Consumers, monthly)",
+      "usPcepi": "FRED PCEPI (Personal Consumption Expenditures, Chain-Type Price Index, monthly)",
+      "usCpiNs": "FRED CPIAUCNS (Consumer Price Index for All Urban Consumers, monthly)",
+      "usPcepiLfe": "FRED PCEPILFE (Personal Consumption Expenditures Excluding Food and Energy, Chain-Type Price Index, monthly)",
+      "israelCpi": "CBS index 120010 (Consumer Price Index - General)",
+      "nominalExr": "Bank of Israel Fusion Data Browser, representative USD/ILS rate (published daily; monthly average used here)"
     }
   }
 }

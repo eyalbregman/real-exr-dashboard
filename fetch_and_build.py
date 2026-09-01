@@ -238,7 +238,7 @@ def build_dataset():
         "generatedAt": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "sources": {
             "usCpi": "FRED CPIAUCSL (Consumer Price Index for All Urban Consumers, seasonally adjusted)",
-            "usPcepi": "FRED PCEPI (Personal Consumption Expenditures: Chain-Type Price Index, seasonally adjusted)",
+            "usPcepi": "FRED PCEPI (Personal Consumption Expenditures, Chain-Type Price Index, seasonally adjusted)",
             "usCpiNs": "FRED CPIAUCNS (Consumer Price Index for All Urban Consumers, not seasonally adjusted)",
             "usPcepiLfe": "FRED PCEPILFE (Personal Consumption Expenditures Excluding Food and Energy, Chain-Type Price Index, seasonally adjusted)",
             "israelCpi": f"CBS (Israel Central Bureau of Statistics) index {CBS_INDEX_ID}, \"Consumer Price Index - General\" (not seasonally adjusted; CBS publishes a separate seasonally-adjusted series)",

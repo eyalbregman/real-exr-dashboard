@@ -527,7 +527,7 @@
     <div class="formulas" id="formulas">
       <div class="formulas-title">How Real EXR is calculated</div>
       <div class="formula">Real EXR (X) &nbsp;=&nbsp; Nominal EXR &times; (US price index X &divide; Israel CPI)</div>
-      <div class="formula">...computed for X = CPIAUCSL, PCEPI, CPIAUCNS, and PCEPILFE</div>
+      <div class="formula">...computed for X = CPIAUCSL, CPIAUCNS, PCEPI, and PCEPILFE</div>
       <div class="formula-note" id="formulaNote"></div>
     </div>
 
@@ -663,7 +663,7 @@ const DASHBOARD_DATA = __DASHBOARD_DATA__;
     // Colors match each series' counterpart on the Price Indices / Annual
     // Inflation sheets: nominal EXR <-> Israel CPI, each Real EXR variant
     // <-> the US price index it's computed from.
-    { key: "realCPI", name: "Real EXR (vs US CPI)", color: "var(--series-3)" },
+    { key: "realCPI", name: "Real EXR (vs US CPIAUCSL)", color: "var(--series-3)" },
     { key: "realPCEPI", name: "Real EXR (vs US PCEPI)", color: "var(--series-4)" },
     { key: "nominal", name: "Nominal EXR (ILS/USD)", color: "var(--series-1)" },
     { key: "realCPIAUCNS", name: "Real EXR (vs US CPIAUCNS)", color: "var(--series-2)" },
@@ -672,18 +672,18 @@ const DASHBOARD_DATA = __DASHBOARD_DATA__;
 
   const INFLATION_SERIES = [
     { key: "israelInflation", name: "Israel CPI", color: "var(--series-1)" },
-    { key: "usCPIAUCSLInflation", name: "US CPI (CPIAUCSL)", color: "var(--series-3)" },
-    { key: "usCPIAUCNSInflation", name: "US CPI, NSA (CPIAUCNS)", color: "var(--series-2)" },
-    { key: "usPCEPIInflation", name: "US PCE Price Index (PCEPI)", color: "var(--series-4)" },
-    { key: "usPCEPILFEInflation", name: "US Core PCE (PCEPILFE)", color: "var(--series-5)" },
+    { key: "usCPIAUCSLInflation", name: "US CPIAUCSL", color: "var(--series-3)" },
+    { key: "usCPIAUCNSInflation", name: "US CPIAUCNS", color: "var(--series-2)" },
+    { key: "usPCEPIInflation", name: "US PCEPI", color: "var(--series-4)" },
+    { key: "usPCEPILFEInflation", name: "US PCEPILFE", color: "var(--series-5)" },
   ];
 
   const PRICE_SERIES = [
     { key: "israelCPI", name: "Israel CPI", color: "var(--series-1)" },
-    { key: "usCPIAUCSL", name: "US CPI (CPIAUCSL)", color: "var(--series-3)" },
-    { key: "usCPIAUCNS", name: "US CPI, NSA (CPIAUCNS)", color: "var(--series-2)" },
-    { key: "usPCEPI", name: "US PCE Price Index (PCEPI)", color: "var(--series-4)" },
-    { key: "usPCEPILFE", name: "US Core PCE (PCEPILFE)", color: "var(--series-5)" },
+    { key: "usCPIAUCSL", name: "US CPIAUCSL", color: "var(--series-3)" },
+    { key: "usCPIAUCNS", name: "US CPIAUCNS", color: "var(--series-2)" },
+    { key: "usPCEPI", name: "US PCEPI", color: "var(--series-4)" },
+    { key: "usPCEPILFE", name: "US PCEPILFE", color: "var(--series-5)" },
   ];
 
   function ymToIndex(ym) {
@@ -701,7 +701,7 @@ const DASHBOARD_DATA = __DASHBOARD_DATA__;
     " · base year " + meta.baseYear + " = 100";
 
   document.getElementById("formulaNote").textContent =
-    "US CPI, PCEPI, CPIAUCNS and PCEPILFE are all rebased so " + meta.baseYear + " = 100, matching Israel CPI's own base year.";
+    "US CPIAUCSL, CPIAUCNS, PCEPI and PCEPILFE are all rebased so " + meta.baseYear + " = 100, matching Israel CPI's own base year.";
 
   function appendLines(el, lines) {
     lines.forEach(line => {
@@ -713,11 +713,11 @@ const DASHBOARD_DATA = __DASHBOARD_DATA__;
 
   appendLines(document.getElementById("sourcesFoot"), [
     "Nominal USD/ILS: " + meta.sources.nominalExr,
-    "US CPI: " + meta.sources.usCpi,
-    "US PCEPI: " + meta.sources.usPcepi,
-    "US CPI (not seasonally adjusted): " + meta.sources.usCpiNs,
-    "US Core PCE Price Index: " + meta.sources.usPcepiLfe,
     "Israel CPI: " + meta.sources.israelCpi,
+    "US CPIAUCSL: " + meta.sources.usCpi,
+    "US CPIAUCNS: " + meta.sources.usCpiNs,
+    "US PCEPI: " + meta.sources.usPcepi,
+    "US PCEPILFE: " + meta.sources.usPcepiLfe,
   ]);
 
   document.getElementById("formulaNotePrices").textContent =
@@ -725,10 +725,10 @@ const DASHBOARD_DATA = __DASHBOARD_DATA__;
 
   appendLines(document.getElementById("sourcesFootPrices"), [
     "Israel CPI: " + meta.sources.israelCpi,
-    "US CPI: " + meta.sources.usCpi,
-    "US CPI (not seasonally adjusted): " + meta.sources.usCpiNs,
-    "US PCE Price Index: " + meta.sources.usPcepi,
-    "US Core PCE Price Index: " + meta.sources.usPcepiLfe,
+    "US CPIAUCSL: " + meta.sources.usCpi,
+    "US CPIAUCNS: " + meta.sources.usCpiNs,
+    "US PCEPI: " + meta.sources.usPcepi,
+    "US PCEPILFE: " + meta.sources.usPcepiLfe,
   ]);
 
   document.getElementById("formulaNoteInflation").textContent =
@@ -736,10 +736,10 @@ const DASHBOARD_DATA = __DASHBOARD_DATA__;
 
   appendLines(document.getElementById("sourcesFootInflation"), [
     "Israel CPI: " + meta.sources.israelCpi,
-    "US CPI: " + meta.sources.usCpi,
-    "US CPI (not seasonally adjusted): " + meta.sources.usCpiNs,
-    "US PCE Price Index: " + meta.sources.usPcepi,
-    "US Core PCE Price Index: " + meta.sources.usPcepiLfe,
+    "US CPIAUCSL: " + meta.sources.usCpi,
+    "US CPIAUCNS: " + meta.sources.usCpiNs,
+    "US PCEPI: " + meta.sources.usPcepi,
+    "US PCEPILFE: " + meta.sources.usPcepiLfe,
   ]);
 
   // ---------- tabs ----------

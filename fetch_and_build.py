@@ -241,7 +241,7 @@ def build_dataset():
             "usPcepi": "FRED PCEPI (Personal Consumption Expenditures, Chain-Type Price Index, monthly)",
             "usCpiNs": "FRED CPIAUCNS (Consumer Price Index for All Urban Consumers, monthly)",
             "usPcepiLfe": "FRED PCEPILFE (Personal Consumption Expenditures Excluding Food and Energy, Chain-Type Price Index, monthly)",
-            "israelCpi": f"CBS index {CBS_INDEX_ID} (Consumer Price Index - General, monthly)",
+            "israelCpi": f"CBS index {CBS_INDEX_ID} (Consumer Price Index - General)",
             "nominalExr": "Bank of Israel Fusion Data Browser, representative USD/ILS rate (published daily; monthly average used here)",
         },
     }

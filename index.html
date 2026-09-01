@@ -459,7 +459,7 @@
 <body>
 <div class="wrap">
   <header class="head">
-    <h1 id="pageTitle">Real Exchange Rate: ILS / USD</h1>
+    <h1 id="pageTitle">Real &amp; Nominal Exchange Rate: ILS / USD</h1>
     <div class="head-meta">
       <span class="updated" id="updatedLabel"></span>
       <span class="updated" id="checkNote">Checked daily · updates once a new month is available across all price indices</span>
@@ -467,7 +467,7 @@
   </header>
 
   <div class="tabs" id="tabs">
-    <button class="tab-btn" type="button" data-tab="exr" data-title="Real Exchange Rate: ILS / USD" aria-pressed="true">Real EXR</button>
+    <button class="tab-btn" type="button" data-tab="exr" data-title="Real &amp; Nominal Exchange Rate: ILS / USD" aria-pressed="true">Exchange Rate, ILS / USD</button>
     <button class="tab-btn" type="button" data-tab="prices" data-title="Israel vs. US Price Indices" aria-pressed="false">Price Indices</button>
     <button class="tab-btn" type="button" data-tab="inflation" data-title="Annual Inflation: Israel vs. US" aria-pressed="false">Annual Inflation</button>
   </div>
@@ -648,10 +648,13 @@ const DASHBOARD_DATA = {"rows": [{"date": "2000-01", "nominal": 4.105, "realCPI"
   const meta = DASHBOARD_DATA.meta;
 
   const SERIES = [
-    { key: "realCPI", name: "Real EXR (vs US CPI)", color: "var(--series-1)" },
-    { key: "realPCEPI", name: "Real EXR (vs US PCEPI)", color: "var(--series-2)" },
-    { key: "nominal", name: "Nominal EXR (ILS/USD)", color: "var(--series-3)" },
-    { key: "realCPIAUCNS", name: "Real EXR (vs US CPIAUCNS)", color: "var(--series-4)" },
+    // Colors match each series' counterpart on the Price Indices / Annual
+    // Inflation sheets: nominal EXR <-> Israel CPI, each Real EXR variant
+    // <-> the US price index it's computed from.
+    { key: "realCPI", name: "Real EXR (vs US CPI)", color: "var(--series-3)" },
+    { key: "realPCEPI", name: "Real EXR (vs US PCEPI)", color: "var(--series-4)" },
+    { key: "nominal", name: "Nominal EXR (ILS/USD)", color: "var(--series-1)" },
+    { key: "realCPIAUCNS", name: "Real EXR (vs US CPIAUCNS)", color: "var(--series-2)" },
     { key: "realPCEPILFE", name: "Real EXR (vs US PCEPILFE)", color: "var(--series-5)" },
   ];
 

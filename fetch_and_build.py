@@ -237,12 +237,12 @@ def build_dataset():
         "baseYear": base_year,
         "generatedAt": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "sources": {
-            "usCpi": "FRED CPIAUCSL (Consumer Price Index for All Urban Consumers, monthly)",
-            "usPcepi": "FRED PCEPI (Personal Consumption Expenditures, Chain-Type Price Index, monthly)",
-            "usCpiNs": "FRED CPIAUCNS (Consumer Price Index for All Urban Consumers, monthly)",
-            "usPcepiLfe": "FRED PCEPILFE (Personal Consumption Expenditures Excluding Food and Energy, Chain-Type Price Index, monthly)",
-            "israelCpi": f"CBS index {CBS_INDEX_ID} (Consumer Price Index - General), Monthly data",
-            "nominalExr": "Bank of Israel Fusion Data Browser, representative USD/ILS rate (published daily; monthly average used here)",
+            "usCpi": "FRED CPIAUCSL (Consumer Price Index for All Urban Consumers). Published monthly",
+            "usPcepi": "FRED PCEPI (Personal Consumption Expenditures, Chain-Type Price Index). Published monthly",
+            "usCpiNs": "FRED CPIAUCNS (Consumer Price Index for All Urban Consumers). Published monthly",
+            "usPcepiLfe": "FRED PCEPILFE (Personal Consumption Expenditures Excluding Food and Energy, Chain-Type Price Index). Published monthly",
+            "israelCpi": f"CBS index {CBS_INDEX_ID} (Consumer Price Index - General). Published monthly",
+            "nominalExr": "Bank of Israel Fusion Data Browser, representative USD/ILS rate. Published daily; monthly average used here",
         },
     }
     return rows, price_rows, meta

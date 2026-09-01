@@ -6683,10 +6683,10 @@
   ],
   "meta": {
     "baseYear": 2024,
-    "generatedAt": "2026-09-01T09:06:48+00:00",
+    "generatedAt": "2026-09-01T10:01:35+00:00",
     "sources": {
       "usCpi": "FRED CPIAUCSL (Consumer Price Index for All Urban Consumers)",
-      "usPcepi": "FRED PCEPI (Personal Consumption Expenditures Price Index)",
+      "usPcepi": "FRED PCEPI (Personal Consumption Expenditures: Chain-Type Price Index)",
       "usCpiNs": "FRED CPIAUCNS (Consumer Price Index for All Urban Consumers, Not Seasonally Adjusted)",
       "usPcepiLfe": "FRED PCEPILFE (Personal Consumption Expenditures Excluding Food and Energy, Chain-Type Price Index)",
       "israelCpi": "CBS (Israel Central Bureau of Statistics) index 120010",

@@ -474,7 +474,7 @@
 
   <section class="tab-page" id="page-exr">
     <div class="how-to-use">
-      <b>How to use this chart:</b> drag the year-range handles below to zoom into a period · click a name in the legend to show or hide that line · click two points on the same line to draw a trend line with its slope and average annual change · click "Show data table" below the chart to see the exact numbers.
+      <b>How to use this chart:</b> drag the year-range handles below to zoom into a period · click a name in the legend to show or hide that line · click two points on the same line to draw a trend line with its average annual change · click "Show data table" below the chart to see the exact numbers.
     </div>
 
     <div class="card">
@@ -530,7 +530,7 @@
 
   <section class="tab-page" id="page-prices" hidden>
     <div class="how-to-use">
-      <b>How to use this chart:</b> drag the year-range handles below to zoom into a period · click a name in the legend to show or hide that line · click two points on the same line to draw a trend line with its slope and average annual change · click "Show data table" below the chart to see the exact numbers.
+      <b>How to use this chart:</b> drag the year-range handles below to zoom into a period · click a name in the legend to show or hide that line · click two points on the same line to draw a trend line with its average annual change · click "Show data table" below the chart to see the exact numbers.
     </div>
 
     <div class="card">
@@ -584,7 +584,7 @@
 
   <section class="tab-page" id="page-inflation" hidden>
     <div class="how-to-use">
-      <b>How to use this chart:</b> drag the year-range handles below to zoom into a period · click a name in the legend to show or hide that line · click two points on the same line to draw a trend line with its slope and average annual change · click "Show data table" below the chart to see the exact numbers.
+      <b>How to use this chart:</b> drag the year-range handles below to zoom into a period · click a name in the legend to show or hide that line · click two points on the same line to draw a trend line with its average annual change · click "Show data table" below the chart to see the exact numbers.
     </div>
 
     <div class="card">
@@ -843,7 +843,7 @@ const DASHBOARD_DATA = __DASHBOARD_DATA__;
 
     // Trend-line selection state persists across redraws (slider changes,
     // legend toggles, window resize) so the trend stays put until cleared.
-    let trend = null;        // { key, name, color, a:{date,idx,val}, b:{...}, slopePerYear, cagr }
+    let trend = null;        // { key, name, color, a:{date,idx,val}, b:{...}, cagr }
     let pendingPoint = null; // { key, name, color, date, idx, val }
 
     function fmtVal(v) {
@@ -896,10 +896,9 @@ const DASHBOARD_DATA = __DASHBOARD_DATA__;
         sw.className = "trend-swatch";
         sw.style.background = trend.color;
         const text = document.createElement("span");
-        const slopeTxt = fmtSigned(Math.round(trend.slopePerYear * 1000) / 1000, (unit || "") + "/yr");
         const cagrTxt = trend.cagr === null ? "n/a" : fmtSigned(Math.round(trend.cagr * 100) / 100, "%/yr");
         text.textContent = trend.name + " trend, " + trend.a.date + " → " + trend.b.date +
-          "  ·  slope " + slopeTxt + "  ·  avg. annual change " + cagrTxt;
+          "  ·  avg. annual change " + cagrTxt;
         const clear = document.createElement("button");
         clear.type = "button";
         clear.className = "trend-clear";
@@ -1153,9 +1152,8 @@ const DASHBOARD_DATA = __DASHBOARD_DATA__;
         const p2 = { date: row.date, idx, val: v2 };
         const [a, b] = p1.idx <= p2.idx ? [p1, p2] : [p2, p1];
         const years = (b.idx - a.idx) / 12;
-        const slopePerYear = (b.val - a.val) / years;
         const cagr = (a.val > 0 && b.val > 0) ? (Math.pow(b.val / a.val, 1 / years) - 1) * 100 : null;
-        trend = { key: p1.key, name: p1.name, color: p1.color, a, b, slopePerYear, cagr };
+        trend = { key: p1.key, name: p1.name, color: p1.color, a, b, cagr };
         pendingPoint = null;
         updateTrendBar();
         draw();

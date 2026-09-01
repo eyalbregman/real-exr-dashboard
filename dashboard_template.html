@@ -460,6 +460,27 @@
   .site-credit a {
     color: var(--text-muted);
   }
+  .glossary-item {
+    margin-bottom: 18px;
+  }
+  .glossary-item:last-child {
+    margin-bottom: 0;
+  }
+  .glossary-name {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 14px;
+    margin-bottom: 4px;
+  }
+  .glossary-desc {
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin: 0;
+  }
 </style>
 </head>
 <body>
@@ -476,11 +497,12 @@
     <button class="tab-btn" type="button" data-tab="exr" data-title="Real &amp; Nominal Exchange Rate: ILS / USD" aria-pressed="true">Exchange Rate, ILS / USD</button>
     <button class="tab-btn" type="button" data-tab="prices" data-title="Israel vs. US Price Indices" aria-pressed="false">Price Indices</button>
     <button class="tab-btn" type="button" data-tab="inflation" data-title="Annual Inflation: Israel vs. US" aria-pressed="false">Annual Inflation</button>
+    <button class="tab-btn" type="button" data-tab="about" data-title="About These Price Indices" aria-pressed="false">About the Indices</button>
   </div>
 
   <section class="tab-page" id="page-exr">
     <div class="how-to-use">
-      <b>How to use this chart:</b> drag the year-range handles below to zoom into a period · click a name in the legend to show or hide that line · click two points on the same line to draw a trend line with its average annual change · click "Show data table" below the chart to see the exact numbers.
+      <b>How to use these charts:</b> drag the year-range handles below to zoom into a period · click a name in the legend to show or hide that line · click two points on the same line to draw a trend line with its average annual change · click "Show data table" below the chart to see the exact numbers.
     </div>
 
     <div class="card">
@@ -538,7 +560,7 @@
 
   <section class="tab-page" id="page-prices" hidden>
     <div class="how-to-use">
-      <b>How to use this chart:</b> drag the year-range handles below to zoom into a period · click a name in the legend to show or hide that line · click two points on the same line to draw a trend line with its average annual change · click "Show data table" below the chart to see the exact numbers.
+      <b>How to use these charts:</b> drag the year-range handles below to zoom into a period · click a name in the legend to show or hide that line · click two points on the same line to draw a trend line with its average annual change · click "Show data table" below the chart to see the exact numbers.
     </div>
 
     <div class="card">
@@ -594,7 +616,7 @@
 
   <section class="tab-page" id="page-inflation" hidden>
     <div class="how-to-use">
-      <b>How to use this chart:</b> drag the year-range handles below to zoom into a period · click a name in the legend to show or hide that line · click two points on the same line to draw a trend line with its average annual change · click "Show data table" below the chart to see the exact numbers.
+      <b>How to use these charts:</b> drag the year-range handles below to zoom into a period · click a name in the legend to show or hide that line · click two points on the same line to draw a trend line with its average annual change · click "Show data table" below the chart to see the exact numbers.
     </div>
 
     <div class="card">
@@ -648,7 +670,38 @@
     </footer>
   </section>
 
-  <footer class="site-credit">Made by Eyal Bregman. Available at the following email address: <a href="mailto:Eyal.Bergman@boi.org.il">Eyal.Bergman@boi.org.il</a></footer>
+  <section class="tab-page" id="page-about" hidden>
+    <div class="card">
+      <div class="card-title">About These Price Indices</div>
+
+      <div class="glossary-item">
+        <div class="glossary-name"><span class="legend-swatch" style="background:var(--series-1)"></span>Israel CPI</div>
+        <p class="glossary-desc">Israel's official Consumer Price Index, published monthly by the Central Bureau of Statistics (CBS index 120010, "Consumer Price Index - General"). It tracks the average change in prices paid by households for a fixed basket of goods and services, and is the index used for indexation of contracts, rent, and alimony. This is the <b>original, not seasonally adjusted</b> series -- CBS publishes a separate seasonally-adjusted version for analytical use.</p>
+      </div>
+
+      <div class="glossary-item">
+        <div class="glossary-name"><span class="legend-swatch" style="background:var(--series-3)"></span>US CPIAUCSL</div>
+        <p class="glossary-desc">The U.S. Bureau of Labor Statistics' headline Consumer Price Index for All Urban Consumers, tracking average price changes for a fixed basket of consumer goods and services. This is the <b>seasonally adjusted</b> version, with predictable seasonal effects (weather, holidays, school year, etc.) removed so month-to-month changes are easier to read.</p>
+      </div>
+
+      <div class="glossary-item">
+        <div class="glossary-name"><span class="legend-swatch" style="background:var(--series-2)"></span>US CPIAUCNS</div>
+        <p class="glossary-desc">The same Consumer Price Index as CPIAUCSL, but <b>not seasonally adjusted</b> -- the raw published figures before removing seasonal effects.</p>
+      </div>
+
+      <div class="glossary-item">
+        <div class="glossary-name"><span class="legend-swatch" style="background:var(--series-4)"></span>US PCEPI</div>
+        <p class="glossary-desc">The Personal Consumption Expenditures Price Index from the U.S. Bureau of Economic Analysis. Unlike CPI's fixed basket, it reflects the actual, changing mix of goods and services people buy -- this is the inflation gauge the Federal Reserve targets for its 2% goal. <b>Seasonally adjusted.</b></p>
+      </div>
+
+      <div class="glossary-item">
+        <div class="glossary-name"><span class="legend-swatch" style="background:var(--series-5)"></span>US PCEPILFE</div>
+        <p class="glossary-desc">"Core" PCE -- the same index as PCEPI but excluding food and energy prices, which tend to swing sharply from month to month for reasons unrelated to underlying inflation. Also from the BEA and <b>seasonally adjusted</b>; this is the measure the Fed watches most closely to judge the underlying inflation trend.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-credit">Made by Eyal Bregman. Available at the following email address: <a href="mailto:Eyal.Bregman@boi.org.il">Eyal.Bregman@boi.org.il</a></footer>
 </div>
 
 <script>
@@ -744,7 +797,7 @@ const DASHBOARD_DATA = __DASHBOARD_DATA__;
 
   // ---------- tabs ----------
   const pageTitle = document.getElementById("pageTitle");
-  const TAB_IDS = ["exr", "prices", "inflation"];
+  const TAB_IDS = ["exr", "prices", "inflation", "about"];
   document.querySelectorAll(".tab-btn").forEach(btn => {
     btn.addEventListener("click", () => {
       document.querySelectorAll(".tab-btn").forEach(b => b.setAttribute("aria-pressed", String(b === btn)));

@@ -605,7 +605,6 @@
 
     <div class="formulas" id="formulasPrices">
       <div class="formulas-title">How this is calculated</div>
-      <div class="formula">All five indices are rebased so the same base year = 100.</div>
       <div class="formula-note" id="formulaNotePrices"></div>
     </div>
 
@@ -775,7 +774,7 @@ const DASHBOARD_DATA = {"rows": [{"date": "2000-01", "nominal": 4.105, "realCPI"
   ]);
 
   document.getElementById("formulaNotePrices").textContent =
-    "Rebased so " + meta.baseYear + " = 100.";
+    "US CPIAUCSL, CPIAUCNS, PCEPI and PCEPILFE are all rebased so " + meta.baseYear + " = 100, matching Israel CPI's own base year.";
 
   appendLines(document.getElementById("sourcesFootPrices"), [
     "Israel CPI: " + meta.sources.israelCpi,
@@ -786,7 +785,7 @@ const DASHBOARD_DATA = {"rows": [{"date": "2000-01", "nominal": 4.105, "realCPI"
   ]);
 
   document.getElementById("formulaNoteInflation").textContent =
-    "Computed from the same rebased indices shown on the Price Indices sheet.";
+    "US CPIAUCSL, CPIAUCNS, PCEPI and PCEPILFE are all rebased so " + meta.baseYear + " = 100, matching Israel CPI's own base year.";
 
   appendLines(document.getElementById("sourcesFootInflation"), [
     "Israel CPI: " + meta.sources.israelCpi,

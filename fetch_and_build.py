@@ -173,6 +173,20 @@ def yoy_inflation_pct(series, ym):
     return round((cur / prev - 1) * 100, 3)
 
 
+def mom_pct_change(series, ym):
+    """Month-over-month % change. Also scale-invariant -- any constant a
+    base-year choice would introduce cancels out in the ratio, same as for
+    yoy_inflation_pct -- so this works identically on raw or rebased input."""
+    y, m = map(int, ym.split("-"))
+    prev_y, prev_m = (y - 1, 12) if m == 1 else (y, m - 1)
+    prev_ym = f"{prev_y:04d}-{prev_m:02d}"
+    prev = series.get(prev_ym)
+    cur = series.get(ym)
+    if prev is None or cur is None or prev == 0:
+        return None
+    return round((cur / prev - 1) * 100, 3)
+
+
 def build_dataset():
     print("Fetching FRED (US CPI, PCEPI, CPI-NS, PCEPILFE)...")
     cpi_us_raw, pcepi_us_raw, cpi_us_ns_raw, pcepilfe_us_raw = fetch_fred()
@@ -209,6 +223,34 @@ def build_dataset():
         for ym in price_common_dates
     }
 
+    # Month-over-month % change in nominal and Real EXR (vs. each US index).
+    # Like inflation, this is scale-invariant, so it's computed once here
+    # directly from the raw (unrebased) series -- no base year needed at
+    # all, and it never needs recomputing when the base-year toggle changes.
+    def raw_real_exr_series(us_series):
+        dates = set(nominal) & set(cpi_isr) & set(us_series)
+        return {ym: nominal[ym] * us_series[ym] / cpi_isr[ym] for ym in dates if cpi_isr[ym]}
+
+    raw_real_cpiaucsl = raw_real_exr_series(cpi_us_raw)
+    raw_real_cpiaucns = raw_real_exr_series(cpi_us_ns_raw)
+    raw_real_pcepi = raw_real_exr_series(pcepi_us_raw)
+    raw_real_pcepilfe = raw_real_exr_series(pcepilfe_us_raw)
+
+    exr_change_dates = sorted(
+        set(nominal) & set(raw_real_cpiaucsl) & set(raw_real_cpiaucns)
+        & set(raw_real_pcepi) & set(raw_real_pcepilfe)
+    )
+    exr_change = {
+        ym: {
+            "nominal": mom_pct_change(nominal, ym),
+            "realCPI": mom_pct_change(raw_real_cpiaucsl, ym),
+            "realCPIAUCNS": mom_pct_change(raw_real_cpiaucns, ym),
+            "realPCEPI": mom_pct_change(raw_real_pcepi, ym),
+            "realPCEPILFE": mom_pct_change(raw_real_pcepilfe, ym),
+        }
+        for ym in exr_change_dates
+    }
+
     valid_base_years = years_with_data(
         cpi_isr, cpi_us_raw, cpi_us_ns_raw, pcepi_us_raw, pcepilfe_us_raw
     )
@@ -242,13 +284,14 @@ def build_dataset():
             "nominalExr": "Bank of Israel Fusion Data Browser, representative USD/ILS rate. Published daily; monthly average used here. Not seasonally adjusted",
         },
     }
-    return raw, inflation, meta
+    return raw, inflation, exr_change, meta
 
 
-def render_html(raw, inflation, meta):
+def render_html(raw, inflation, exr_change, meta):
     template = TEMPLATE.read_text(encoding="utf-8")
     payload = json.dumps(
-        {"raw": raw, "inflation": inflation, "meta": meta}, ensure_ascii=False
+        {"raw": raw, "inflation": inflation, "exrChange": exr_change, "meta": meta},
+        ensure_ascii=False,
     )
     html = template.replace("__DASHBOARD_DATA__", payload)
     HTML_OUT.write_text(html, encoding="utf-8")
@@ -266,7 +309,7 @@ def load_cache():
 def main():
     force = "--force" in sys.argv[1:]
 
-    fetched_raw, fetched_inflation, fetched_meta = build_dataset()
+    fetched_raw, fetched_inflation, fetched_exr_change, fetched_meta = build_dataset()
     if not fetched_raw["nominal"] or not fetched_inflation:
         print("No overlapping data across all sources — aborting.", file=sys.stderr)
         sys.exit(1)
@@ -280,12 +323,12 @@ def main():
             f"Latest month with all price indices available is still {cached_latest} "
             f"(just-fetched data also tops out at {fetched_latest}) -- keeping existing data."
         )
-        raw, inflation, meta = cached["raw"], cached["inflation"], cached["meta"]
+        raw, inflation, exr_change, meta = cached["raw"], cached["inflation"], cached.get("exrChange", {}), cached["meta"]
     else:
-        raw, inflation, meta = fetched_raw, fetched_inflation, fetched_meta
+        raw, inflation, exr_change, meta = fetched_raw, fetched_inflation, fetched_exr_change, fetched_meta
         CACHE_OUT.write_text(
             json.dumps(
-                {"raw": raw, "inflation": inflation, "meta": meta},
+                {"raw": raw, "inflation": inflation, "exrChange": exr_change, "meta": meta},
                 indent=2,
                 ensure_ascii=False,
             ),
@@ -296,7 +339,7 @@ def main():
     # Always regenerate index.html from the current template, even when the
     # data itself didn't change -- so template/styling changes go out on the
     # next run without waiting for new source data.
-    render_html(raw, inflation, meta)
+    render_html(raw, inflation, exr_change, meta)
     print(f"Wrote {len(raw['nominal'])} nominal-EXR months, {len(inflation)} price-index months")
     print(f"Valid base years: {meta['validBaseYears'][0]}-{meta['validBaseYears'][-1]}")
     print(f"Dashboard updated: {HTML_OUT}")

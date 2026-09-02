@@ -741,7 +741,7 @@
     <div class="formulas" id="formulasInflation">
       <div class="formulas-title">How annual inflation is calculated</div>
       <div class="formula">Annual inflation &nbsp;=&nbsp; (Index this month &divide; Index 12 months earlier &minus; 1) &times; 100%</div>
-      <div class="formula-note" id="formulaNoteInflation"></div>
+      <div class="formula-note" id="formulaNoteInflation">Base-year independent: these percentages come out identical no matter which year is selected as 100 on the Exchange Rate sheet.</div>
     </div>
 
     <footer class="foot" id="sourcesFootInflation">
@@ -921,7 +921,9 @@ const DASHBOARD_DATA = __DASHBOARD_DATA__;
     updatedLabel.textContent = "Updated " + updatedDateText + " · base year " + year + " = 100";
     document.getElementById("formulaNote").textContent = rebaseNoteText(year);
     document.getElementById("formulaNotePrices").textContent = rebaseNoteText(year);
-    document.getElementById("formulaNoteInflation").textContent = rebaseNoteText(year);
+    // formulaNoteInflation is intentionally not updated here -- annual
+    // inflation is base-year-independent (see computeDatasets), so its note
+    // says that instead of a rebase year that has no effect on its numbers.
   }
   renderBaseYearText(selectedBaseYear);
 

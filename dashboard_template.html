@@ -95,6 +95,24 @@
     color: var(--text-muted);
     white-space: nowrap;
   }
+  .base-year-control {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin-top: 2px;
+  }
+  .base-year-control select {
+    font: inherit;
+    font-size: 12px;
+    color: var(--text-primary);
+    background: var(--surface-1);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 3px 6px;
+    cursor: pointer;
+  }
   .tabs {
     display: flex;
     gap: 8px;
@@ -490,6 +508,10 @@
     <div class="head-meta">
       <span class="updated" id="updatedLabel"></span>
       <span class="updated" id="checkNote">Checked daily · updates once a new month is available across all price indices</span>
+      <span class="base-year-control">
+        <label for="baseYearSelect">Base year:</label>
+        <select id="baseYearSelect"></select>
+      </span>
     </div>
   </header>
 
@@ -502,7 +524,7 @@
 
   <section class="tab-page" id="page-exr">
     <div class="how-to-use">
-      <b>How to use these charts:</b> drag the year-range handles below to zoom into a period · click a name in the legend to show or hide that line · click two points on the same line to draw a trend line with its average annual change · click "Show data table" below the chart to see the exact numbers.
+      <b>How to use these charts:</b> drag the year-range handles below to zoom into a period · click a name in the legend to show or hide that line · click two points on the same line to draw a trend line with its average annual change · click "Show data table" below the chart to see the exact numbers · use the "Base year" dropdown at the top of the page to re-rebase every index (all sheets) so a different year = 100.
     </div>
 
     <div class="card">
@@ -560,7 +582,7 @@
 
   <section class="tab-page" id="page-prices" hidden>
     <div class="how-to-use">
-      <b>How to use these charts:</b> drag the year-range handles below to zoom into a period · click a name in the legend to show or hide that line · click two points on the same line to draw a trend line with its average annual change · click "Show data table" below the chart to see the exact numbers.
+      <b>How to use these charts:</b> drag the year-range handles below to zoom into a period · click a name in the legend to show or hide that line · click two points on the same line to draw a trend line with its average annual change · click "Show data table" below the chart to see the exact numbers · use the "Base year" dropdown at the top of the page to re-rebase every index (all sheets) so a different year = 100.
     </div>
 
     <div class="card">
@@ -615,7 +637,7 @@
 
   <section class="tab-page" id="page-inflation" hidden>
     <div class="how-to-use">
-      <b>How to use these charts:</b> drag the year-range handles below to zoom into a period · click a name in the legend to show or hide that line · click two points on the same line to draw a trend line with its average annual change · click "Show data table" below the chart to see the exact numbers.
+      <b>How to use these charts:</b> drag the year-range handles below to zoom into a period · click a name in the legend to show or hide that line · click two points on the same line to draw a trend line with its average annual change · click "Show data table" below the chart to see the exact numbers · use the "Base year" dropdown at the top of the page to re-rebase every index (all sheets) so a different year = 100.
     </div>
 
     <div class="card">
@@ -707,9 +729,80 @@
 const DASHBOARD_DATA = __DASHBOARD_DATA__;
 
 (function () {
-  const rows = DASHBOARD_DATA.rows;
-  const priceRows = DASHBOARD_DATA.priceRows;
+  const RAW = DASHBOARD_DATA.raw;
+  const INFLATION = DASHBOARD_DATA.inflation;
   const meta = DASHBOARD_DATA.meta;
+
+  // ---------- base-year rebasing (client-side, so the base-year picker
+  // below can re-rebase everything instantly without a re-fetch) ----------
+  function round3(v) {
+    return v === null || v === undefined ? null : Math.round(v * 1000) / 1000;
+  }
+
+  function rebaseToYear(seriesObj, year) {
+    const prefix = String(year);
+    let sum = 0, count = 0;
+    for (const k in seriesObj) {
+      if (k.startsWith(prefix)) { sum += seriesObj[k]; count++; }
+    }
+    if (!count) return null;
+    const avg = sum / count;
+    const out = {};
+    for (const k in seriesObj) out[k] = (seriesObj[k] / avg) * 100;
+    return out;
+  }
+
+  // Year-over-year inflation is scale-invariant (the same ratio comes out
+  // regardless of base year), so INFLATION is precomputed once server-side
+  // and just merged in here -- only the index *levels* need recomputing.
+  function computeDatasets(baseYear) {
+    const cpiIsr = rebaseToYear(RAW.israelCPI, baseYear);
+    const cpiUs = rebaseToYear(RAW.usCPIAUCSL, baseYear);
+    const cpiUsNs = rebaseToYear(RAW.usCPIAUCNS, baseYear);
+    const pcepiUs = rebaseToYear(RAW.usPCEPI, baseYear);
+    const pcepilfeUs = rebaseToYear(RAW.usPCEPILFE, baseYear);
+    if (!cpiIsr || !cpiUs || !cpiUsNs || !pcepiUs || !pcepilfeUs) return null;
+
+    const priceDates = Object.keys(RAW.israelCPI)
+      .filter(d => cpiUs[d] !== undefined && cpiUsNs[d] !== undefined && pcepiUs[d] !== undefined && pcepilfeUs[d] !== undefined)
+      .sort();
+    const priceRows = priceDates.map(d => {
+      const infl = INFLATION[d] || {};
+      return {
+        date: d,
+        israelCPI: round3(cpiIsr[d]),
+        usCPIAUCSL: round3(cpiUs[d]),
+        usCPIAUCNS: round3(cpiUsNs[d]),
+        usPCEPI: round3(pcepiUs[d]),
+        usPCEPILFE: round3(pcepilfeUs[d]),
+        israelInflation: infl.israel ?? null,
+        usCPIAUCSLInflation: infl.usCPIAUCSL ?? null,
+        usCPIAUCNSInflation: infl.usCPIAUCNS ?? null,
+        usPCEPIInflation: infl.usPCEPI ?? null,
+        usPCEPILFEInflation: infl.usPCEPILFE ?? null,
+      };
+    });
+
+    const exrDates = Object.keys(RAW.nominal)
+      .filter(d => cpiIsr[d] !== undefined && cpiUs[d] !== undefined && cpiUsNs[d] !== undefined && pcepiUs[d] !== undefined && pcepilfeUs[d] !== undefined)
+      .sort();
+    const rows = exrDates.map(d => {
+      const n = RAW.nominal[d], c = cpiIsr[d];
+      return {
+        date: d,
+        nominal: round3(n),
+        realCPI: round3(n * cpiUs[d] / c),
+        realCPIAUCNS: round3(n * cpiUsNs[d] / c),
+        realPCEPI: round3(n * pcepiUs[d] / c),
+        realPCEPILFE: round3(n * pcepilfeUs[d] / c),
+      };
+    });
+
+    return { rows, priceRows };
+  }
+
+  let selectedBaseYear = meta.defaultBaseYear;
+  let { rows, priceRows } = computeDatasets(selectedBaseYear);
 
   const SERIES = [
     // Colors match each series' counterpart on the Price Indices / Annual
@@ -750,11 +843,19 @@ const DASHBOARD_DATA = __DASHBOARD_DATA__;
   // ---------- header / footer text ----------
   const updatedLabel = document.getElementById("updatedLabel");
   const genDate = new Date(meta.generatedAt);
-  updatedLabel.textContent = "Updated " + genDate.toLocaleDateString("en-GB", { year: "numeric", month: "short", day: "numeric" }) +
-    " · base year " + meta.baseYear + " = 100";
+  const updatedDateText = genDate.toLocaleDateString("en-GB", { year: "numeric", month: "short", day: "numeric" });
 
-  document.getElementById("formulaNote").textContent =
-    "US CPIAUCSL, CPIAUCNS, PCEPI and PCEPILFE are all rebased so " + meta.baseYear + " = 100, matching Israel CPI's own base year.";
+  function rebaseNoteText(year) {
+    return "All five indices — Israel CPI, US CPIAUCSL, US CPIAUCNS, US PCEPI, and US PCEPILFE — are rebased so " + year + " = 100.";
+  }
+
+  function renderBaseYearText(year) {
+    updatedLabel.textContent = "Updated " + updatedDateText + " · base year " + year + " = 100";
+    document.getElementById("formulaNote").textContent = rebaseNoteText(year);
+    document.getElementById("formulaNotePrices").textContent = rebaseNoteText(year);
+    document.getElementById("formulaNoteInflation").textContent = rebaseNoteText(year);
+  }
+  renderBaseYearText(selectedBaseYear);
 
   function appendLines(el, lines) {
     lines.forEach(line => {
@@ -773,9 +874,6 @@ const DASHBOARD_DATA = __DASHBOARD_DATA__;
     "US PCEPILFE: " + meta.sources.usPcepiLfe,
   ]);
 
-  document.getElementById("formulaNotePrices").textContent =
-    "US CPIAUCSL, CPIAUCNS, PCEPI and PCEPILFE are all rebased so " + meta.baseYear + " = 100, matching Israel CPI's own base year.";
-
   appendLines(document.getElementById("sourcesFootPrices"), [
     "Israel CPI: " + meta.sources.israelCpi,
     "US CPIAUCSL: " + meta.sources.usCpi,
@@ -783,9 +881,6 @@ const DASHBOARD_DATA = __DASHBOARD_DATA__;
     "US PCEPI: " + meta.sources.usPcepi,
     "US PCEPILFE: " + meta.sources.usPcepiLfe,
   ]);
-
-  document.getElementById("formulaNoteInflation").textContent =
-    "US CPIAUCSL, CPIAUCNS, PCEPI and PCEPILFE are all rebased so " + meta.baseYear + " = 100, matching Israel CPI's own base year.";
 
   appendLines(document.getElementById("sourcesFootInflation"), [
     "Israel CPI: " + meta.sources.israelCpi,
@@ -813,33 +908,40 @@ const DASHBOARD_DATA = __DASHBOARD_DATA__;
 
   function buildDataTable({ dataRows, keys, toggleId, wrapId, bodyId }) {
     const tableBody = document.getElementById(bodyId);
-    dataRows.forEach(r => {
-      const tr = document.createElement("tr");
-      const cells = [r.date, ...keys.map(k => fmt(r[k]))];
-      cells.forEach(val => {
-        const td = document.createElement("td");
-        td.textContent = val === null ? "–" : String(val);
-        tr.appendChild(td);
+    function render(dr) {
+      tableBody.innerHTML = "";
+      dr.forEach(r => {
+        const tr = document.createElement("tr");
+        const cells = [r.date, ...keys.map(k => fmt(r[k]))];
+        cells.forEach(val => {
+          const td = document.createElement("td");
+          td.textContent = val === null ? "–" : String(val);
+          tr.appendChild(td);
+        });
+        tableBody.appendChild(tr);
       });
-      tableBody.appendChild(tr);
-    });
+    }
+    render(dataRows);
     document.getElementById(toggleId).addEventListener("click", (e) => {
       const wrap = document.getElementById(wrapId);
       wrap.classList.toggle("open");
       e.target.textContent = wrap.classList.contains("open") ? "Hide data table" : "Show data table";
     });
+    return { setRows: render };
   }
 
-  buildDataTable({
+  const tableExr = buildDataTable({
     dataRows: rows, keys: ["nominal", "realCPI", "realCPIAUCNS", "realPCEPI", "realPCEPILFE"],
     toggleId: "tableToggle", wrapId: "tableWrap", bodyId: "tableBody",
   });
 
-  buildDataTable({
+  const tablePrices = buildDataTable({
     dataRows: priceRows, keys: ["israelCPI", "usCPIAUCSL", "usCPIAUCNS", "usPCEPI", "usPCEPILFE"],
     toggleId: "tableTogglePrices", wrapId: "tableWrapPrices", bodyId: "tableBodyPrices",
   });
 
+  // Annual inflation is base-year-invariant (see computeDatasets), so its
+  // table never needs to be rebuilt when the base year changes.
   buildDataTable({
     dataRows: priceRows,
     keys: ["israelInflation", "usCPIAUCSLInflation", "usCPIAUCNSInflation", "usPCEPIInflation", "usPCEPILFEInflation"],
@@ -1232,7 +1334,7 @@ const DASHBOARD_DATA = __DASHBOARD_DATA__;
       hit.addEventListener("click", onClick);
     }
 
-    return { draw };
+    return { draw, setRows(newRows) { rows = newRows; } };
   }
 
   function yearRangeOf(dataRows) {
@@ -1279,6 +1381,36 @@ const DASHBOARD_DATA = __DASHBOARD_DATA__;
   chartInflation.draw();
 
   window.addEventListener("resize", () => { chartExr.draw(); chartPrices.draw(); chartInflation.draw(); });
+
+  // ---------- base-year picker ----------
+  // Changes the year every "real" (rebased) number on the dashboard is
+  // relative to. Annual inflation is untouched (see computeDatasets), and
+  // the year range of available months never changes either -- only the
+  // index/EXR *levels* are recomputed and redrawn.
+  const baseYearSelect = document.getElementById("baseYearSelect");
+  meta.validBaseYears.forEach(y => {
+    const opt = document.createElement("option");
+    opt.value = y;
+    opt.textContent = y;
+    baseYearSelect.appendChild(opt);
+  });
+  baseYearSelect.value = selectedBaseYear;
+
+  baseYearSelect.addEventListener("change", () => {
+    const year = Number(baseYearSelect.value);
+    const computed = computeDatasets(year);
+    if (!computed) { baseYearSelect.value = selectedBaseYear; return; }
+    selectedBaseYear = year;
+    rows = computed.rows;
+    priceRows = computed.priceRows;
+    chartExr.setRows(rows);
+    tableExr.setRows(rows);
+    chartPrices.setRows(priceRows);
+    tablePrices.setRows(priceRows);
+    renderBaseYearText(year);
+    chartExr.draw();
+    chartPrices.draw();
+  });
 })();
 </script>
 </body>

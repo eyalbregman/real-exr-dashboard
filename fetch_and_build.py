@@ -145,12 +145,18 @@ def fetch_cbs():
     return out, base_year
 
 
-def rebase_to_year(series, year):
-    vals = [v for k, v in series.items() if k.startswith(str(year))]
-    if not vals:
-        raise ValueError(f"No observations found for base year {year}")
-    avg = sum(vals) / len(vals)
-    return {k: (v / avg) * 100 for k, v in series.items()}
+def full_years_available(*series_dicts):
+    """Years where every one of the given series has all 12 months present --
+    the only years that give an unbiased average to rebase against."""
+    common = None
+    for series in series_dicts:
+        months_by_year = {}
+        for k in series:
+            y, m = k.split("-")
+            months_by_year.setdefault(int(y), set()).add(int(m))
+        full = {y for y, months in months_by_year.items() if len(months) == 12}
+        common = full if common is None else common & full
+    return sorted(common or [])
 
 
 def yoy_inflation_pct(series, ym):
@@ -181,60 +187,43 @@ def build_dataset():
     cpi_isr, base_year = fetch_cbs()
     print(f"  {len(cpi_isr)} months, current base year = {base_year}")
 
-    cpi_us = rebase_to_year(cpi_us_raw, base_year)
-    pcepi_us = rebase_to_year(pcepi_us_raw, base_year)
-    cpi_us_ns = rebase_to_year(cpi_us_ns_raw, base_year)
-    pcepilfe_us = rebase_to_year(pcepilfe_us_raw, base_year)
-
-    common_dates = sorted(
-        set(nominal) & set(cpi_us) & set(cpi_us_ns) & set(pcepi_us) & set(pcepilfe_us) & set(cpi_isr)
-    )
-    rows = []
-    for ym in common_dates:
-        n = nominal[ym]
-        c_isr = cpi_isr[ym]
-
-        def real_exr(us_series):
-            v = us_series.get(ym)
-            return round(n * v / c_isr, 3) if (v is not None and c_isr) else None
-
-        rows.append(
-            {
-                "date": ym,
-                "nominal": round(n, 3),
-                "realCPI": real_exr(cpi_us),
-                "realPCEPI": real_exr(pcepi_us),
-                "realCPIAUCNS": real_exr(cpi_us_ns),
-                "realPCEPILFE": real_exr(pcepilfe_us),
-            }
-        )
-
-    # Second dataset: Israel CPI vs. the four US price indices, all rebased
-    # so `base_year` = 100, plus each series' year-over-year inflation.
-    # Independent of the nominal EXR's date coverage.
+    # Rebasing to `base_year` (the base year toggle's default selection) is
+    # done client-side, from the raw series below, so the dashboard can
+    # re-rebase to any other complete year on the fly without a re-fetch.
+    # Year-over-year inflation is scale-invariant -- it comes out identical
+    # regardless of base year -- so it's computed once here, from the raw
+    # series, rather than being recomputed client-side on every toggle.
     price_common_dates = sorted(
-        set(cpi_isr) & set(cpi_us) & set(cpi_us_ns) & set(pcepi_us) & set(pcepilfe_us)
+        set(cpi_isr) & set(cpi_us_raw) & set(cpi_us_ns_raw) & set(pcepi_us_raw) & set(pcepilfe_us_raw)
     )
-    price_rows = []
-    for ym in price_common_dates:
-        price_rows.append(
-            {
-                "date": ym,
-                "israelCPI": round(cpi_isr[ym], 3),
-                "usCPIAUCSL": round(cpi_us[ym], 3),
-                "usCPIAUCNS": round(cpi_us_ns[ym], 3),
-                "usPCEPI": round(pcepi_us[ym], 3),
-                "usPCEPILFE": round(pcepilfe_us[ym], 3),
-                "israelInflation": yoy_inflation_pct(cpi_isr, ym),
-                "usCPIAUCSLInflation": yoy_inflation_pct(cpi_us, ym),
-                "usCPIAUCNSInflation": yoy_inflation_pct(cpi_us_ns, ym),
-                "usPCEPIInflation": yoy_inflation_pct(pcepi_us, ym),
-                "usPCEPILFEInflation": yoy_inflation_pct(pcepilfe_us, ym),
-            }
-        )
+    inflation = {
+        ym: {
+            "israel": yoy_inflation_pct(cpi_isr, ym),
+            "usCPIAUCSL": yoy_inflation_pct(cpi_us_raw, ym),
+            "usCPIAUCNS": yoy_inflation_pct(cpi_us_ns_raw, ym),
+            "usPCEPI": yoy_inflation_pct(pcepi_us_raw, ym),
+            "usPCEPILFE": yoy_inflation_pct(pcepilfe_us_raw, ym),
+        }
+        for ym in price_common_dates
+    }
+
+    valid_base_years = full_years_available(
+        cpi_isr, cpi_us_raw, cpi_us_ns_raw, pcepi_us_raw, pcepilfe_us_raw
+    )
+
+    raw = {
+        "nominal": {k: round(v, 6) for k, v in nominal.items()},
+        "israelCPI": {k: round(v, 6) for k, v in cpi_isr.items()},
+        "usCPIAUCSL": {k: round(v, 6) for k, v in cpi_us_raw.items()},
+        "usCPIAUCNS": {k: round(v, 6) for k, v in cpi_us_ns_raw.items()},
+        "usPCEPI": {k: round(v, 6) for k, v in pcepi_us_raw.items()},
+        "usPCEPILFE": {k: round(v, 6) for k, v in pcepilfe_us_raw.items()},
+    }
 
     meta = {
-        "baseYear": base_year,
+        "defaultBaseYear": base_year,
+        "validBaseYears": valid_base_years,
+        "latestCommonMonth": price_common_dates[-1] if price_common_dates else None,
         "generatedAt": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "sources": {
             "usCpi": "FRED CPIAUCSL (Consumer Price Index for All Urban Consumers). Published monthly. Seasonally adjusted",
@@ -245,13 +234,13 @@ def build_dataset():
             "nominalExr": "Bank of Israel Fusion Data Browser, representative USD/ILS rate. Published daily; monthly average used here. Not seasonally adjusted",
         },
     }
-    return rows, price_rows, meta
+    return raw, inflation, meta
 
 
-def render_html(rows, price_rows, meta):
+def render_html(raw, inflation, meta):
     template = TEMPLATE.read_text(encoding="utf-8")
     payload = json.dumps(
-        {"rows": rows, "priceRows": price_rows, "meta": meta}, ensure_ascii=False
+        {"raw": raw, "inflation": inflation, "meta": meta}, ensure_ascii=False
     )
     html = template.replace("__DASHBOARD_DATA__", payload)
     HTML_OUT.write_text(html, encoding="utf-8")
@@ -269,26 +258,26 @@ def load_cache():
 def main():
     force = "--force" in sys.argv[1:]
 
-    fetched_rows, fetched_price_rows, fetched_meta = build_dataset()
-    if not fetched_rows or not fetched_price_rows:
+    fetched_raw, fetched_inflation, fetched_meta = build_dataset()
+    if not fetched_raw["nominal"] or not fetched_inflation:
         print("No overlapping data across all sources — aborting.", file=sys.stderr)
         sys.exit(1)
-    fetched_latest = fetched_price_rows[-1]["date"]
+    fetched_latest = fetched_meta["latestCommonMonth"]
 
     cached = load_cache()
-    cached_latest = cached["priceRows"][-1]["date"] if cached and cached.get("priceRows") else None
+    cached_latest = (cached or {}).get("meta", {}).get("latestCommonMonth")
 
     if cached is not None and not force and cached_latest is not None and fetched_latest <= cached_latest:
         print(
             f"Latest month with all price indices available is still {cached_latest} "
             f"(just-fetched data also tops out at {fetched_latest}) -- keeping existing data."
         )
-        rows, price_rows, meta = cached["rows"], cached["priceRows"], cached["meta"]
+        raw, inflation, meta = cached["raw"], cached["inflation"], cached["meta"]
     else:
-        rows, price_rows, meta = fetched_rows, fetched_price_rows, fetched_meta
+        raw, inflation, meta = fetched_raw, fetched_inflation, fetched_meta
         CACHE_OUT.write_text(
             json.dumps(
-                {"rows": rows, "priceRows": price_rows, "meta": meta},
+                {"raw": raw, "inflation": inflation, "meta": meta},
                 indent=2,
                 ensure_ascii=False,
             ),
@@ -299,12 +288,9 @@ def main():
     # Always regenerate index.html from the current template, even when the
     # data itself didn't change -- so template/styling changes go out on the
     # next run without waiting for new source data.
-    render_html(rows, price_rows, meta)
-    print(f"Wrote {len(rows)} months ({rows[0]['date']} to {rows[-1]['date']})")
-    print(
-        f"Wrote {len(price_rows)} price-index months "
-        f"({price_rows[0]['date']} to {price_rows[-1]['date']})"
-    )
+    render_html(raw, inflation, meta)
+    print(f"Wrote {len(raw['nominal'])} nominal-EXR months, {len(inflation)} price-index months")
+    print(f"Valid base years: {meta['validBaseYears'][0]}-{meta['validBaseYears'][-1]}")
     print(f"Dashboard updated: {HTML_OUT}")
 
 

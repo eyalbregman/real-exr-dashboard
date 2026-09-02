@@ -1388,10 +1388,12 @@ const DASHBOARD_DATA = __DASHBOARD_DATA__;
   // the year range of available months never changes either -- only the
   // index/EXR *levels* are recomputed and redrawn.
   const baseYearSelect = document.getElementById("baseYearSelect");
+  const partialYears = new Set(meta.partialBaseYears || []);
   meta.validBaseYears.forEach(y => {
     const opt = document.createElement("option");
     opt.value = y;
-    opt.textContent = y;
+    opt.textContent = partialYears.has(y) ? y + " (partial)" : y;
+    if (partialYears.has(y)) opt.title = "Not every index has a full 12 months of data for " + y + " yet, so its average is based on however many months are available.";
     baseYearSelect.appendChild(opt);
   });
   baseYearSelect.value = selectedBaseYear;

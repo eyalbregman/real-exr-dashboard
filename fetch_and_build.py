@@ -145,9 +145,21 @@ def fetch_cbs():
     return out, base_year
 
 
+def years_with_data(*series_dicts):
+    """Years present (with at least one month) in every one of the given
+    series -- the full set of selectable base years."""
+    common = None
+    for series in series_dicts:
+        years = {int(k.split("-")[0]) for k in series}
+        common = years if common is None else common & years
+    return sorted(common or [])
+
+
 def full_years_available(*series_dicts):
-    """Years where every one of the given series has all 12 months present --
-    the only years that give an unbiased average to rebase against."""
+    """Subset of years_with_data() where every series has all 12 months
+    present -- an unbiased average to rebase against. A year missing this
+    (e.g. a month delayed by a government shutdown, or the current year
+    still in progress) is still selectable, just noted as partial."""
     common = None
     for series in series_dicts:
         months_by_year = {}
@@ -207,9 +219,13 @@ def build_dataset():
         for ym in price_common_dates
     }
 
-    valid_base_years = full_years_available(
+    valid_base_years = years_with_data(
         cpi_isr, cpi_us_raw, cpi_us_ns_raw, pcepi_us_raw, pcepilfe_us_raw
     )
+    full_base_years = set(
+        full_years_available(cpi_isr, cpi_us_raw, cpi_us_ns_raw, pcepi_us_raw, pcepilfe_us_raw)
+    )
+    partial_base_years = sorted(set(valid_base_years) - full_base_years)
 
     raw = {
         "nominal": {k: round(v, 6) for k, v in nominal.items()},
@@ -223,6 +239,7 @@ def build_dataset():
     meta = {
         "defaultBaseYear": base_year,
         "validBaseYears": valid_base_years,
+        "partialBaseYears": partial_base_years,
         "latestCommonMonth": price_common_dates[-1] if price_common_dates else None,
         "generatedAt": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "sources": {

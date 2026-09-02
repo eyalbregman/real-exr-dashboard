@@ -147,27 +147,17 @@ def fetch_cbs():
 
 def years_with_data(*series_dicts):
     """Years present (with at least one month) in every one of the given
-    series -- the full set of selectable base years."""
+    series -- the full set of selectable base years. A year with an
+    isolated gap (e.g. October 2025's CPI release delayed by that year's
+    government shutdown) is still selectable -- the rebase average is just
+    computed from whichever months are actually present. Only the current,
+    still-in-progress year is flagged as partial (see `partial_base_years`
+    in build_dataset) -- a past year is complete by definition once it's
+    over, regardless of any individual series' publication gaps."""
     common = None
     for series in series_dicts:
         years = {int(k.split("-")[0]) for k in series}
         common = years if common is None else common & years
-    return sorted(common or [])
-
-
-def full_years_available(*series_dicts):
-    """Subset of years_with_data() where every series has all 12 months
-    present -- an unbiased average to rebase against. A year missing this
-    (e.g. a month delayed by a government shutdown, or the current year
-    still in progress) is still selectable, just noted as partial."""
-    common = None
-    for series in series_dicts:
-        months_by_year = {}
-        for k in series:
-            y, m = k.split("-")
-            months_by_year.setdefault(int(y), set()).add(int(m))
-        full = {y for y, months in months_by_year.items() if len(months) == 12}
-        common = full if common is None else common & full
     return sorted(common or [])
 
 
@@ -222,10 +212,11 @@ def build_dataset():
     valid_base_years = years_with_data(
         cpi_isr, cpi_us_raw, cpi_us_ns_raw, pcepi_us_raw, pcepilfe_us_raw
     )
-    full_base_years = set(
-        full_years_available(cpi_isr, cpi_us_raw, cpi_us_ns_raw, pcepi_us_raw, pcepilfe_us_raw)
-    )
-    partial_base_years = sorted(set(valid_base_years) - full_base_years)
+    # Only the current, still-in-progress year is "partial" -- a past year
+    # is complete once it's over, even if some series has an isolated gap
+    # (e.g. a release delayed by a government shutdown); the rebase average
+    # for that series is just computed from whichever months are present.
+    partial_base_years = [y for y in valid_base_years if y >= date.today().year]
 
     raw = {
         "nominal": {k: round(v, 6) for k, v in nominal.items()},

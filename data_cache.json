@@ -4164,2223 +4164,2223 @@
       "realPCEPILFE": null
     },
     "2000-02": {
-      "nominal": -1.249,
-      "realCPI": -0.372,
-      "realCPIAUCNS": -0.194,
-      "realPCEPI": -0.469,
-      "realPCEPILFE": -0.636
-    },
-    "2000-03": {
-      "nominal": -1.219,
-      "realCPI": -0.355,
-      "realCPIAUCNS": -0.121,
-      "realPCEPI": -0.513,
-      "realPCEPILFE": -0.734
-    },
-    "2000-04": {
-      "nominal": 0.902,
-      "realCPI": 0.367,
-      "realCPIAUCNS": 0.484,
-      "realPCEPI": 0.342,
-      "realPCEPILFE": 0.491
-    },
-    "2000-05": {
-      "nominal": 2.606,
-      "realCPI": 1.919,
-      "realCPIAUCNS": 1.859,
-      "realPCEPI": 1.825,
-      "realPCEPILFE": 1.849
-    },
-    "2000-06": {
-      "nominal": -0.932,
-      "realCPI": -0.633,
-      "realCPIAUCNS": -0.692,
-      "realPCEPI": -0.875,
-      "realPCEPILFE": -1.135
-    },
-    "2000-07": {
-      "nominal": -0.424,
-      "realCPI": -0.414,
-      "realCPIAUCNS": -0.472,
-      "realPCEPI": -0.454,
-      "realPCEPILFE": -0.476
-    },
-    "2000-08": {
-      "nominal": -1.014,
-      "realCPI": -0.458,
-      "realCPIAUCNS": -0.458,
-      "realPCEPI": -0.464,
-      "realPCEPILFE": -0.33
-    },
-    "2000-09": {
-      "nominal": -0.233,
-      "realCPI": 0.854,
-      "realCPIAUCNS": 0.853,
-      "realPCEPI": 0.762,
-      "realPCEPILFE": 0.574
-    },
-    "2000-10": {
-      "nominal": 1.651,
-      "realCPI": 1.254,
-      "realCPIAUCNS": 1.254,
-      "realPCEPI": 1.217,
-      "realPCEPILFE": 1.221
-    },
-    "2000-11": {
-      "nominal": 0.108,
-      "realCPI": 0.281,
-      "realCPIAUCNS": 0.166,
-      "realPCEPI": 0.248,
-      "realPCEPILFE": 0.285
-    },
-    "2000-12": {
-      "nominal": -0.694,
-      "realCPI": -0.373,
-      "realCPIAUCNS": -0.658,
-      "realPCEPI": -0.449,
-      "realPCEPILFE": -0.503
-    },
-    "2001-01": {
-      "nominal": 0.935,
-      "realCPI": 2.112,
-      "realCPIAUCNS": 2.173,
-      "realPCEPI": 2.022,
-      "realPCEPILFE": 1.909
-    },
-    "2001-02": {
-      "nominal": 0.054,
-      "realCPI": 0.382,
-      "realCPIAUCNS": 0.555,
-      "realPCEPI": 0.309,
-      "realPCEPILFE": 0.331
-    },
-    "2001-03": {
-      "nominal": 1.046,
-      "realCPI": 0.9,
-      "realCPIAUCNS": 1.072,
-      "realPCEPI": 0.852,
-      "realPCEPILFE": 0.948
-    },
-    "2001-04": {
-      "nominal": 0.273,
-      "realCPI": -0.455,
-      "realCPIAUCNS": -0.229,
-      "realPCEPI": -0.449,
-      "realPCEPILFE": -0.466
-    },
-    "2001-05": {
-      "nominal": -0.861,
-      "realCPI": -0.75,
-      "realCPIAUCNS": -0.807,
-      "realPCEPI": -0.994,
-      "realPCEPILFE": -1.23
-    },
-    "2001-06": {
-      "nominal": 0.544,
-      "realCPI": 0.473,
-      "realCPIAUCNS": 0.416,
-      "realPCEPI": 0.423,
-      "realPCEPILFE": 0.47
-    },
-    "2001-07": {
-      "nominal": 0.858,
-      "realCPI": 0.291,
-      "realCPIAUCNS": 0.179,
-      "realPCEPI": 0.428,
-      "realPCEPILFE": 0.72
-    },
-    "2001-08": {
-      "nominal": 0.835,
-      "realCPI": 0.539,
-      "realCPIAUCNS": 0.539,
-      "realPCEPI": 0.527,
-      "realPCEPILFE": 0.589
-    },
-    "2001-09": {
-      "nominal": 2.105,
-      "realCPI": 2.307,
-      "realCPIAUCNS": 2.365,
-      "realPCEPI": 1.558,
-      "realPCEPILFE": 1.326
-    },
-    "2001-10": {
-      "nominal": -0.178,
-      "realCPI": -0.556,
-      "realCPIAUCNS": -0.611,
-      "realPCEPI": 0.075,
-      "realPCEPILFE": 0.426
-    },
-    "2001-11": {
-      "nominal": -1.759,
-      "realCPI": -1.235,
-      "realCPIAUCNS": -1.346,
-      "realPCEPI": -1.246,
-      "realPCEPILFE": -0.978
-    },
-    "2001-12": {
-      "nominal": 0.868,
-      "realCPI": 0.91,
-      "realCPIAUCNS": 0.569,
-      "realPCEPI": 0.863,
-      "realPCEPILFE": 0.991
-    },
-    "2002-01": {
-      "nominal": 6.115,
-      "realCPI": 5.156,
-      "realCPIAUCNS": 5.216,
-      "realPCEPI": 5.073,
-      "realPCEPILFE": 5.037
-    },
-    "2002-02": {
-      "nominal": 2.753,
-      "realCPI": 2.131,
-      "realCPIAUCNS": 2.362,
-      "realPCEPI": 2.131,
-      "realPCEPILFE": 2.154
-    },
-    "2002-03": {
-      "nominal": 0.051,
-      "realCPI": -0.15,
-      "realCPIAUCNS": 0.13,
-      "realPCEPI": -0.16,
-      "realPCEPILFE": -0.311
-    },
-    "2002-04": {
-      "nominal": 3.041,
-      "realCPI": 1.934,
-      "realCPIAUCNS": 2.047,
-      "realPCEPI": 1.904,
-      "realPCEPILFE": 1.762
-    },
-    "2002-05": {
-      "nominal": 1.828,
-      "realCPI": 0.985,
-      "realCPIAUCNS": 0.872,
-      "realPCEPI": 0.939,
-      "realPCEPILFE": 0.984
-    },
-    "2002-06": {
-      "nominal": 0.926,
-      "realCPI": -0.327,
-      "realCPIAUCNS": -0.327,
-      "realPCEPI": -0.258,
-      "realPCEPILFE": -0.224
-    },
-    "2002-07": {
-      "nominal": -4.422,
-      "realCPI": -4.826,
-      "realCPIAUCNS": -4.931,
-      "realPCEPI": -4.828,
-      "realPCEPILFE": -4.844
-    },
-    "2002-08": {
-      "nominal": -0.948,
-      "realCPI": -0.306,
-      "realCPIAUCNS": -0.251,
-      "realPCEPI": -0.387,
-      "realPCEPILFE": -0.387
-    },
-    "2002-09": {
-      "nominal": 2.113,
-      "realCPI": 1.907,
-      "realCPIAUCNS": 1.906,
-      "realPCEPI": 1.921,
-      "realPCEPILFE": 1.903
-    },
-    "2002-10": {
-      "nominal": 0.488,
-      "realCPI": 0.066,
-      "realCPIAUCNS": 0.011,
-      "realPCEPI": 0.027,
-      "realPCEPILFE": -0.07
-    },
-    "2002-11": {
-      "nominal": -2.327,
-      "realCPI": -1.353,
-      "realCPIAUCNS": -1.516,
-      "realPCEPI": -1.419,
-      "realPCEPILFE": -1.421
-    },
-    "2002-12": {
-      "nominal": 0.15,
-      "realCPI": 0.594,
-      "realCPIAUCNS": 0.206,
-      "realPCEPI": 0.525,
-      "realPCEPILFE": 0.522
-    },
-    "2003-01": {
-      "nominal": 3.037,
-      "realCPI": 3.298,
-      "realCPIAUCNS": 3.3,
-      "realPCEPI": 3.153,
-      "realPCEPILFE": 2.915
-    },
-    "2003-02": {
-      "nominal": 0.612,
-      "realCPI": 0.766,
-      "realCPIAUCNS": 0.99,
-      "realPCEPI": 0.639,
-      "realPCEPILFE": 0.356
-    },
-    "2003-03": {
-      "nominal": -1.746,
-      "realCPI": -1.778,
-      "realCPIAUCNS": -1.349,
-      "realPCEPI": -1.687,
-      "realPCEPILFE": -1.781
-    },
-    "2003-04": {
-      "nominal": -3.398,
-      "realCPI": -3.577,
-      "realCPIAUCNS": -3.418,
-      "realPCEPI": -3.373,
-      "realPCEPILFE": -3.101
-    },
-    "2003-05": {
-      "nominal": -3.045,
-      "realCPI": -2.726,
-      "realCPIAUCNS": -2.726,
-      "realPCEPI": -2.678,
-      "realPCEPILFE": -2.426
-    },
-    "2003-06": {
-      "nominal": -2.231,
-      "realCPI": -1.541,
-      "realCPIAUCNS": -1.541,
-      "realPCEPI": -1.542,
-      "realPCEPILFE": -1.594
-    },
-    "2003-07": {
-      "nominal": -0.161,
-      "realCPI": 0.867,
-      "realCPIAUCNS": 0.647,
-      "realPCEPI": 0.833,
-      "realPCEPILFE": 0.789
-    },
-    "2003-08": {
-      "nominal": 1.859,
-      "realCPI": 2.098,
-      "realCPIAUCNS": 2.043,
-      "realPCEPI": 1.999,
-      "realPCEPILFE": 1.77
-    },
-    "2003-09": {
-      "nominal": 0.284,
-      "realCPI": 1.114,
-      "realCPIAUCNS": 1.114,
-      "realPCEPI": 1.102,
-      "realPCEPILFE": 0.927
-    },
-    "2003-10": {
-      "nominal": -0.378,
-      "realCPI": -0.485,
-      "realCPIAUCNS": -0.485,
-      "realPCEPI": -0.365,
-      "realPCEPILFE": -0.194
-    },
-    "2003-11": {
-      "nominal": 1.026,
-      "realCPI": 1.284,
-      "realCPIAUCNS": 0.956,
-      "realPCEPI": 1.357,
-      "realPCEPILFE": 1.367
-    },
-    "2003-12": {
-      "nominal": -2.244,
-      "realCPI": -1.783,
-      "realCPIAUCNS": -2.154,
-      "realPCEPI": -1.831,
-      "realPCEPILFE": -1.925
-    },
-    "2004-01": {
-      "nominal": 0.699,
-      "realCPI": 1.337,
-      "realCPIAUCNS": 1.395,
-      "realPCEPI": 1.292,
-      "realPCEPILFE": 1.161
-    },
-    "2004-02": {
-      "nominal": 0.909,
-      "realCPI": 0.923,
-      "realCPIAUCNS": 1.25,
-      "realPCEPI": 0.921,
-      "realPCEPILFE": 0.869
-    },
-    "2004-03": {
-      "nominal": 0.882,
-      "realCPI": 1.2,
-      "realCPIAUCNS": 1.635,
-      "realPCEPI": 1.14,
-      "realPCEPILFE": 1.154
-    },
-    "2004-04": {
-      "nominal": 1.092,
-      "realCPI": 0.144,
-      "realCPIAUCNS": 0.304,
-      "realPCEPI": 0.17,
-      "realPCEPILFE": 0.244
-    },
-    "2004-05": {
-      "nominal": 0.949,
-      "realCPI": 0.978,
-      "realCPIAUCNS": 1.137,
-      "realPCEPI": 0.875,
-      "realPCEPILFE": 0.687
-    },
-    "2004-06": {
-      "nominal": -1.716,
-      "realCPI": -1.351,
-      "realCPIAUCNS": -1.404,
-      "realPCEPI": -1.436,
-      "realPCEPILFE": -1.561
-    },
-    "2004-07": {
-      "nominal": -0.562,
-      "realCPI": -0.259,
-      "realCPIAUCNS": -0.522,
-      "realPCEPI": -0.272,
-      "realPCEPILFE": -0.247
-    },
-    "2004-08": {
-      "nominal": 0.954,
-      "realCPI": 0.807,
-      "realCPIAUCNS": 0.807,
-      "realPCEPI": 0.806,
-      "realPCEPILFE": 0.793
-    },
-    "2004-09": {
-      "nominal": -0.808,
-      "realCPI": -0.295,
-      "realCPIAUCNS": -0.401,
-      "realPCEPI": -0.414,
-      "realPCEPILFE": -0.424
-    },
-    "2004-10": {
-      "nominal": -0.842,
-      "realCPI": -0.32,
-      "realCPIAUCNS": -0.32,
-      "realPCEPI": -0.416,
-      "realPCEPILFE": -0.627
-    },
-    "2004-11": {
-      "nominal": -1.219,
-      "realCPI": -0.655,
-      "realCPIAUCNS": -1.069,
-      "realPCEPI": -0.74,
-      "realPCEPILFE": -0.908
-    },
-    "2004-12": {
-      "nominal": -1.439,
-      "realCPI": -1.537,
-      "realCPIAUCNS": -1.898,
-      "realPCEPI": -1.485,
-      "realPCEPILFE": -1.411
-    },
-    "2005-01": {
-      "nominal": 0.849,
-      "realCPI": 1.401,
-      "realCPIAUCNS": 1.667,
-      "realPCEPI": 1.587,
-      "realPCEPILFE": 1.819
-    },
-    "2005-02": {
-      "nominal": -0.192,
-      "realCPI": 0.024,
-      "realCPIAUCNS": 0.183,
-      "realPCEPI": -0.114,
-      "realPCEPILFE": -0.226
-    },
-    "2005-03": {
-      "nominal": -0.944,
-      "realCPI": -0.385,
-      "realCPIAUCNS": 0.03,
-      "realPCEPI": -0.448,
-      "realPCEPILFE": -0.501
-    },
-    "2005-04": {
-      "nominal": 0.981,
-      "realCPI": 0.59,
-      "realCPIAUCNS": 0.953,
-      "realPCEPI": 0.56,
-      "realPCEPILFE": 0.394
-    },
-    "2005-05": {
-      "nominal": 0.05,
-      "realCPI": -0.298,
-      "realCPIAUCNS": -0.349,
-      "realPCEPI": -0.191,
-      "realPCEPILFE": -0.042
-    },
-    "2005-06": {
-      "nominal": 2.544,
-      "realCPI": 2.495,
-      "realCPIAUCNS": 2.495,
-      "realPCEPI": 2.506,
-      "realPCEPILFE": 2.514
-    },
-    "2005-07": {
-      "nominal": 1.685,
-      "realCPI": 1.214,
-      "realCPIAUCNS": 1.056,
-      "realPCEPI": 1.017,
-      "realPCEPILFE": 0.738
-    },
-    "2005-08": {
-      "nominal": -1.123,
-      "realCPI": -0.709,
-      "realCPIAUCNS": -0.811,
-      "realPCEPI": -0.918,
-      "realPCEPILFE": -1.236
-    },
-    "2005-09": {
-      "nominal": 0.645,
-      "realCPI": 1.932,
-      "realCPIAUCNS": 1.776,
-      "realPCEPI": 1.518,
-      "realPCEPILFE": 0.77
-    },
-    "2005-10": {
-      "nominal": 1.92,
-      "realCPI": 1.283,
-      "realCPIAUCNS": 1.334,
-      "realPCEPI": 1.292,
-      "realPCEPILFE": 1.421
-    },
-    "2005-11": {
-      "nominal": 1.606,
-      "realCPI": 1.193,
-      "realCPIAUCNS": 0.887,
-      "realPCEPI": 1.492,
-      "realPCEPILFE": 1.964
-    },
-    "2005-12": {
-      "nominal": -1.874,
-      "realCPI": -1.683,
-      "realCPIAUCNS": -2.081,
-      "realPCEPI": -1.683,
-      "realPCEPILFE": -1.581
-    },
-    "2006-01": {
-      "nominal": 0.154,
-      "realCPI": 1.055,
-      "realCPIAUCNS": 1.212,
-      "realPCEPI": 0.933,
-      "realPCEPILFE": 0.672
-    },
-    "2006-02": {
-      "nominal": 1.826,
-      "realCPI": 1.285,
-      "realCPIAUCNS": 1.439,
-      "realPCEPI": 1.295,
-      "realPCEPILFE": 1.398
-    },
-    "2006-03": {
-      "nominal": -0.299,
-      "realCPI": -0.438,
-      "realCPIAUCNS": -0.037,
-      "realPCEPI": -0.395,
-      "realPCEPILFE": -0.313
-    },
-    "2006-04": {
-      "nominal": -2.332,
-      "realCPI": -2.689,
-      "realCPIAUCNS": -2.35,
-      "realPCEPI": -2.724,
-      "realPCEPILFE": -2.878
-    },
-    "2006-05": {
-      "nominal": -2.309,
-      "realCPI": -2.017,
-      "realCPIAUCNS": -1.824,
-      "realPCEPI": -2.046,
-      "realPCEPILFE": -2.064
-    },
-    "2006-06": {
-      "nominal": -0.037,
-      "realCPI": 0.115,
-      "realCPIAUCNS": 0.064,
-      "realPCEPI": 0.113,
-      "realPCEPILFE": 0.119
-    },
-    "2006-07": {
-      "nominal": -0.884,
-      "realCPI": -0.439,
-      "realCPIAUCNS": -0.686,
-      "realPCEPI": -0.64,
-      "realPCEPILFE": -0.882
-    },
-    "2006-08": {
-      "nominal": -1.207,
-      "realCPI": -0.768,
-      "realCPIAUCNS": -1.013,
-      "realPCEPI": -0.896,
-      "realPCEPILFE": -1.005
-    },
-    "2006-09": {
-      "nominal": -0.607,
-      "realCPI": -0.237,
-      "realCPIAUCNS": -0.237,
-      "realPCEPI": -0.008,
-      "realPCEPILFE": 0.413
-    },
-    "2006-10": {
-      "nominal": -1.834,
-      "realCPI": -1.606,
-      "realCPIAUCNS": -1.704,
-      "realPCEPI": -1.401,
-      "realPCEPILFE": -0.989
-    },
-    "2006-11": {
-      "nominal": 0.655,
-      "realCPI": 0.901,
-      "realCPIAUCNS": 0.701,
-      "realPCEPI": 0.885,
-      "realPCEPILFE": 0.899
-    },
-    "2006-12": {
-      "nominal": -2.309,
-      "realCPI": -1.777,
-      "realCPIAUCNS": -2.163,
-      "realPCEPI": -1.962,
-      "realPCEPILFE": -2.178
-    },
-    "2007-01": {
-      "nominal": 0.635,
-      "realCPI": 0.937,
-      "realCPIAUCNS": 1.078,
-      "realPCEPI": 1.107,
-      "realPCEPILFE": 1.178
-    },
-    "2007-02": {
-      "nominal": -0.243,
-      "realCPI": 0.448,
-      "realCPIAUCNS": 0.596,
-      "realPCEPI": 0.371,
-      "realPCEPILFE": 0.276
-    },
-    "2007-03": {
-      "nominal": -0.424,
-      "realCPI": -0.109,
-      "realCPIAUCNS": 0.279,
-      "realPCEPI": -0.262,
-      "realPCEPILFE": -0.526
-    },
-    "2007-04": {
-      "nominal": -3.117,
-      "realCPI": -3.315,
-      "realCPIAUCNS": -2.978,
-      "realPCEPI": -3.377,
-      "realPCEPILFE": -3.467
-    },
-    "2007-05": {
-      "nominal": -1.677,
-      "realCPI": -1.271,
-      "realCPIAUCNS": -1.076,
-      "realPCEPI": -1.391,
-      "realPCEPILFE": -1.561
-    },
-    "2007-06": {
-      "nominal": 4.542,
-      "realCPI": 4.051,
-      "realCPIAUCNS": 4.012,
-      "realPCEPI": 4.031,
-      "realPCEPILFE": 3.983
-    },
-    "2007-07": {
-      "nominal": 1.713,
-      "realCPI": 0.787,
-      "realCPIAUCNS": 0.582,
-      "realPCEPI": 0.761,
-      "realPCEPILFE": 0.759
-    },
-    "2007-08": {
-      "nominal": -0.703,
-      "realCPI": -1.354,
-      "realCPIAUCNS": -1.566,
-      "realPCEPI": -1.318,
-      "realPCEPILFE": -1.238
-    },
-    "2007-09": {
-      "nominal": -3.249,
-      "realCPI": -2.36,
-      "realCPIAUCNS": -2.504,
-      "realPCEPI": -2.397,
-      "realPCEPILFE": -2.506
-    },
-    "2007-10": {
-      "nominal": -1.794,
-      "realCPI": -1.589,
-      "realCPIAUCNS": -1.681,
-      "realPCEPI": -1.594,
-      "realPCEPILFE": -1.635
-    },
-    "2007-11": {
-      "nominal": -2.504,
-      "realCPI": -2.123,
-      "realCPIAUCNS": -2.31,
-      "realPCEPI": -2.372,
-      "realPCEPILFE": -2.696
-    },
-    "2007-12": {
-      "nominal": -0.234,
-      "realCPI": -0.531,
-      "realCPIAUCNS": -0.885,
-      "realPCEPI": -0.589,
-      "realPCEPILFE": -0.619
-    },
-    "2008-01": {
-      "nominal": -3.926,
-      "realCPI": -3.595,
-      "realCPIAUCNS": -3.449,
-      "realPCEPI": -3.684,
-      "realPCEPILFE": -3.735
-    },
-    "2008-02": {
-      "nominal": -3.799,
-      "realCPI": -3.377,
-      "realCPIAUCNS": -3.331,
-      "realPCEPI": -3.418,
-      "realPCEPILFE": -3.516
-    },
-    "2008-03": {
-      "nominal": -2.704,
-      "realCPI": -2.642,
-      "realCPIAUCNS": -2.148,
-      "realPCEPI": -2.711,
-      "realPCEPILFE": -2.798
-    },
-    "2008-04": {
-      "nominal": 0.252,
-      "realCPI": -0.964,
-      "realCPIAUCNS": -0.594,
-      "realPCEPI": -1.01,
-      "realPCEPILFE": -1.135
-    },
-    "2008-05": {
-      "nominal": -4.003,
-      "realCPI": -4.08,
-      "realCPIAUCNS": -3.841,
-      "realPCEPI": -4.235,
-      "realPCEPILFE": -4.47
-    },
-    "2008-06": {
-      "nominal": -0.488,
-      "realCPI": 0.459,
-      "realCPIAUCNS": 0.419,
-      "realPCEPI": 0.138,
-      "realPCEPILFE": -0.355
-    },
-    "2008-07": {
-      "nominal": 0.263,
-      "realCPI": -0.163,
-      "realCPIAUCNS": -0.351,
-      "realPCEPI": -0.41,
-      "realPCEPILFE": -0.693
-    },
-    "2008-08": {
-      "nominal": 5.564,
-      "realCPI": 4.521,
-      "realCPIAUCNS": 4.259,
-      "realPCEPI": 4.592,
-      "realPCEPILFE": 4.805
-    },
-    "2008-09": {
-      "nominal": -0.367,
-      "realCPI": -0.282,
-      "realCPIAUCNS": -0.505,
-      "realPCEPI": -0.284,
-      "realPCEPILFE": -0.265
-    },
-    "2008-10": {
-      "nominal": 3.991,
-      "realCPI": 3.001,
-      "realCPIAUCNS": 2.845,
-      "realPCEPI": 3.208,
-      "realPCEPILFE": 3.747
-    },
-    "2008-11": {
-      "nominal": 5.512,
-      "realCPI": 4.228,
-      "realCPIAUCNS": 4.074,
-      "realPCEPI": 4.854,
-      "realPCEPILFE": 6.059
-    },
-    "2008-12": {
-      "nominal": -0.526,
-      "realCPI": -1.252,
-      "realCPIAUCNS": -1.462,
-      "realPCEPI": -0.988,
-      "realPCEPILFE": -0.481
-    },
-    "2009-01": {
-      "nominal": 1.121,
-      "realCPI": 1.917,
-      "realCPIAUCNS": 2.103,
-      "realPCEPI": 1.672,
-      "realPCEPILFE": 1.629
-    },
-    "2009-02": {
-      "nominal": 4.848,
-      "realCPI": 5.335,
-      "realCPIAUCNS": 5.474,
-      "realPCEPI": 5.14,
-      "realPCEPILFE": 5.036
-    },
-    "2009-03": {
-      "nominal": 1.364,
-      "realCPI": 0.763,
-      "realCPIAUCNS": 1.108,
-      "realPCEPI": 0.751,
-      "realPCEPILFE": 0.934
-    },
-    "2009-04": {
-      "nominal": 0.888,
-      "realCPI": 0.001,
-      "realCPIAUCNS": 0.149,
-      "realPCEPI": 0.043,
-      "realPCEPILFE": 0.122
-    },
-    "2009-05": {
-      "nominal": -2.486,
-      "realCPI": -2.723,
-      "realCPIAUCNS": -2.586,
-      "realPCEPI": -2.765,
-      "realPCEPILFE": -2.792
-    },
-    "2009-06": {
-      "nominal": -3.617,
-      "realCPI": -3.663,
-      "realCPIAUCNS": -3.635,
-      "realPCEPI": -3.888,
-      "realPCEPILFE": -4.334
-    },
-    "2009-07": {
-      "nominal": -1.3,
-      "realCPI": -2.368,
-      "realCPIAUCNS": -2.494,
-      "realPCEPI": -2.328,
-      "realPCEPILFE": -2.255
-    },
-    "2009-08": {
-      "nominal": -1.55,
-      "realCPI": -1.69,
-      "realCPIAUCNS": -1.799,
-      "realPCEPI": -1.734,
-      "realPCEPILFE": -1.873
-    },
-    "2009-09": {
-      "nominal": -1.727,
-      "realCPI": -1.256,
-      "realCPIAUCNS": -1.384,
-      "realPCEPI": -1.287,
-      "realPCEPILFE": -1.272
-    },
-    "2009-10": {
-      "nominal": -1.053,
-      "realCPI": -0.946,
-      "realCPIAUCNS": -1.147,
-      "realPCEPI": -0.867,
-      "realPCEPILFE": -0.878
-    },
-    "2009-11": {
-      "nominal": 1.416,
-      "realCPI": 1.466,
-      "realCPIAUCNS": 1.199,
-      "realPCEPI": 1.38,
-      "realPCEPILFE": 1.216
-    },
-    "2009-12": {
-      "nominal": 0.283,
-      "realCPI": 0.335,
-      "realCPIAUCNS": 0.106,
-      "realPCEPI": 0.341,
-      "realPCEPILFE": 0.368
-    },
-    "2010-01": {
-      "nominal": -2.034,
-      "realCPI": -1.314,
-      "realCPIAUCNS": -1.041,
-      "realPCEPI": -1.162,
-      "realPCEPILFE": -1.232
-    },
-    "2010-02": {
-      "nominal": 0.916,
-      "realCPI": 1.11,
-      "realCPIAUCNS": 1.232,
-      "realPCEPI": 1.204,
-      "realPCEPILFE": 1.295
-    },
-    "2010-03": {
-      "nominal": -0.071,
-      "realCPI": -0.133,
-      "realCPIAUCNS": 0.243,
-      "realPCEPI": -0.026,
-      "realPCEPILFE": -0.018
-    },
-    "2010-04": {
-      "nominal": -0.837,
-      "realCPI": -1.662,
-      "realCPIAUCNS": -1.514,
-      "realPCEPI": -1.632,
-      "realPCEPILFE": -1.634
-    },
-    "2010-05": {
-      "nominal": 1.963,
-      "realCPI": 1.524,
-      "realCPIAUCNS": 1.656,
-      "realPCEPI": 1.61,
-      "realPCEPILFE": 1.689
-    },
-    "2010-06": {
-      "nominal": 1.766,
-      "realCPI": 1.435,
-      "realCPIAUCNS": 1.378,
-      "realPCEPI": 1.435,
-      "realPCEPILFE": 1.526
-    },
-    "2010-07": {
-      "nominal": 0.055,
-      "realCPI": -0.229,
-      "realCPIAUCNS": -0.394,
-      "realPCEPI": -0.33,
-      "realPCEPILFE": -0.413
-    },
-    "2010-08": {
-      "nominal": -1.65,
-      "realCPI": -1.967,
-      "realCPIAUCNS": -1.975,
-      "realPCEPI": -1.976,
-      "realPCEPILFE": -2.017
-    },
-    "2010-09": {
-      "nominal": -1.403,
-      "realCPI": -1.52,
-      "realCPIAUCNS": -1.622,
-      "realPCEPI": -1.581,
-      "realPCEPILFE": -1.623
-    },
-    "2010-10": {
-      "nominal": -3.381,
-      "realCPI": -3.316,
-      "realCPIAUCNS": -3.531,
-      "realPCEPI": -3.344,
-      "realPCEPILFE": -3.504
-    },
-    "2010-11": {
-      "nominal": 0.914,
-      "realCPI": 1.075,
-      "realCPIAUCNS": 0.862,
-      "realPCEPI": 1.021,
-      "realPCEPILFE": 0.951
-    },
-    "2010-12": {
-      "nominal": -1.105,
-      "realCPI": -1.076,
-      "realCPIAUCNS": -1.302,
-      "realPCEPI": -1.248,
-      "realPCEPILFE": -1.451
-    },
-    "2011-01": {
-      "nominal": -0.546,
-      "realCPI": -0.428,
-      "realCPIAUCNS": -0.277,
-      "realPCEPI": -0.452,
-      "realPCEPILFE": -0.537
-    },
-    "2011-02": {
-      "nominal": 2.019,
-      "realCPI": 2.047,
-      "realCPIAUCNS": 2.221,
-      "realPCEPI": 2.003,
-      "realPCEPILFE": 1.898
-    },
-    "2011-03": {
-      "nominal": -2.569,
-      "realCPI": -2.256,
-      "realCPIAUCNS": -1.81,
-      "realPCEPI": -2.368,
-      "realPCEPILFE": -2.611
-    },
-    "2011-04": {
-      "nominal": -3.62,
-      "realCPI": -3.731,
-      "realCPIAUCNS": -3.564,
-      "realPCEPI": -3.774,
-      "realPCEPILFE": -3.961
-    },
-    "2011-05": {
-      "nominal": 1.0,
-      "realCPI": 0.832,
-      "realCPIAUCNS": 0.985,
-      "realPCEPI": 0.818,
-      "realPCEPILFE": 0.751
-    },
-    "2011-06": {
-      "nominal": -1.318,
-      "realCPI": -1.698,
-      "realCPIAUCNS": -1.803,
-      "realPCEPI": -1.718,
-      "realPCEPILFE": -1.59
-    },
-    "2011-07": {
-      "nominal": -0.064,
-      "realCPI": 0.488,
-      "realCPIAUCNS": 0.314,
-      "realPCEPI": 0.396,
-      "realPCEPILFE": 0.373
-    },
-    "2011-08": {
-      "nominal": 3.599,
-      "realCPI": 3.427,
-      "realCPIAUCNS": 3.386,
-      "realPCEPI": 3.344,
-      "realPCEPILFE": 3.307
-    },
-    "2011-09": {
-      "nominal": 3.875,
-      "realCPI": 4.301,
-      "realCPIAUCNS": 4.233,
-      "realPCEPI": 4.221,
-      "realPCEPILFE": 4.145
-    },
-    "2011-10": {
-      "nominal": -0.395,
-      "realCPI": -0.423,
-      "realCPIAUCNS": -0.696,
-      "realPCEPI": -0.488,
-      "realPCEPILFE": -0.442
-    },
-    "2011-11": {
-      "nominal": 1.62,
-      "realCPI": 1.906,
-      "realCPIAUCNS": 1.632,
-      "realPCEPI": 1.926,
-      "realPCEPILFE": 1.933
-    },
-    "2011-12": {
-      "nominal": 1.301,
-      "realCPI": 1.325,
-      "realCPIAUCNS": 1.051,
-      "realPCEPI": 1.359,
-      "realPCEPILFE": 1.468
-    },
-    "2012-01": {
-      "nominal": 0.929,
-      "realCPI": 1.204,
-      "realCPIAUCNS": 1.373,
-      "realPCEPI": 1.274,
-      "realPCEPILFE": 1.231
-    },
-    "2012-02": {
-      "nominal": -1.789,
-      "realCPI": -1.579,
-      "realCPIAUCNS": -1.357,
-      "realPCEPI": -1.569,
-      "realPCEPILFE": -1.652
-    },
-    "2012-03": {
-      "nominal": 0.599,
-      "realCPI": 0.423,
-      "realCPIAUCNS": 0.974,
-      "realPCEPI": 0.405,
-      "realPCEPILFE": 0.383
-    },
-    "2012-04": {
-      "nominal": -0.316,
-      "realCPI": -1.004,
-      "realCPIAUCNS": -0.87,
-      "realPCEPI": -1.038,
-      "realPCEPILFE": -1.019
-    },
-    "2012-05": {
-      "nominal": 2.027,
-      "realCPI": 1.816,
-      "realCPIAUCNS": 1.908,
-      "realPCEPI": 1.913,
-      "realPCEPILFE": 2.131
-    },
-    "2012-06": {
-      "nominal": 1.709,
-      "realCPI": 1.915,
-      "realCPIAUCNS": 1.85,
-      "realPCEPI": 1.948,
-      "realPCEPILFE": 2.104
-    },
-    "2012-07": {
-      "nominal": 2.526,
-      "realCPI": 2.458,
-      "realCPIAUCNS": 2.261,
-      "realPCEPI": 2.465,
-      "realPCEPILFE": 2.534
-    },
-    "2012-08": {
-      "nominal": 0.608,
-      "realCPI": 0.144,
-      "realCPIAUCNS": 0.12,
-      "realPCEPI": -0.1,
-      "realPCEPILFE": -0.371
-    },
-    "2012-09": {
-      "nominal": -1.413,
-      "realCPI": -0.942,
-      "realCPIAUCNS": -0.973,
-      "realPCEPI": -1.113,
-      "realPCEPILFE": -1.292
-    },
-    "2012-10": {
-      "nominal": -2.715,
-      "realCPI": -2.269,
-      "realCPIAUCNS": -2.569,
-      "realPCEPI": -2.243,
-      "realPCEPILFE": -2.295
-    },
-    "2012-11": {
-      "nominal": 1.099,
-      "realCPI": 1.407,
-      "realCPIAUCNS": 1.097,
-      "realPCEPI": 1.508,
-      "realPCEPILFE": 1.687
-    },
-    "2012-12": {
-      "nominal": -2.988,
-      "realCPI": -3.184,
-      "realCPIAUCNS": -3.433,
-      "realPCEPI": -3.187,
-      "realPCEPILFE": -3.101
-    },
-    "2013-01": {
-      "nominal": -0.997,
-      "realCPI": -0.628,
-      "realCPIAUCNS": -0.531,
-      "realPCEPI": -0.636,
-      "realPCEPILFE": -0.624
-    },
-    "2013-02": {
-      "nominal": -1.25,
-      "realCPI": -0.714,
-      "realCPIAUCNS": -0.441,
-      "realPCEPI": -0.899,
-      "realPCEPILFE": -1.143
-    },
-    "2013-03": {
-      "nominal": -0.013,
-      "realCPI": -0.492,
-      "realCPIAUCNS": 0.049,
-      "realPCEPI": -0.343,
-      "realPCEPILFE": -0.12
-    },
-    "2013-04": {
-      "nominal": -1.957,
-      "realCPI": -2.55,
-      "realCPIAUCNS": -2.448,
-      "realPCEPI": -2.445,
-      "realPCEPILFE": -2.298
-    },
-    "2013-05": {
-      "nominal": 0.241,
-      "realCPI": 0.183,
-      "realCPIAUCNS": 0.32,
-      "realPCEPI": 0.215,
-      "realPCEPILFE": 0.259
-    },
-    "2013-06": {
-      "nominal": 0.035,
-      "realCPI": -0.515,
-      "realCPIAUCNS": -0.513,
-      "realPCEPI": -0.53,
-      "realPCEPILFE": -0.58
-    },
-    "2013-07": {
-      "nominal": -0.639,
-      "realCPI": -0.737,
-      "realCPIAUCNS": -0.891,
-      "realPCEPI": -0.807,
-      "realPCEPILFE": -0.804
-    },
-    "2013-08": {
-      "nominal": -0.781,
-      "realCPI": -0.739,
-      "realCPIAUCNS": -0.856,
-      "realPCEPI": -0.829,
-      "realPCEPILFE": -0.868
-    },
-    "2013-09": {
-      "nominal": -0.473,
-      "realCPI": -0.435,
-      "realCPIAUCNS": -0.357,
-      "realPCEPI": -0.429,
-      "realPCEPILFE": -0.355
-    },
-    "2013-10": {
-      "nominal": -0.68,
-      "realCPI": -0.918,
-      "realCPIAUCNS": -1.226,
-      "realPCEPI": -0.84,
-      "realPCEPILFE": -0.803
-    },
-    "2013-11": {
-      "nominal": -0.024,
-      "realCPI": 0.552,
-      "realCPIAUCNS": 0.162,
-      "realPCEPI": 0.516,
-      "realPCEPILFE": 0.533
-    },
-    "2013-12": {
-      "nominal": -0.891,
-      "realCPI": -0.726,
-      "realCPIAUCNS": -0.997,
-      "realPCEPI": -0.815,
-      "realPCEPILFE": -0.883
-    },
-    "2014-01": {
-      "nominal": -0.333,
-      "realCPI": 0.498,
-      "realCPIAUCNS": 0.628,
-      "realPCEPI": 0.463,
-      "realPCEPILFE": 0.363
-    },
-    "2014-02": {
-      "nominal": 0.721,
-      "realCPI": 1.031,
-      "realCPIAUCNS": 1.293,
-      "realPCEPI": 0.967,
-      "realPCEPILFE": 0.967
-    },
-    "2014-03": {
-      "nominal": -1.098,
-      "realCPI": -1.189,
-      "realCPIAUCNS": -0.755,
-      "realPCEPI": -1.232,
-      "realPCEPILFE": -1.244
-    },
-    "2014-04": {
-      "nominal": -0.118,
-      "realCPI": -0.03,
-      "realCPIAUCNS": 0.112,
-      "realPCEPI": -0.039,
-      "realPCEPILFE": -0.046
-    },
-    "2014-05": {
-      "nominal": -0.3,
-      "realCPI": -0.208,
-      "realCPIAUCNS": -0.05,
-      "realPCEPI": -0.233,
-      "realPCEPILFE": -0.23
-    },
-    "2014-06": {
-      "nominal": -0.341,
-      "realCPI": -0.501,
-      "realCPIAUCNS": -0.448,
-      "realPCEPI": -0.524,
-      "realPCEPILFE": -0.52
-    },
-    "2014-07": {
-      "nominal": -0.927,
-      "realCPI": -0.913,
-      "realCPIAUCNS": -1.063,
-      "realPCEPI": -0.884,
-      "realPCEPILFE": -0.852
-    },
-    "2014-08": {
-      "nominal": 2.294,
-      "realCPI": 2.377,
-      "realCPIAUCNS": 2.223,
-      "realPCEPI": 2.381,
-      "realPCEPILFE": 2.433
-    },
-    "2014-09": {
-      "nominal": 3.633,
-      "realCPI": 3.945,
-      "realCPIAUCNS": 4.016,
-      "realPCEPI": 3.974,
-      "realPCEPILFE": 4.077
-    },
-    "2014-10": {
-      "nominal": 2.999,
-      "realCPI": 2.677,
-      "realCPIAUCNS": 2.439,
-      "realPCEPI": 2.667,
-      "realPCEPILFE": 2.786
-    },
-    "2014-11": {
-      "nominal": 2.491,
-      "realCPI": 2.498,
-      "realCPIAUCNS": 2.137,
-      "realPCEPI": 2.593,
-      "realPCEPILFE": 2.782
-    },
-    "2014-12": {
-      "nominal": 2.76,
-      "realCPI": 2.443,
-      "realCPIAUCNS": 2.177,
-      "realPCEPI": 2.579,
-      "realPCEPILFE": 2.832
-    },
-    "2015-01": {
-      "nominal": 0.298,
-      "realCPI": 0.561,
-      "realCPIAUCNS": 0.729,
-      "realPCEPI": 0.72,
-      "realPCEPILFE": 1.169
-    },
-    "2015-02": {
-      "nominal": -1.356,
-      "realCPI": -0.404,
-      "realCPIAUCNS": -0.224,
-      "realPCEPI": -0.48,
-      "realPCEPILFE": -0.542
-    },
-    "2015-03": {
-      "nominal": 2.697,
-      "realCPI": 2.661,
-      "realCPIAUCNS": 2.995,
-      "realPCEPI": 2.579,
-      "realPCEPILFE": 2.54
-    },
-    "2015-04": {
-      "nominal": -1.486,
-      "realCPI": -1.978,
-      "realCPIAUCNS": -1.881,
-      "realPCEPI": -1.994,
-      "realPCEPILFE": -1.9
-    },
-    "2015-05": {
-      "nominal": -1.935,
-      "realCPI": -1.809,
-      "realCPIAUCNS": -1.633,
-      "realPCEPI": -1.897,
-      "realPCEPILFE": -2.012
-    },
-    "2015-06": {
-      "nominal": -0.979,
-      "realCPI": -1.003,
-      "realCPIAUCNS": -0.93,
-      "realPCEPI": -1.084,
-      "realPCEPILFE": -1.158
-    },
-    "2015-07": {
-      "nominal": -0.927,
-      "realCPI": -0.968,
-      "realCPIAUCNS": -1.118,
-      "realPCEPI": -1.035,
-      "realPCEPILFE": -1.027
-    },
-    "2015-08": {
-      "nominal": 1.474,
-      "realCPI": 1.677,
-      "realCPIAUCNS": 1.533,
-      "realPCEPI": 1.685,
-      "realPCEPILFE": 1.759
-    },
-    "2015-09": {
-      "nominal": 1.771,
-      "realCPI": 1.95,
-      "realCPIAUCNS": 2.021,
-      "realPCEPI": 2.039,
-      "realPCEPILFE": 2.327
-    },
-    "2015-10": {
-      "nominal": -1.276,
-      "realCPI": -1.278,
-      "realCPIAUCNS": -1.42,
-      "realPCEPI": -1.375,
-      "realPCEPILFE": -1.343
-    },
-    "2015-11": {
-      "nominal": 0.682,
-      "realCPI": 1.208,
-      "realCPIAUCNS": 0.874,
-      "realPCEPI": 1.151,
-      "realPCEPILFE": 1.196
-    },
-    "2015-12": {
-      "nominal": -0.205,
-      "realCPI": -0.212,
-      "realCPIAUCNS": -0.446,
-      "realPCEPI": -0.188,
-      "realPCEPILFE": -0.039
-    },
-    "2016-01": {
-      "nominal": 1.792,
-      "realCPI": 2.261,
-      "realCPIAUCNS": 2.477,
-      "realPCEPI": 2.35,
-      "realPCEPILFE": 2.487
-    },
-    "2016-02": {
-      "nominal": -1.085,
-      "realCPI": -0.915,
-      "realCPIAUCNS": -0.701,
-      "realPCEPI": -0.835,
-      "realPCEPILFE": -0.611
-    },
-    "2016-03": {
-      "nominal": -1.034,
-      "realCPI": -0.522,
-      "realCPIAUCNS": -0.406,
-      "realPCEPI": -0.601,
-      "realPCEPILFE": -0.691
-    },
-    "2016-04": {
-      "nominal": -2.306,
-      "realCPI": -2.33,
-      "realCPIAUCNS": -2.242,
-      "realPCEPI": -2.384,
-      "realPCEPILFE": -2.463
-    },
-    "2016-05": {
-      "nominal": 0.927,
-      "realCPI": 0.858,
-      "realCPIAUCNS": 1.028,
-      "realPCEPI": 0.785,
-      "realPCEPILFE": 0.792
-    },
-    "2016-06": {
-      "nominal": 1.132,
-      "realCPI": 1.106,
-      "realCPIAUCNS": 1.157,
-      "realPCEPI": 1.003,
-      "realPCEPILFE": 0.931
-    },
-    "2016-07": {
-      "nominal": 0.021,
-      "realCPI": -0.432,
-      "realCPIAUCNS": -0.543,
-      "realPCEPI": -0.364,
-      "realPCEPILFE": -0.237
-    },
-    "2016-08": {
-      "nominal": -1.608,
-      "realCPI": -1.128,
-      "realCPIAUCNS": -1.22,
-      "realPCEPI": -1.173,
-      "realPCEPILFE": -1.136
-    },
-    "2016-09": {
-      "nominal": -0.782,
-      "realCPI": -0.421,
-      "realCPIAUCNS": -0.443,
-      "realPCEPI": -0.493,
-      "realPCEPILFE": -0.55
-    },
-    "2016-10": {
-      "nominal": 1.487,
-      "realCPI": 1.52,
-      "realCPIAUCNS": 1.409,
-      "realPCEPI": 1.49,
-      "realPCEPILFE": 1.413
-    },
-    "2016-11": {
-      "nominal": 0.553,
-      "realCPI": 1.079,
-      "realCPIAUCNS": 0.803,
-      "realPCEPI": 0.993,
-      "realPCEPILFE": 1.004
-    },
-    "2016-12": {
-      "nominal": -0.368,
-      "realCPI": -0.117,
-      "realCPIAUCNS": -0.336,
-      "realPCEPI": -0.197,
-      "realPCEPILFE": -0.252
-    },
-    "2017-01": {
-      "nominal": -0.275,
-      "realCPI": 0.329,
-      "realCPIAUCNS": 0.507,
-      "realPCEPI": 0.308,
-      "realPCEPILFE": 0.192
-    },
-    "2017-02": {
-      "nominal": -2.335,
-      "realCPI": -2.179,
-      "realCPIAUCNS": -2.027,
-      "realPCEPI": -2.202,
-      "realPCEPILFE": -2.162
-    },
-    "2017-03": {
-      "nominal": -2.138,
-      "realCPI": -2.477,
-      "realCPIAUCNS": -2.352,
-      "realPCEPI": -2.481,
-      "realPCEPILFE": -2.473
-    },
-    "2017-04": {
-      "nominal": 0.01,
-      "realCPI": -0.066,
-      "realCPIAUCNS": 0.107,
-      "realPCEPI": 0.001,
-      "realPCEPILFE": 0.015
-    },
-    "2017-05": {
-      "nominal": -1.432,
-      "realCPI": -1.9,
-      "realCPIAUCNS": -1.74,
-      "realPCEPI": -1.866,
-      "realPCEPILFE": -1.745
-    },
-    "2017-06": {
-      "nominal": -1.822,
-      "realCPI": -1.071,
-      "realCPIAUCNS": -1.045,
-      "realPCEPI": -1.052,
-      "realPCEPILFE": -1.002
-    },
-    "2017-07": {
-      "nominal": 0.539,
-      "realCPI": 0.673,
-      "realCPIAUCNS": 0.57,
-      "realPCEPI": 0.677,
-      "realPCEPILFE": 0.713
-    },
-    "2017-08": {
-      "nominal": 1.415,
-      "realCPI": 1.5,
-      "realCPIAUCNS": 1.414,
-      "realPCEPI": 1.338,
-      "realPCEPILFE": 1.22
-    },
-    "2017-09": {
-      "nominal": -1.771,
-      "realCPI": -1.368,
-      "realCPIAUCNS": -1.35,
-      "realPCEPI": -1.503,
-      "realPCEPILFE": -1.75
-    },
-    "2017-10": {
-      "nominal": -0.705,
-      "realCPI": -0.925,
-      "realCPIAUCNS": -1.064,
-      "realPCEPI": -0.872,
-      "realPCEPILFE": -0.759
-    },
-    "2017-11": {
-      "nominal": 0.137,
-      "realCPI": 0.705,
-      "realCPIAUCNS": 0.439,
-      "realPCEPI": 0.581,
-      "realPCEPILFE": 0.486
-    },
-    "2017-12": {
-      "nominal": -0.392,
-      "realCPI": -0.281,
-      "realCPIAUCNS": -0.549,
-      "realPCEPI": -0.347,
-      "realPCEPILFE": -0.344
-    },
-    "2018-01": {
-      "nominal": -2.29,
-      "realCPI": -1.383,
-      "realCPIAUCNS": -1.266,
-      "realPCEPI": -1.433,
-      "realPCEPILFE": -1.485
-    },
-    "2018-02": {
-      "nominal": 2.079,
-      "realCPI": 2.252,
-      "realCPIAUCNS": 2.439,
-      "realPCEPI": 2.196,
-      "realPCEPILFE": 2.17
-    },
-    "2018-03": {
-      "nominal": -0.731,
-      "realCPI": -1.009,
-      "realCPIAUCNS": -0.805,
-      "realPCEPI": -0.923,
-      "realPCEPILFE": -0.812
-    },
-    "2018-04": {
-      "nominal": 2.01,
-      "realCPI": 1.869,
-      "realCPIAUCNS": 2.008,
-      "realPCEPI": 1.847,
-      "realPCEPILFE": 1.788
-    },
-    "2018-05": {
-      "nominal": 1.483,
-      "realCPI": 1.21,
-      "realCPIAUCNS": 1.402,
-      "realPCEPI": 1.156,
-      "realPCEPILFE": 1.159
-    },
-    "2018-06": {
-      "nominal": 0.375,
-      "realCPI": 0.367,
-      "realCPIAUCNS": 0.436,
-      "realPCEPI": 0.363,
-      "realPCEPILFE": 0.367
-    },
-    "2018-07": {
-      "nominal": 1.132,
-      "realCPI": 1.211,
-      "realCPIAUCNS": 1.139,
-      "realPCEPI": 1.239,
-      "realPCEPILFE": 1.265
-    },
-    "2018-08": {
-      "nominal": 0.579,
-      "realCPI": 0.66,
-      "realCPIAUCNS": 0.536,
-      "realPCEPI": 0.55,
-      "realPCEPILFE": 0.49
-    },
-    "2018-09": {
-      "nominal": -2.016,
-      "realCPI": -1.91,
-      "realCPIAUCNS": -1.998,
-      "realPCEPI": -1.911,
-      "realPCEPILFE": -1.931
-    },
-    "2018-10": {
-      "nominal": 1.765,
-      "realCPI": 1.703,
-      "realCPIAUCNS": 1.645,
-      "realPCEPI": 1.641,
-      "realPCEPILFE": 1.625
-    },
-    "2018-11": {
-      "nominal": 1.354,
-      "realCPI": 1.582,
-      "realCPIAUCNS": 1.313,
-      "realPCEPI": 1.688,
-      "realPCEPILFE": 1.842
-    },
-    "2018-12": {
-      "nominal": 1.28,
-      "realCPI": 1.65,
-      "realCPIAUCNS": 1.256,
-      "realPCEPI": 1.651,
-      "realPCEPILFE": 1.758
-    },
-    "2019-01": {
-      "nominal": -1.755,
-      "realCPI": -1.739,
-      "realCPIAUCNS": -1.471,
-      "realPCEPI": -1.709,
-      "realPCEPILFE": -1.529
-    },
-    "2019-02": {
-      "nominal": -1.648,
-      "realCPI": -1.451,
-      "realCPIAUCNS": -1.33,
-      "realPCEPI": -1.566,
-      "realPCEPILFE": -1.657
-    },
-    "2019-03": {
-      "nominal": -0.211,
-      "realCPI": -0.331,
-      "realCPIAUCNS": -0.147,
-      "realPCEPI": -0.482,
-      "realPCEPILFE": -0.615
-    },
-    "2019-04": {
-      "nominal": -0.664,
-      "realCPI": -0.586,
-      "realCPIAUCNS": -0.434,
-      "realPCEPI": -0.679,
-      "realPCEPILFE": -0.76
-    },
-    "2019-05": {
-      "nominal": -0.038,
-      "realCPI": -0.702,
-      "realCPIAUCNS": -0.515,
-      "realPCEPI": -0.654,
-      "realPCEPILFE": -0.624
-    },
-    "2019-06": {
-      "nominal": 0.113,
-      "realCPI": 0.674,
-      "realCPIAUCNS": 0.727,
-      "realPCEPI": 0.755,
-      "realPCEPILFE": 0.891
-    },
-    "2019-07": {
-      "nominal": -1.464,
-      "realCPI": -0.942,
-      "realCPIAUCNS": -1.005,
-      "realPCEPI": -1.038,
-      "realPCEPILFE": -1.058
-    },
-    "2019-08": {
-      "nominal": -0.943,
-      "realCPI": -1.049,
-      "realCPIAUCNS": -1.144,
-      "realPCEPI": -1.093,
-      "realPCEPILFE": -1.026
-    },
-    "2019-09": {
-      "nominal": 0.365,
-      "realCPI": 0.719,
-      "realCPIAUCNS": 0.643,
-      "realPCEPI": 0.626,
-      "realPCEPILFE": 0.638
-    },
-    "2019-10": {
-      "nominal": -0.137,
-      "realCPI": -0.251,
-      "realCPIAUCNS": -0.304,
-      "realPCEPI": -0.355,
-      "realPCEPILFE": -0.383
-    },
-    "2019-11": {
-      "nominal": -1.04,
-      "realCPI": -0.368,
-      "realCPIAUCNS": -0.701,
-      "realPCEPI": -0.545,
-      "realPCEPILFE": -0.586
-    },
-    "2019-12": {
-      "nominal": -0.206,
-      "realCPI": 0.084,
-      "realCPIAUCNS": -0.297,
-      "realPCEPI": 0.065,
-      "realPCEPILFE": 0.014
-    },
-    "2020-01": {
-      "nominal": -0.439,
-      "realCPI": 0.15,
-      "realCPIAUCNS": 0.346,
-      "realPCEPI": 0.133,
-      "realPCEPILFE": 0.135
-    },
-    "2020-02": {
-      "nominal": -0.767,
-      "realCPI": -0.621,
-      "realCPIAUCNS": -0.396,
-      "realPCEPI": -0.589,
-      "realPCEPILFE": -0.474
-    },
-    "2020-03": {
-      "nominal": 5.366,
-      "realCPI": 4.472,
-      "realCPIAUCNS": 4.719,
-      "realPCEPI": 4.644,
-      "realPCEPILFE": 4.868
-    },
-    "2020-04": {
-      "nominal": -1.384,
-      "realCPI": -1.873,
-      "realCPIAUCNS": -1.751,
-      "realPCEPI": -1.5,
-      "realPCEPILFE": -1.41
-    },
-    "2020-05": {
-      "nominal": -1.41,
-      "realCPI": -1.204,
-      "realCPIAUCNS": -1.113,
-      "realPCEPI": -1.016,
-      "realPCEPILFE": -1.011
-    },
-    "2020-06": {
-      "nominal": -1.682,
-      "realCPI": -1.107,
-      "realCPIAUCNS": -1.046,
-      "realPCEPI": -1.274,
-      "realPCEPILFE": -1.431
-    },
-    "2020-07": {
-      "nominal": -0.727,
-      "realCPI": -0.42,
-      "realCPIAUCNS": -0.424,
-      "realPCEPI": -0.632,
-      "realPCEPILFE": -0.573
-    },
-    "2020-08": {
-      "nominal": -0.94,
-      "realCPI": -0.571,
-      "realCPIAUCNS": -0.628,
-      "realPCEPI": -0.664,
-      "realPCEPILFE": -0.651
-    },
-    "2020-09": {
-      "nominal": 0.488,
-      "realCPI": 0.853,
-      "realCPIAUCNS": 0.728,
-      "realPCEPI": 0.768,
-      "realPCEPILFE": 0.748
-    },
-    "2020-10": {
-      "nominal": -0.657,
-      "realCPI": -0.831,
-      "realCPIAUCNS": -0.913,
-      "realPCEPI": -0.865,
-      "realPCEPILFE": -0.863
-    },
-    "2020-11": {
-      "nominal": -1.05,
-      "realCPI": -0.628,
-      "realCPIAUCNS": -0.914,
-      "realPCEPI": -0.752,
-      "realPCEPILFE": -0.761
-    },
-    "2020-12": {
-      "nominal": -3.33,
-      "realCPI": -2.813,
-      "realCPIAUCNS": -3.143,
-      "realPCEPI": -2.828,
-      "realPCEPILFE": -2.967
-    },
-    "2021-01": {
-      "nominal": -0.782,
-      "realCPI": -0.439,
-      "realCPIAUCNS": -0.26,
-      "realPCEPI": -0.261,
-      "realPCEPILFE": -0.321
-    },
-    "2021-02": {
-      "nominal": 1.478,
-      "realCPI": 1.518,
-      "realCPIAUCNS": 1.728,
-      "realPCEPI": 1.51,
-      "realPCEPILFE": 1.383
-    },
-    "2021-03": {
-      "nominal": 1.269,
-      "realCPI": 1.193,
-      "realCPIAUCNS": 1.378,
-      "realPCEPI": 1.189,
-      "realPCEPILFE": 1.073
-    },
-    "2021-04": {
-      "nominal": -1.08,
-      "realCPI": -0.759,
-      "realCPIAUCNS": -0.564,
-      "realPCEPI": -0.855,
-      "realPCEPILFE": -0.798
-    },
-    "2021-05": {
-      "nominal": -0.403,
-      "realCPI": -0.138,
-      "realCPIAUCNS": -0.001,
-      "realPCEPI": -0.282,
-      "realPCEPILFE": -0.297
-    },
-    "2021-06": {
-      "nominal": -0.323,
-      "realCPI": 0.421,
-      "realCPIAUCNS": 0.504,
-      "realPCEPI": 0.117,
-      "realPCEPILFE": 0.043
-    },
-    "2021-07": {
-      "nominal": 0.582,
-      "realCPI": 0.649,
-      "realCPIAUCNS": 0.668,
-      "realPCEPI": 0.643,
-      "realPCEPILFE": 0.606
-    },
-    "2021-08": {
-      "nominal": -1.436,
-      "realCPI": -1.446,
-      "realCPIAUCNS": -1.522,
-      "realPCEPI": -1.349,
-      "realPCEPILFE": -1.409
-    },
-    "2021-09": {
-      "nominal": -0.501,
-      "realCPI": -0.246,
-      "realCPIAUCNS": -0.426,
-      "realPCEPI": -0.369,
-      "realPCEPILFE": -0.485
-    },
-    "2021-10": {
-      "nominal": 0.249,
-      "realCPI": 1.116,
-      "realCPIAUCNS": 0.983,
-      "realPCEPI": 0.814,
-      "realPCEPILFE": 0.651
-    },
-    "2021-11": {
-      "nominal": -2.955,
-      "realCPI": -2.028,
-      "realCPIAUCNS": -2.383,
-      "realPCEPI": -2.213,
-      "realPCEPILFE": -2.347
-    },
-    "2021-12": {
-      "nominal": 0.369,
-      "realCPI": 0.766,
-      "realCPIAUCNS": 0.383,
-      "realPCEPI": 0.695,
-      "realPCEPILFE": 0.66
-    },
-    "2022-01": {
-      "nominal": 0.074,
-      "realCPI": 0.484,
-      "realCPIAUCNS": 0.72,
-      "realPCEPI": 0.426,
-      "realPCEPILFE": 0.38
-    },
-    "2022-02": {
-      "nominal": 2.537,
-      "realCPI": 2.549,
-      "realCPIAUCNS": 2.774,
-      "realPCEPI": 2.445,
-      "realPCEPILFE": 2.291
-    },
-    "2022-03": {
-      "nominal": 0.916,
-      "realCPI": 1.454,
-      "realCPIAUCNS": 1.674,
-      "realPCEPI": 1.217,
-      "realPCEPILFE": 0.732
-    },
-    "2022-04": {
-      "nominal": -0.033,
-      "realCPI": -0.489,
-      "realCPIAUCNS": -0.241,
-      "realPCEPI": -0.498,
-      "realPCEPILFE": -0.45
-    },
-    "2022-05": {
-      "nominal": 4.311,
-      "realCPI": 4.702,
-      "realCPIAUCNS": 4.861,
-      "realPCEPI": 4.362,
-      "realPCEPILFE": 4.08
-    },
-    "2022-06": {
-      "nominal": 0.948,
-      "realCPI": 1.83,
-      "realCPIAUCNS": 1.948,
-      "realPCEPI": 1.535,
-      "realPCEPILFE": 1.162
-    },
-    "2022-07": {
-      "nominal": 1.508,
-      "realCPI": 0.355,
-      "realCPIAUCNS": 0.359,
-      "realPCEPI": 0.364,
-      "realPCEPILFE": 0.592
-    },
-    "2022-08": {
-      "nominal": -4.81,
-      "realCPI": -4.483,
-      "realCPIAUCNS": -4.577,
-      "realPCEPI": -4.277,
-      "realPCEPILFE": -4.003
-    },
-    "2022-09": {
-      "nominal": 4.346,
-      "realCPI": 4.593,
-      "realCPIAUCNS": 4.375,
-      "realPCEPI": 4.521,
-      "realPCEPILFE": 4.614
-    },
-    "2022-10": {
-      "nominal": 3.072,
-      "realCPI": 3.071,
-      "realCPIAUCNS": 2.913,
-      "realPCEPI": 2.976,
-      "realPCEPILFE": 2.865
-    },
-    "2022-11": {
-      "nominal": -1.927,
-      "realCPI": -1.762,
-      "realCPIAUCNS": -2.117,
-      "realPCEPI": -1.765,
-      "realPCEPILFE": -1.736
-    },
-    "2022-12": {
-      "nominal": -0.805,
-      "realCPI": -1.065,
-      "realCPIAUCNS": -1.384,
-      "realPCEPI": -0.946,
-      "realPCEPILFE": -0.73
-    },
-    "2023-01": {
-      "nominal": -0.182,
-      "realCPI": 0.037,
-      "realCPIAUCNS": 0.304,
-      "realPCEPI": 0.041,
-      "realPCEPILFE": -0.021
-    },
-    "2023-02": {
-      "nominal": 2.841,
-      "realCPI": 2.691,
-      "realCPIAUCNS": 2.912,
-      "realPCEPI": 2.642,
-      "realPCEPILFE": 2.71
-    },
-    "2023-03": {
-      "nominal": 2.168,
-      "realCPI": 1.897,
-      "realCPIAUCNS": 2.109,
-      "realPCEPI": 1.916,
-      "realPCEPILFE": 2.105
-    },
-    "2023-04": {
-      "nominal": 0.508,
-      "realCPI": 0.074,
-      "realCPIAUCNS": 0.24,
-      "realPCEPI": 0.08,
-      "realPCEPILFE": 0.088
-    },
-    "2023-05": {
-      "nominal": 0.597,
-      "realCPI": 0.567,
-      "realCPIAUCNS": 0.657,
-      "realPCEPI": 0.571,
-      "realPCEPILFE": 0.7
-    },
-    "2023-06": {
-      "nominal": -0.422,
-      "realCPI": -0.199,
-      "realCPIAUCNS": -0.101,
-      "realPCEPI": -0.158,
-      "realPCEPILFE": -0.166
-    },
-    "2023-07": {
-      "nominal": 0.651,
-      "realCPI": 0.558,
-      "realCPIAUCNS": 0.553,
-      "realPCEPI": 0.477,
-      "realPCEPILFE": 0.501
-    },
-    "2023-08": {
-      "nominal": 2.113,
-      "realCPI": 2.118,
-      "realCPIAUCNS": 2.071,
-      "realPCEPI": 1.933,
-      "realPCEPILFE": 1.74
-    },
-    "2023-09": {
-      "nominal": 1.983,
-      "realCPI": 2.479,
-      "realCPIAUCNS": 2.334,
-      "realPCEPI": 2.459,
-      "realPCEPILFE": 2.395
-    },
-    "2023-10": {
-      "nominal": 4.139,
-      "realCPI": 3.787,
-      "realCPIAUCNS": 3.605,
-      "realPCEPI": 3.7,
-      "realPCEPILFE": 3.803
-    },
-    "2023-11": {
-      "nominal": -4.336,
-      "realCPI": -3.922,
-      "realCPIAUCNS": -4.256,
-      "realPCEPI": -4.056,
-      "realPCEPILFE": -3.957
-    },
-    "2023-12": {
-      "nominal": -3.541,
-      "realCPI": -3.264,
-      "realCPIAUCNS": -3.545,
-      "realPCEPI": -3.317,
-      "realPCEPILFE": -3.275
-    },
-    "2024-01": {
-      "nominal": 1.153,
-      "realCPI": 1.466,
-      "realCPIAUCNS": 1.704,
-      "realPCEPI": 1.627,
-      "realPCEPILFE": 1.677
-    },
-    "2024-02": {
-      "nominal": -1.817,
-      "realCPI": -1.789,
-      "realCPIAUCNS": -1.584,
-      "realPCEPI": -1.895,
-      "realPCEPILFE": -1.931
-    },
-    "2024-03": {
-      "nominal": -0.494,
-      "realCPI": -0.619,
-      "realCPIAUCNS": -0.418,
-      "realPCEPI": -0.702,
-      "realPCEPILFE": -0.673
-    },
-    "2024-04": {
-      "nominal": 3.183,
-      "realCPI": 2.536,
-      "realCPIAUCNS": 2.713,
-      "realPCEPI": 2.566,
-      "realPCEPILFE": 2.562
-    },
-    "2024-05": {
-      "nominal": -0.957,
-      "realCPI": -1.094,
-      "realCPIAUCNS": -0.978,
-      "realPCEPI": -1.137,
-      "realPCEPILFE": -1.079
-    },
-    "2024-06": {
-      "nominal": 0.466,
-      "realCPI": 0.33,
-      "realCPIAUCNS": 0.406,
-      "realPCEPI": 0.527,
-      "realPCEPILFE": 0.613
-    },
-    "2024-07": {
-      "nominal": -1.163,
-      "realCPI": -1.548,
-      "realCPIAUCNS": -1.598,
-      "realPCEPI": -1.556,
-      "realPCEPILFE": -1.525
-    },
-    "2024-08": {
-      "nominal": 1.367,
-      "realCPI": 0.593,
-      "realCPIAUCNS": 0.517,
-      "realPCEPI": 0.56,
-      "realPCEPILFE": 0.613
-    },
-    "2024-09": {
-      "nominal": 0.028,
-      "realCPI": 0.426,
-      "realCPIAUCNS": 0.373,
-      "realPCEPI": 0.435,
-      "realPCEPILFE": 0.487
-    },
-    "2024-10": {
-      "nominal": 0.503,
-      "realCPI": 0.328,
-      "realCPIAUCNS": 0.158,
-      "realPCEPI": 0.308,
-      "realPCEPILFE": 0.339
-    },
-    "2024-11": {
-      "nominal": -0.874,
-      "realCPI": -0.226,
-      "realCPIAUCNS": -0.563,
-      "realPCEPI": -0.395,
-      "realPCEPILFE": -0.405
-    },
-    "2024-12": {
-      "nominal": -2.72,
-      "realCPI": -2.119,
-      "realCPIAUCNS": -2.416,
-      "realPCEPI": -2.183,
-      "realPCEPILFE": -2.266
-    },
-    "2025-01": {
-      "nominal": -0.066,
-      "realCPI": -0.202,
-      "realCPIAUCNS": 0.024,
-      "realPCEPI": -0.278,
-      "realPCEPILFE": -0.313
-    },
-    "2025-02": {
-      "nominal": -1.313,
-      "realCPI": -1.091,
-      "realCPIAUCNS": -0.875,
-      "realPCEPI": -0.917,
-      "realPCEPILFE": -0.871
-    },
-    "2025-03": {
-      "nominal": 2.447,
-      "realCPI": 1.978,
-      "realCPIAUCNS": 2.174,
-      "realPCEPI": 1.961,
-      "realPCEPILFE": 2.044
-    },
-    "2025-04": {
-      "nominal": 1.159,
-      "realCPI": 0.242,
-      "realCPIAUCNS": 0.392,
-      "realPCEPI": 0.246,
-      "realPCEPILFE": 0.268
-    },
-    "2025-05": {
-      "nominal": -3.645,
-      "realCPI": -3.268,
-      "realCPIAUCNS": -3.162,
-      "realPCEPI": -3.188,
-      "realPCEPILFE": -3.142
-    },
-    "2025-06": {
-      "nominal": -2.248,
-      "realCPI": -2.285,
-      "realCPIAUCNS": -2.2,
-      "realPCEPI": -2.253,
-      "realPCEPILFE": -2.276
-    },
-    "2025-07": {
-      "nominal": -3.745,
-      "realCPI": -3.898,
-      "realCPIAUCNS": -3.972,
-      "realPCEPI": -3.953,
-      "realPCEPILFE": -3.882
-    },
-    "2025-08": {
-      "nominal": 1.3,
-      "realCPI": 0.97,
-      "realCPIAUCNS": 0.909,
-      "realPCEPI": 0.884,
-      "realPCEPILFE": 0.846
-    },
-    "2025-09": {
-      "nominal": -1.548,
-      "realCPI": -0.685,
-      "realCPIAUCNS": -0.726,
-      "realPCEPI": -0.719,
-      "realPCEPILFE": -0.79
-    },
-    "2025-11": {
-      "nominal": -0.786,
+      "nominal": null,
       "realCPI": null,
       "realCPIAUCNS": null,
-      "realPCEPI": -0.088,
-      "realPCEPILFE": -0.13
+      "realPCEPI": null,
+      "realPCEPILFE": null
+    },
+    "2000-03": {
+      "nominal": null,
+      "realCPI": null,
+      "realCPIAUCNS": null,
+      "realPCEPI": null,
+      "realPCEPILFE": null
+    },
+    "2000-04": {
+      "nominal": null,
+      "realCPI": null,
+      "realCPIAUCNS": null,
+      "realPCEPI": null,
+      "realPCEPILFE": null
+    },
+    "2000-05": {
+      "nominal": null,
+      "realCPI": null,
+      "realCPIAUCNS": null,
+      "realPCEPI": null,
+      "realPCEPILFE": null
+    },
+    "2000-06": {
+      "nominal": null,
+      "realCPI": null,
+      "realCPIAUCNS": null,
+      "realPCEPI": null,
+      "realPCEPILFE": null
+    },
+    "2000-07": {
+      "nominal": null,
+      "realCPI": null,
+      "realCPIAUCNS": null,
+      "realPCEPI": null,
+      "realPCEPILFE": null
+    },
+    "2000-08": {
+      "nominal": null,
+      "realCPI": null,
+      "realCPIAUCNS": null,
+      "realPCEPI": null,
+      "realPCEPILFE": null
+    },
+    "2000-09": {
+      "nominal": null,
+      "realCPI": null,
+      "realCPIAUCNS": null,
+      "realPCEPI": null,
+      "realPCEPILFE": null
+    },
+    "2000-10": {
+      "nominal": null,
+      "realCPI": null,
+      "realCPIAUCNS": null,
+      "realPCEPI": null,
+      "realPCEPILFE": null
+    },
+    "2000-11": {
+      "nominal": null,
+      "realCPI": null,
+      "realCPIAUCNS": null,
+      "realPCEPI": null,
+      "realPCEPILFE": null
+    },
+    "2000-12": {
+      "nominal": null,
+      "realCPI": null,
+      "realCPIAUCNS": null,
+      "realPCEPI": null,
+      "realPCEPILFE": null
+    },
+    "2001-01": {
+      "nominal": 0.352,
+      "realCPI": 4.21,
+      "realCPIAUCNS": 4.221,
+      "realPCEPI": 3.185,
+      "realPCEPILFE": 2.486
+    },
+    "2001-02": {
+      "nominal": 1.676,
+      "realCPI": 4.999,
+      "realCPIAUCNS": 5.003,
+      "realPCEPI": 3.992,
+      "realPCEPILFE": 3.484
+    },
+    "2001-03": {
+      "nominal": 4.008,
+      "realCPI": 6.321,
+      "realCPIAUCNS": 6.257,
+      "realPCEPI": 5.419,
+      "realPCEPILFE": 5.237
+    },
+    "2001-04": {
+      "nominal": 3.36,
+      "realCPI": 5.452,
+      "realCPIAUCNS": 5.504,
+      "realPCEPI": 4.588,
+      "realPCEPILFE": 4.235
+    },
+    "2001-05": {
+      "nominal": -0.133,
+      "realCPI": 2.69,
+      "realCPIAUCNS": 2.742,
+      "realPCEPI": 1.693,
+      "realPCEPILFE": 1.083
+    },
+    "2001-06": {
+      "nominal": 1.355,
+      "realCPI": 3.833,
+      "realCPIAUCNS": 3.887,
+      "realPCEPI": 3.025,
+      "realPCEPILFE": 2.724
+    },
+    "2001-07": {
+      "nominal": 2.66,
+      "realCPI": 4.569,
+      "realCPIAUCNS": 4.567,
+      "realPCEPI": 3.938,
+      "realPCEPILFE": 3.958
+    },
+    "2001-08": {
+      "nominal": 4.579,
+      "realCPI": 5.615,
+      "realCPIAUCNS": 5.614,
+      "realPCEPI": 4.973,
+      "realPCEPILFE": 4.917
+    },
+    "2001-09": {
+      "nominal": 7.03,
+      "realCPI": 7.138,
+      "realCPIAUCNS": 7.196,
+      "realPCEPI": 5.802,
+      "realPCEPILFE": 5.702
+    },
+    "2001-10": {
+      "nominal": 5.104,
+      "realCPI": 5.223,
+      "realCPIAUCNS": 5.221,
+      "realPCEPI": 4.609,
+      "realPCEPILFE": 4.872
+    },
+    "2001-11": {
+      "nominal": 3.143,
+      "realCPI": 3.632,
+      "realCPIAUCNS": 3.633,
+      "realPCEPI": 3.049,
+      "realPCEPILFE": 3.551
+    },
+    "2001-12": {
+      "nominal": 4.766,
+      "realCPI": 4.966,
+      "realCPIAUCNS": 4.913,
+      "realPCEPI": 4.407,
+      "realPCEPILFE": 5.106
+    },
+    "2002-01": {
+      "nominal": 10.142,
+      "realCPI": 8.095,
+      "realCPIAUCNS": 8.037,
+      "realPCEPI": 7.528,
+      "realPCEPILFE": 8.332
+    },
+    "2002-02": {
+      "nominal": 13.113,
+      "realCPI": 9.978,
+      "realCPIAUCNS": 9.979,
+      "realPCEPI": 9.481,
+      "realPCEPILFE": 10.3
+    },
+    "2002-03": {
+      "nominal": 12.0,
+      "realCPI": 8.833,
+      "realCPIAUCNS": 8.954,
+      "realPCEPI": 8.382,
+      "realPCEPILFE": 8.925
+    },
+    "2002-04": {
+      "nominal": 15.091,
+      "realCPI": 11.444,
+      "realCPIAUCNS": 11.439,
+      "realPCEPI": 10.944,
+      "realPCEPILFE": 11.363
+    },
+    "2002-05": {
+      "nominal": 18.212,
+      "realCPI": 13.392,
+      "realCPIAUCNS": 13.326,
+      "realPCEPI": 13.109,
+      "realPCEPILFE": 13.86
+    },
+    "2002-06": {
+      "nominal": 18.661,
+      "realCPI": 12.49,
+      "realCPIAUCNS": 12.488,
+      "realPCEPI": 12.342,
+      "realPCEPILFE": 13.073
+    },
+    "2002-07": {
+      "nominal": 12.45,
+      "realCPI": 6.75,
+      "realCPIAUCNS": 6.75,
+      "realPCEPI": 6.463,
+      "realPCEPILFE": 6.827
+    },
+    "2002-08": {
+      "nominal": 10.461,
+      "realCPI": 5.853,
+      "realCPIAUCNS": 5.91,
+      "realPCEPI": 5.494,
+      "realPCEPILFE": 5.791
+    },
+    "2002-09": {
+      "nominal": 10.469,
+      "realCPI": 5.438,
+      "realCPIAUCNS": 5.436,
+      "realPCEPI": 5.871,
+      "realPCEPILFE": 6.393
+    },
+    "2002-10": {
+      "nominal": 11.207,
+      "realCPI": 6.097,
+      "realCPIAUCNS": 6.096,
+      "realPCEPI": 5.82,
+      "realPCEPILFE": 5.867
+    },
+    "2002-11": {
+      "nominal": 10.564,
+      "realCPI": 5.97,
+      "realCPIAUCNS": 5.913,
+      "realPCEPI": 5.635,
+      "realPCEPILFE": 5.394
+    },
+    "2002-12": {
+      "nominal": 9.778,
+      "realCPI": 5.638,
+      "realCPIAUCNS": 5.532,
+      "realPCEPI": 5.281,
+      "realPCEPILFE": 4.905
+    },
+    "2003-01": {
+      "nominal": 6.594,
+      "realCPI": 3.772,
+      "realCPIAUCNS": 3.611,
+      "realPCEPI": 3.357,
+      "realPCEPILFE": 2.786
+    },
+    "2003-02": {
+      "nominal": 4.374,
+      "realCPI": 2.386,
+      "realCPIAUCNS": 2.222,
+      "realPCEPI": 1.848,
+      "realPCEPILFE": 0.977
+    },
+    "2003-03": {
+      "nominal": 2.499,
+      "realCPI": 0.716,
+      "realCPIAUCNS": 0.711,
+      "realPCEPI": 0.29,
+      "realPCEPILFE": -0.512
+    },
+    "2003-04": {
+      "nominal": -3.906,
+      "realCPI": -4.729,
+      "realCPIAUCNS": -4.683,
+      "realPCEPI": -4.903,
+      "realPCEPILFE": -5.266
+    },
+    "2003-05": {
+      "nominal": -8.503,
+      "realCPI": -8.23,
+      "realCPIAUCNS": -8.082,
+      "realPCEPI": -8.31,
+      "realPCEPILFE": -8.466
+    },
+    "2003-06": {
+      "nominal": -11.365,
+      "realCPI": -9.347,
+      "realCPIAUCNS": -9.202,
+      "realPCEPI": -9.49,
+      "realPCEPILFE": -9.722
+    },
+    "2003-07": {
+      "nominal": -7.414,
+      "realCPI": -3.926,
+      "realCPIAUCNS": -3.874,
+      "realPCEPI": -4.107,
+      "realPCEPILFE": -4.379
+    },
+    "2003-08": {
+      "nominal": -4.79,
+      "realCPI": -1.608,
+      "realCPIAUCNS": -1.664,
+      "realPCEPI": -1.81,
+      "realPCEPILFE": -2.308
+    },
+    "2003-09": {
+      "nominal": -6.495,
+      "realCPI": -2.373,
+      "realCPIAUCNS": -2.428,
+      "realPCEPI": -2.599,
+      "realPCEPILFE": -3.244
+    },
+    "2003-10": {
+      "nominal": -7.301,
+      "realCPI": -2.911,
+      "realCPIAUCNS": -2.912,
+      "realPCEPI": -2.981,
+      "realPCEPILFE": -3.364
+    },
+    "2003-11": {
+      "nominal": -4.118,
+      "realCPI": -0.315,
+      "realCPIAUCNS": -0.475,
+      "realPCEPI": -0.249,
+      "realPCEPILFE": -0.631
+    },
+    "2003-12": {
+      "nominal": -6.411,
+      "realCPI": -2.67,
+      "realCPIAUCNS": -2.819,
+      "realPCEPI": -2.587,
+      "realPCEPILFE": -3.05
+    },
+    "2004-01": {
+      "nominal": -8.535,
+      "realCPI": -4.518,
+      "realCPIAUCNS": -4.611,
+      "realPCEPI": -4.344,
+      "realPCEPILFE": -4.702
+    },
+    "2004-02": {
+      "nominal": -8.265,
+      "realCPI": -4.37,
+      "realCPIAUCNS": -4.365,
+      "realPCEPI": -4.076,
+      "realPCEPILFE": -4.215
+    },
+    "2004-03": {
+      "nominal": -5.811,
+      "realCPI": -1.47,
+      "realCPIAUCNS": -1.472,
+      "realPCEPI": -1.318,
+      "realPCEPILFE": -1.353
+    },
+    "2004-04": {
+      "nominal": -1.433,
+      "realCPI": 2.333,
+      "realCPIAUCNS": 2.325,
+      "realPCEPI": 2.299,
+      "realPCEPILFE": 2.052
+    },
+    "2004-05": {
+      "nominal": 2.627,
+      "realCPI": 6.229,
+      "realCPIAUCNS": 6.388,
+      "realPCEPI": 6.035,
+      "realPCEPILFE": 5.308
+    },
+    "2004-06": {
+      "nominal": 3.167,
+      "realCPI": 6.435,
+      "realCPIAUCNS": 6.536,
+      "realPCEPI": 6.149,
+      "realPCEPILFE": 5.344
+    },
+    "2004-07": {
+      "nominal": 2.752,
+      "realCPI": 5.247,
+      "realCPIAUCNS": 5.299,
+      "realPCEPI": 4.986,
+      "realPCEPILFE": 4.261
+    },
+    "2004-08": {
+      "nominal": 1.839,
+      "realCPI": 3.916,
+      "realCPIAUCNS": 4.024,
+      "realPCEPI": 3.757,
+      "realPCEPILFE": 3.259
+    },
+    "2004-09": {
+      "nominal": 0.73,
+      "realCPI": 2.467,
+      "realCPIAUCNS": 2.465,
+      "realPCEPI": 2.202,
+      "realPCEPILFE": 1.877
+    },
+    "2004-10": {
+      "nominal": 0.261,
+      "realCPI": 2.637,
+      "realCPIAUCNS": 2.636,
+      "realPCEPI": 2.149,
+      "realPCEPILFE": 1.435
+    },
+    "2004-11": {
+      "nominal": -1.968,
+      "realCPI": 0.673,
+      "realCPIAUCNS": 0.577,
+      "realPCEPI": 0.036,
+      "realPCEPILFE": -0.842
+    },
+    "2004-12": {
+      "nominal": -1.161,
+      "realCPI": 0.925,
+      "realCPIAUCNS": 0.84,
+      "realPCEPI": 0.389,
+      "realPCEPILFE": -0.322
+    },
+    "2005-01": {
+      "nominal": -1.014,
+      "realCPI": 0.988,
+      "realCPIAUCNS": 1.11,
+      "realPCEPI": 0.68,
+      "realPCEPILFE": 0.326
+    },
+    "2005-02": {
+      "nominal": -2.095,
+      "realCPI": 0.089,
+      "realCPIAUCNS": 0.045,
+      "realPCEPI": -0.352,
+      "realPCEPILFE": -0.763
+    },
+    "2005-03": {
+      "nominal": -3.867,
+      "realCPI": -1.479,
+      "realCPIAUCNS": -1.535,
+      "realPCEPI": -1.917,
+      "realPCEPILFE": -2.387
+    },
+    "2005-04": {
+      "nominal": -3.973,
+      "realCPI": -1.04,
+      "realCPIAUCNS": -0.898,
+      "realPCEPI": -1.535,
+      "realPCEPILFE": -2.241
+    },
+    "2005-05": {
+      "nominal": -4.828,
+      "realCPI": -2.291,
+      "realCPIAUCNS": -2.354,
+      "realPCEPI": -2.576,
+      "realPCEPILFE": -2.948
+    },
+    "2005-06": {
+      "nominal": -0.703,
+      "realCPI": 1.518,
+      "realCPIAUCNS": 1.508,
+      "realPCEPI": 1.321,
+      "realPCEPILFE": 1.068
+    },
+    "2005-07": {
+      "nominal": 1.542,
+      "realCPI": 3.018,
+      "realCPIAUCNS": 3.118,
+      "realPCEPI": 2.63,
+      "realPCEPILFE": 2.066
+    },
+    "2005-08": {
+      "nominal": -0.548,
+      "realCPI": 1.469,
+      "realCPIAUCNS": 1.463,
+      "realPCEPI": 0.875,
+      "realPCEPILFE": 0.012
+    },
+    "2005-09": {
+      "nominal": 0.909,
+      "realCPI": 3.735,
+      "realCPIAUCNS": 3.68,
+      "realPCEPI": 2.832,
+      "realPCEPILFE": 1.211
+    },
+    "2005-10": {
+      "nominal": 3.72,
+      "realCPI": 5.403,
+      "realCPIAUCNS": 5.401,
+      "realPCEPI": 4.596,
+      "realPCEPILFE": 3.297
+    },
+    "2005-11": {
+      "nominal": 6.686,
+      "realCPI": 7.364,
+      "realCPIAUCNS": 7.485,
+      "realPCEPI": 6.948,
+      "realPCEPILFE": 6.291
+    },
+    "2005-12": {
+      "nominal": 6.216,
+      "realCPI": 7.205,
+      "realCPIAUCNS": 7.285,
+      "realPCEPI": 6.733,
+      "realPCEPILFE": 6.107
+    },
+    "2006-01": {
+      "nominal": 5.484,
+      "realCPI": 6.839,
+      "realCPIAUCNS": 6.805,
+      "realPCEPI": 6.046,
+      "realPCEPILFE": 4.912
+    },
+    "2006-02": {
+      "nominal": 7.617,
+      "realCPI": 8.186,
+      "realCPIAUCNS": 8.143,
+      "realPCEPI": 7.543,
+      "realPCEPILFE": 6.619
+    },
+    "2006-03": {
+      "nominal": 8.318,
+      "realCPI": 8.128,
+      "realCPIAUCNS": 8.07,
+      "realPCEPI": 7.601,
+      "realPCEPILFE": 6.821
+    },
+    "2006-04": {
+      "nominal": 4.765,
+      "realCPI": 4.603,
+      "realCPIAUCNS": 4.535,
+      "realPCEPI": 4.087,
+      "realPCEPILFE": 3.34
+    },
+    "2006-05": {
+      "nominal": 2.294,
+      "realCPI": 2.801,
+      "realCPIAUCNS": 2.988,
+      "realPCEPI": 2.152,
+      "realPCEPILFE": 1.25
+    },
+    "2006-06": {
+      "nominal": -0.28,
+      "realCPI": 0.413,
+      "realCPIAUCNS": 0.546,
+      "realPCEPI": -0.232,
+      "realPCEPILFE": -1.115
+    },
+    "2006-07": {
+      "nominal": -2.799,
+      "realCPI": -1.226,
+      "realCPIAUCNS": -1.187,
+      "realPCEPI": -1.868,
+      "realPCEPILFE": -2.705
+    },
+    "2006-08": {
+      "nominal": -2.882,
+      "realCPI": -1.285,
+      "realCPIAUCNS": -1.388,
+      "realPCEPI": -1.847,
+      "realPCEPILFE": -2.478
+    },
+    "2006-09": {
+      "nominal": -4.09,
+      "realCPI": -3.385,
+      "realCPIAUCNS": -3.338,
+      "realPCEPI": -3.321,
+      "realPCEPILFE": -2.823
+    },
+    "2006-10": {
+      "nominal": -7.623,
+      "realCPI": -6.142,
+      "realCPIAUCNS": -6.236,
+      "realPCEPI": -5.892,
+      "realPCEPILFE": -5.133
+    },
+    "2006-11": {
+      "nominal": -8.487,
+      "realCPI": -6.413,
+      "realCPIAUCNS": -6.409,
+      "realPCEPI": -6.454,
+      "realPCEPILFE": -6.124
+    },
+    "2006-12": {
+      "nominal": -8.893,
+      "realCPI": -6.503,
+      "realCPIAUCNS": -6.487,
+      "realPCEPI": -6.719,
+      "realPCEPILFE": -6.693
+    },
+    "2007-01": {
+      "nominal": -8.455,
+      "realCPI": -6.611,
+      "realCPIAUCNS": -6.612,
+      "realPCEPI": -6.559,
+      "realPCEPILFE": -6.223
+    },
+    "2007-02": {
+      "nominal": -10.315,
+      "realCPI": -7.383,
+      "realCPIAUCNS": -7.388,
+      "realPCEPI": -7.411,
+      "realPCEPILFE": -7.26
+    },
+    "2007-03": {
+      "nominal": -10.429,
+      "realCPI": -7.077,
+      "realCPIAUCNS": -7.095,
+      "realPCEPI": -7.288,
+      "realPCEPILFE": -7.458
+    },
+    "2007-04": {
+      "nominal": -11.148,
+      "realCPI": -7.675,
+      "realCPIAUCNS": -7.693,
+      "realPCEPI": -7.911,
+      "realPCEPILFE": -8.019
+    },
+    "2007-05": {
+      "nominal": -10.573,
+      "realCPI": -6.972,
+      "realCPIAUCNS": -6.99,
+      "realPCEPI": -7.296,
+      "realPCEPILFE": -7.547
+    },
+    "2007-06": {
+      "nominal": -6.477,
+      "realCPI": -3.315,
+      "realCPIAUCNS": -3.32,
+      "realPCEPI": -3.668,
+      "realPCEPILFE": -3.979
+    },
+    "2007-07": {
+      "nominal": -4.026,
+      "realCPI": -2.125,
+      "realCPIAUCNS": -2.086,
+      "realPCEPI": -2.31,
+      "realPCEPILFE": -2.39
+    },
+    "2007-08": {
+      "nominal": -3.537,
+      "realCPI": -2.703,
+      "realCPIAUCNS": -2.633,
+      "realPCEPI": -2.725,
+      "realPCEPILFE": -2.619
+    },
+    "2007-09": {
+      "nominal": -6.101,
+      "realCPI": -4.773,
+      "realCPIAUCNS": -4.846,
+      "realPCEPI": -5.05,
+      "realPCEPILFE": -5.45
+    },
+    "2007-10": {
+      "nominal": -6.062,
+      "realCPI": -4.756,
+      "realCPIAUCNS": -4.824,
+      "realPCEPI": -5.236,
+      "realPCEPILFE": -6.068
+    },
+    "2007-11": {
+      "nominal": -9.011,
+      "realCPI": -7.61,
+      "realCPIAUCNS": -7.67,
+      "realPCEPI": -8.295,
+      "realPCEPILFE": -9.414
+    },
+    "2007-12": {
+      "nominal": -7.078,
+      "realCPI": -6.438,
+      "realCPIAUCNS": -6.463,
+      "realPCEPI": -7.011,
+      "realPCEPILFE": -7.971
+    },
+    "2008-01": {
+      "nominal": -11.29,
+      "realCPI": -10.639,
+      "realCPIAUCNS": -10.652,
+      "realPCEPI": -11.417,
+      "realPCEPILFE": -12.44
+    },
+    "2008-02": {
+      "nominal": -14.452,
+      "realCPI": -14.043,
+      "realCPIAUCNS": -14.139,
+      "realPCEPI": -14.761,
+      "realPCEPILFE": -15.752
+    },
+    "2008-03": {
+      "nominal": -16.41,
+      "realCPI": -16.222,
+      "realCPIAUCNS": -16.217,
+      "realPCEPI": -16.853,
+      "realPCEPILFE": -17.676
+    },
+    "2008-04": {
+      "nominal": -13.504,
+      "realCPI": -14.185,
+      "realCPIAUCNS": -14.158,
+      "realPCEPI": -14.816,
+      "realPCEPILFE": -15.688
+    },
+    "2008-05": {
+      "nominal": -15.55,
+      "realCPI": -16.627,
+      "realCPIAUCNS": -16.557,
+      "realPCEPI": -17.273,
+      "realPCEPILFE": -18.18
+    },
+    "2008-06": {
+      "nominal": -19.613,
+      "realCPI": -19.506,
+      "realCPIAUCNS": -19.44,
+      "realPCEPI": -20.368,
+      "realPCEPILFE": -21.593
+    },
+    "2008-07": {
+      "nominal": -20.76,
+      "realCPI": -20.265,
+      "realCPIAUCNS": -20.187,
+      "realPCEPI": -21.294,
+      "realPCEPILFE": -22.723
+    },
+    "2008-08": {
+      "nominal": -15.759,
+      "realCPI": -15.516,
+      "realCPIAUCNS": -15.464,
+      "realPCEPI": -16.581,
+      "realPCEPILFE": -17.995
+    },
+    "2008-09": {
+      "nominal": -13.25,
+      "realCPI": -13.718,
+      "realCPIAUCNS": -13.731,
+      "realPCEPI": -14.775,
+      "realPCEPILFE": -16.11
+    },
+    "2008-10": {
+      "nominal": -8.139,
+      "realCPI": -9.694,
+      "realCPIAUCNS": -9.76,
+      "realPCEPI": -10.616,
+      "realPCEPILFE": -11.52
+    },
+    "2008-11": {
+      "nominal": -0.587,
+      "realCPI": -3.834,
+      "realCPIAUCNS": -3.863,
+      "realPCEPI": -4.001,
+      "realPCEPILFE": -3.558
+    },
+    "2008-12": {
+      "nominal": -0.877,
+      "realCPI": -4.532,
+      "realCPIAUCNS": -4.423,
+      "realPCEPI": -4.387,
+      "realPCEPILFE": -3.424
+    },
+    "2009-01": {
+      "nominal": 4.33,
+      "realCPI": 0.927,
+      "realCPIAUCNS": 1.072,
+      "realPCEPI": 0.93,
+      "realPCEPILFE": 1.957
+    },
+    "2009-02": {
+      "nominal": 13.707,
+      "realCPI": 10.027,
+      "realCPIAUCNS": 10.278,
+      "realPCEPI": 9.874,
+      "realPCEPILFE": 10.995
+    },
+    "2009-03": {
+      "nominal": 18.461,
+      "realCPI": 13.875,
+      "realCPIAUCNS": 13.947,
+      "realPCEPI": 13.784,
+      "realPCEPILFE": 15.257
+    },
+    "2009-04": {
+      "nominal": 19.214,
+      "realCPI": 14.984,
+      "realCPIAUCNS": 14.798,
+      "realPCEPI": 14.994,
+      "realPCEPILFE": 16.724
+    },
+    "2009-05": {
+      "nominal": 21.097,
+      "realCPI": 16.61,
+      "realCPIAUCNS": 16.297,
+      "realPCEPI": 16.759,
+      "realPCEPILFE": 18.775
+    },
+    "2009-06": {
+      "nominal": 17.29,
+      "realCPI": 11.826,
+      "realCPIAUCNS": 11.602,
+      "realPCEPI": 12.064,
+      "realPCEPILFE": 14.033
+    },
+    "2009-07": {
+      "nominal": 15.462,
+      "realCPI": 9.356,
+      "realCPIAUCNS": 9.202,
+      "realPCEPI": 9.906,
+      "realPCEPILFE": 12.239
+    },
+    "2009-08": {
+      "nominal": 7.681,
+      "realCPI": 2.858,
+      "realCPIAUCNS": 2.857,
+      "realPCEPI": 3.258,
+      "realPCEPILFE": 5.087
+    },
+    "2009-09": {
+      "nominal": 6.21,
+      "realCPI": 1.853,
+      "realCPIAUCNS": 1.948,
+      "realPCEPI": 2.22,
+      "realPCEPILFE": 4.025
+    },
+    "2009-10": {
+      "nominal": 1.058,
+      "realCPI": -2.049,
+      "realCPIAUCNS": -2.009,
+      "realPCEPI": -1.816,
+      "realPCEPILFE": -0.612
+    },
+    "2009-11": {
+      "nominal": -2.865,
+      "realCPI": -4.645,
+      "realCPIAUCNS": -4.716,
+      "realPCEPI": -5.069,
+      "realPCEPILFE": -5.151
+    },
+    "2009-12": {
+      "nominal": -2.075,
+      "realCPI": -3.112,
+      "realCPIAUCNS": -3.2,
+      "realPCEPI": -3.795,
+      "realPCEPILFE": -4.342
+    },
+    "2010-01": {
+      "nominal": -5.131,
+      "realCPI": -6.184,
+      "realCPIAUCNS": -6.18,
+      "realPCEPI": -6.476,
+      "realPCEPILFE": -7.035
+    },
+    "2010-02": {
+      "nominal": -8.689,
+      "realCPI": -9.947,
+      "realCPIAUCNS": -9.954,
+      "realPCEPI": -9.978,
+      "realPCEPILFE": -10.346
+    },
+    "2010-03": {
+      "nominal": -9.981,
+      "realCPI": -10.748,
+      "realCPIAUCNS": -10.724,
+      "realPCEPI": -10.672,
+      "realPCEPILFE": -11.192
+    },
+    "2010-04": {
+      "nominal": -11.52,
+      "realCPI": -12.232,
+      "realCPIAUCNS": -12.206,
+      "realPCEPI": -12.167,
+      "realPCEPILFE": -12.75
+    },
+    "2010-05": {
+      "nominal": -7.483,
+      "realCPI": -8.399,
+      "realCPIAUCNS": -8.384,
+      "realPCEPI": -8.215,
+      "realPCEPILFE": -8.729
+    },
+    "2010-06": {
+      "nominal": -2.316,
+      "realCPI": -3.552,
+      "realCPIAUCNS": -3.617,
+      "realPCEPI": -3.132,
+      "realPCEPILFE": -3.138
+    },
+    "2010-07": {
+      "nominal": -0.975,
+      "realCPI": -1.439,
+      "realCPIAUCNS": -1.542,
+      "realPCEPI": -1.15,
+      "realPCEPILFE": -1.313
+    },
+    "2010-08": {
+      "nominal": -1.076,
+      "realCPI": -1.717,
+      "realCPIAUCNS": -1.719,
+      "realPCEPI": -1.394,
+      "realPCEPILFE": -1.457
+    },
+    "2010-09": {
+      "nominal": -0.749,
+      "realCPI": -1.98,
+      "realCPIAUCNS": -1.955,
+      "realPCEPI": -1.688,
+      "realPCEPILFE": -1.807
+    },
+    "2010-10": {
+      "nominal": -3.085,
+      "realCPI": -4.325,
+      "realCPIAUCNS": -4.32,
+      "realPCEPI": -4.144,
+      "realPCEPILFE": -4.409
+    },
+    "2010-11": {
+      "nominal": -3.565,
+      "realCPI": -4.694,
+      "realCPIAUCNS": -4.638,
+      "realPCEPI": -4.484,
+      "realPCEPILFE": -4.659
+    },
+    "2010-12": {
+      "nominal": -4.9,
+      "realCPI": -6.033,
+      "realCPIAUCNS": -5.98,
+      "realPCEPI": -5.996,
+      "realPCEPILFE": -6.386
+    },
+    "2011-01": {
+      "nominal": -3.455,
+      "realCPI": -5.19,
+      "realCPIAUCNS": -5.254,
+      "realPCEPI": -5.321,
+      "realPCEPILFE": -5.728
+    },
+    "2011-02": {
+      "nominal": -2.4,
+      "realCPI": -4.311,
+      "realCPIAUCNS": -4.328,
+      "realPCEPI": -4.574,
+      "realPCEPILFE": -5.167
+    },
+    "2011-03": {
+      "nominal": -4.839,
+      "realCPI": -6.345,
+      "realCPIAUCNS": -6.288,
+      "realPCEPI": -6.809,
+      "realPCEPILFE": -7.627
+    },
+    "2011-04": {
+      "nominal": -7.51,
+      "realCPI": -8.315,
+      "realCPIAUCNS": -8.238,
+      "realPCEPI": -8.839,
+      "realPCEPILFE": -9.811
+    },
+    "2011-05": {
+      "nominal": -8.384,
+      "realCPI": -8.94,
+      "realCPIAUCNS": -8.843,
+      "realPCEPI": -9.55,
+      "realPCEPILFE": -10.643
+    },
+    "2011-06": {
+      "nominal": -11.16,
+      "realCPI": -11.752,
+      "realCPIAUCNS": -11.704,
+      "realPCEPI": -12.361,
+      "realPCEPILFE": -13.386
+    },
+    "2011-07": {
+      "nominal": -11.266,
+      "realCPI": -11.118,
+      "realCPIAUCNS": -11.076,
+      "realPCEPI": -11.722,
+      "realPCEPILFE": -12.702
+    },
+    "2011-08": {
+      "nominal": -6.53,
+      "realCPI": -6.228,
+      "realCPIAUCNS": -6.213,
+      "realPCEPI": -6.931,
+      "realPCEPILFE": -7.959
+    },
+    "2011-09": {
+      "nominal": -1.526,
+      "realCPI": -0.685,
+      "realCPIAUCNS": -0.631,
+      "realPCEPI": -1.444,
+      "realPCEPILFE": -2.561
+    },
+    "2011-10": {
+      "nominal": 1.518,
+      "realCPI": 2.287,
+      "realCPIAUCNS": 2.29,
+      "realPCEPI": 1.468,
+      "realPCEPILFE": 0.53
+    },
+    "2011-11": {
+      "nominal": 2.229,
+      "realCPI": 3.127,
+      "realCPIAUCNS": 3.07,
+      "realPCEPI": 2.378,
+      "realPCEPILFE": 1.509
+    },
+    "2011-12": {
+      "nominal": 4.716,
+      "realCPI": 5.63,
+      "realCPIAUCNS": 5.527,
+      "realPCEPI": 5.081,
+      "realPCEPILFE": 4.515
+    },
+    "2012-01": {
+      "nominal": 6.268,
+      "realCPI": 7.36,
+      "realCPIAUCNS": 7.273,
+      "realPCEPI": 6.902,
+      "realPCEPILFE": 6.373
+    },
+    "2012-02": {
+      "nominal": 2.302,
+      "realCPI": 3.546,
+      "realCPIAUCNS": 3.518,
+      "realPCEPI": 3.158,
+      "realPCEPILFE": 2.668
+    },
+    "2012-03": {
+      "nominal": 5.627,
+      "realCPI": 6.383,
+      "realCPIAUCNS": 6.454,
+      "realPCEPI": 6.088,
+      "realPCEPILFE": 5.825
+    },
+    "2012-04": {
+      "nominal": 9.247,
+      "realCPI": 9.396,
+      "realCPIAUCNS": 9.428,
+      "realPCEPI": 9.104,
+      "realPCEPILFE": 9.067
+    },
+    "2012-05": {
+      "nominal": 10.359,
+      "realCPI": 10.464,
+      "realCPIAUCNS": 10.427,
+      "realPCEPI": 10.289,
+      "realPCEPILFE": 10.56
+    },
+    "2012-06": {
+      "nominal": 13.744,
+      "realCPI": 14.524,
+      "realCPIAUCNS": 14.536,
+      "realPCEPI": 14.403,
+      "realPCEPILFE": 14.711
+    },
+    "2012-07": {
+      "nominal": 16.692,
+      "realCPI": 16.77,
+      "realCPIAUCNS": 16.759,
+      "realPCEPI": 16.761,
+      "realPCEPILFE": 17.18
+    },
+    "2012-08": {
+      "nominal": 13.323,
+      "realCPI": 13.064,
+      "realCPIAUCNS": 13.071,
+      "realPCEPI": 12.87,
+      "realPCEPILFE": 13.008
+    },
+    "2012-09": {
+      "nominal": 7.554,
+      "realCPI": 7.38,
+      "realCPIAUCNS": 7.424,
+      "realPCEPI": 7.094,
+      "realPCEPILFE": 7.108
+    },
+    "2012-10": {
+      "nominal": 5.049,
+      "realCPI": 5.39,
+      "realCPIAUCNS": 5.397,
+      "realPCEPI": 5.205,
+      "realPCEPILFE": 5.115
+    },
+    "2012-11": {
+      "nominal": 4.51,
+      "realCPI": 4.874,
+      "realCPIAUCNS": 4.841,
+      "realPCEPI": 4.774,
+      "realPCEPILFE": 4.861
+    },
+    "2012-12": {
+      "nominal": 0.085,
+      "realCPI": 0.208,
+      "realCPIAUCNS": 0.189,
+      "realPCEPI": 0.075,
+      "realPCEPILFE": 0.139
+    },
+    "2013-01": {
+      "nominal": -1.825,
+      "realCPI": -1.606,
+      "realCPIAUCNS": -1.692,
+      "realPCEPI": -1.812,
+      "realPCEPILFE": -1.695
+    },
+    "2013-02": {
+      "nominal": -1.286,
+      "realCPI": -0.741,
+      "realCPIAUCNS": -0.78,
+      "realPCEPI": -1.143,
+      "realPCEPILFE": -1.186
+    },
+    "2013-03": {
+      "nominal": -1.886,
+      "realCPI": -1.645,
+      "realCPIAUCNS": -1.689,
+      "realPCEPI": -1.879,
+      "realPCEPILFE": -1.682
+    },
+    "2013-04": {
+      "nominal": -3.501,
+      "realCPI": -3.181,
+      "realCPIAUCNS": -3.253,
+      "realPCEPI": -3.274,
+      "realPCEPILFE": -2.953
+    },
+    "2013-05": {
+      "nominal": -5.191,
+      "realCPI": -4.734,
+      "realCPIAUCNS": -4.761,
+      "realPCEPI": -4.886,
+      "realPCEPILFE": -4.732
+    },
+    "2013-06": {
+      "nominal": -6.751,
+      "realCPI": -7.006,
+      "realCPIAUCNS": -6.97,
+      "realPCEPI": -7.198,
+      "realPCEPILFE": -7.236
+    },
+    "2013-07": {
+      "nominal": -9.629,
+      "realCPI": -9.905,
+      "realCPIAUCNS": -9.839,
+      "realPCEPI": -10.162,
+      "realPCEPILFE": -10.257
+    },
+    "2013-08": {
+      "nominal": -10.877,
+      "realCPI": -10.699,
+      "realCPIAUCNS": -10.717,
+      "realPCEPI": -10.817,
+      "realPCEPILFE": -10.704
+    },
+    "2013-09": {
+      "nominal": -10.028,
+      "realCPI": -10.243,
+      "realCPIAUCNS": -10.162,
+      "realPCEPI": -10.201,
+      "realPCEPILFE": -9.857
+    },
+    "2013-10": {
+      "nominal": -8.146,
+      "realCPI": -9.002,
+      "realCPIAUCNS": -8.923,
+      "realPCEPI": -8.912,
+      "realPCEPILFE": -8.48
+    },
+    "2013-11": {
+      "nominal": -9.166,
+      "realCPI": -9.769,
+      "realCPIAUCNS": -9.765,
+      "realPCEPI": -9.803,
+      "realPCEPILFE": -9.518
+    },
+    "2013-12": {
+      "nominal": -7.203,
+      "realCPI": -7.479,
+      "realCPIAUCNS": -7.489,
+      "realPCEPI": -7.593,
+      "realPCEPILFE": -7.448
+    },
+    "2014-01": {
+      "nominal": -6.58,
+      "realCPI": -6.431,
+      "realCPIAUCNS": -6.412,
+      "realPCEPI": -6.571,
+      "realPCEPILFE": -6.528
+    },
+    "2014-02": {
+      "nominal": -4.716,
+      "realCPI": -4.787,
+      "realCPIAUCNS": -4.782,
+      "realPCEPI": -4.812,
+      "realPCEPILFE": -4.533
+    },
+    "2014-03": {
+      "nominal": -5.751,
+      "realCPI": -5.454,
+      "realCPIAUCNS": -5.547,
+      "realPCEPI": -5.661,
+      "realPCEPILFE": -5.607
+    },
+    "2014-04": {
+      "nominal": -3.983,
+      "realCPI": -3.009,
+      "realCPIAUCNS": -3.068,
+      "realPCEPI": -3.334,
+      "realPCEPILFE": -3.431
+    },
+    "2014-05": {
+      "nominal": -4.501,
+      "realCPI": -3.388,
+      "realCPIAUCNS": -3.426,
+      "realPCEPI": -3.767,
+      "realPCEPILFE": -3.902
+    },
+    "2014-06": {
+      "nominal": -4.86,
+      "realCPI": -3.375,
+      "realCPIAUCNS": -3.363,
+      "realPCEPI": -3.761,
+      "realPCEPILFE": -3.844
+    },
+    "2014-07": {
+      "nominal": -5.136,
+      "realCPI": -3.547,
+      "realCPIAUCNS": -3.53,
+      "realPCEPI": -3.835,
+      "realPCEPILFE": -3.891
+    },
+    "2014-08": {
+      "nominal": -2.196,
+      "realCPI": -0.519,
+      "realCPIAUCNS": -0.534,
+      "realPCEPI": -0.723,
+      "realPCEPILFE": -0.69
+    },
+    "2014-09": {
+      "nominal": 1.839,
+      "realCPI": 3.858,
+      "realCPIAUCNS": 3.832,
+      "realPCEPI": 3.668,
+      "realPCEPILFE": 3.726
+    },
+    "2014-10": {
+      "nominal": 5.612,
+      "realCPI": 7.626,
+      "realCPIAUCNS": 7.684,
+      "realPCEPI": 7.333,
+      "realPCEPILFE": 7.48
+    },
+    "2014-11": {
+      "nominal": 8.269,
+      "realCPI": 9.709,
+      "realCPIAUCNS": 9.808,
+      "realPCEPI": 9.551,
+      "realPCEPILFE": 9.884
+    },
+    "2014-12": {
+      "nominal": 12.257,
+      "realCPI": 13.212,
+      "realCPIAUCNS": 13.328,
+      "realPCEPI": 13.301,
+      "realPCEPILFE": 14.003
+    },
+    "2015-01": {
+      "nominal": 12.968,
+      "realCPI": 13.283,
+      "realCPIAUCNS": 13.443,
+      "realPCEPI": 13.591,
+      "realPCEPILFE": 14.918
+    },
+    "2015-02": {
+      "nominal": 10.638,
+      "realCPI": 11.675,
+      "realCPIAUCNS": 11.744,
+      "realPCEPI": 11.963,
+      "realPCEPILFE": 13.2
+    },
+    "2015-03": {
+      "nominal": 14.884,
+      "realCPI": 16.026,
+      "realCPIAUCNS": 15.966,
+      "realPCEPI": 16.283,
+      "realPCEPILFE": 17.538
+    },
+    "2015-04": {
+      "nominal": 13.311,
+      "realCPI": 13.765,
+      "realCPIAUCNS": 13.656,
+      "realPCEPI": 14.009,
+      "realPCEPILFE": 15.357
+    },
+    "2015-05": {
+      "nominal": 11.453,
+      "realCPI": 11.94,
+      "realCPIAUCNS": 11.856,
+      "realPCEPI": 12.108,
+      "realPCEPILFE": 13.297
+    },
+    "2015-06": {
+      "nominal": 10.74,
+      "realCPI": 11.376,
+      "realCPIAUCNS": 11.314,
+      "realPCEPI": 11.477,
+      "realPCEPILFE": 12.571
+    },
+    "2015-07": {
+      "nominal": 10.74,
+      "realCPI": 11.314,
+      "realCPIAUCNS": 11.252,
+      "realPCEPI": 11.307,
+      "realPCEPILFE": 12.373
+    },
+    "2015-08": {
+      "nominal": 9.853,
+      "realCPI": 10.553,
+      "realCPIAUCNS": 10.502,
+      "realPCEPI": 10.55,
+      "realPCEPILFE": 11.633
+    },
+    "2015-09": {
+      "nominal": 7.879,
+      "realCPI": 8.431,
+      "realCPIAUCNS": 8.382,
+      "realPCEPI": 8.492,
+      "realPCEPILFE": 9.757
+    },
+    "2015-10": {
+      "nominal": 3.401,
+      "realCPI": 4.254,
+      "realCPIAUCNS": 4.299,
+      "realPCEPI": 4.221,
+      "realPCEPILFE": 5.348
+    },
+    "2015-11": {
+      "nominal": 1.576,
+      "realCPI": 2.942,
+      "realCPIAUCNS": 3.01,
+      "realPCEPI": 2.755,
+      "realPCEPILFE": 3.722
+    },
+    "2015-12": {
+      "nominal": -1.355,
+      "realCPI": 0.275,
+      "realCPIAUCNS": 0.366,
+      "realPCEPI": -0.017,
+      "realPCEPILFE": 0.826
+    },
+    "2016-01": {
+      "nominal": 0.115,
+      "realCPI": 1.97,
+      "realCPIAUCNS": 2.107,
+      "realPCEPI": 1.601,
+      "realPCEPILFE": 2.14
+    },
+    "2016-02": {
+      "nominal": 0.39,
+      "realCPI": 1.447,
+      "realCPIAUCNS": 1.619,
+      "realPCEPI": 1.239,
+      "realPCEPILFE": 2.069
+    },
+    "2016-03": {
+      "nominal": -3.257,
+      "realCPI": -1.698,
+      "realCPIAUCNS": -1.736,
+      "realPCEPI": -1.899,
+      "realPCEPILFE": -1.147
+    },
+    "2016-04": {
+      "nominal": -4.063,
+      "realCPI": -2.051,
+      "realCPIAUCNS": -2.097,
+      "realPCEPI": -2.29,
+      "realPCEPILFE": -1.715
+    },
+    "2016-05": {
+      "nominal": -1.264,
+      "realCPI": 0.609,
+      "realCPIAUCNS": 0.551,
+      "realPCEPI": 0.381,
+      "realPCEPILFE": 1.097
+    },
+    "2016-06": {
+      "nominal": 0.841,
+      "realCPI": 2.753,
+      "realCPIAUCNS": 2.669,
+      "realPCEPI": 2.499,
+      "realPCEPILFE": 3.234
+    },
+    "2016-07": {
+      "nominal": 1.806,
+      "realCPI": 3.309,
+      "realCPIAUCNS": 3.267,
+      "realPCEPI": 3.193,
+      "realPCEPILFE": 4.058
+    },
+    "2016-08": {
+      "nominal": -1.287,
+      "realCPI": 0.459,
+      "realCPIAUCNS": 0.467,
+      "realPCEPI": 0.293,
+      "realPCEPILFE": 1.097
+    },
+    "2016-09": {
+      "nominal": -3.762,
+      "realCPI": -1.877,
+      "realCPIAUCNS": -1.959,
+      "realPCEPI": -2.195,
+      "realPCEPILFE": -1.745
+    },
+    "2016-10": {
+      "nominal": -1.068,
+      "realCPI": 0.904,
+      "realCPIAUCNS": 0.854,
+      "realPCEPI": 0.647,
+      "realPCEPILFE": 0.999
+    },
+    "2016-11": {
+      "nominal": -1.195,
+      "realCPI": 0.774,
+      "realCPIAUCNS": 0.782,
+      "realPCEPI": 0.49,
+      "realPCEPILFE": 0.808
+    },
+    "2016-12": {
+      "nominal": -1.356,
+      "realCPI": 0.87,
+      "realCPIAUCNS": 0.894,
+      "realPCEPI": 0.481,
+      "realPCEPILFE": 0.593
+    },
+    "2017-01": {
+      "nominal": -3.359,
+      "realCPI": -1.035,
+      "realCPIAUCNS": -1.045,
+      "realPCEPI": -1.523,
+      "realPCEPILFE": -1.66
+    },
+    "2017-02": {
+      "nominal": -4.58,
+      "realCPI": -2.298,
+      "realCPIAUCNS": -2.367,
+      "realPCEPI": -2.881,
+      "realPCEPILFE": -3.195
+    },
+    "2017-03": {
+      "nominal": -5.644,
+      "realCPI": -4.219,
+      "realCPIAUCNS": -4.275,
+      "realPCEPI": -4.719,
+      "realPCEPILFE": -4.932
+    },
+    "2017-04": {
+      "nominal": -3.407,
+      "realCPI": -1.998,
+      "realCPIAUCNS": -1.976,
+      "realPCEPI": -2.39,
+      "realPCEPILFE": -2.516
+    },
+    "2017-05": {
+      "nominal": -5.665,
+      "realCPI": -4.678,
+      "realCPIAUCNS": -4.661,
+      "realPCEPI": -4.958,
+      "realPCEPILFE": -4.969
+    },
+    "2017-06": {
+      "nominal": -8.421,
+      "realCPI": -6.73,
+      "realCPIAUCNS": -6.737,
+      "realPCEPI": -6.891,
+      "realPCEPILFE": -6.789
+    },
+    "2017-07": {
+      "nominal": -7.946,
+      "realCPI": -5.696,
+      "realCPIAUCNS": -5.693,
+      "realPCEPI": -5.918,
+      "realPCEPILFE": -5.902
+    },
+    "2017-08": {
+      "nominal": -5.118,
+      "realCPI": -3.189,
+      "realCPIAUCNS": -3.179,
+      "realPCEPI": -3.527,
+      "realPCEPILFE": -3.659
+    },
+    "2017-09": {
+      "nominal": -6.065,
+      "realCPI": -4.11,
+      "realCPIAUCNS": -4.061,
+      "realPCEPI": -4.507,
+      "realPCEPILFE": -4.821
+    },
+    "2017-10": {
+      "nominal": -8.094,
+      "realCPI": -6.419,
+      "realCPIAUCNS": -6.4,
+      "realPCEPI": -6.73,
+      "realPCEPILFE": -6.859
+    },
+    "2017-11": {
+      "nominal": -8.474,
+      "realCPI": -6.765,
+      "realCPIAUCNS": -6.738,
+      "realPCEPI": -7.111,
+      "realPCEPILFE": -7.337
+    },
+    "2017-12": {
+      "nominal": -8.495,
+      "realCPI": -6.919,
+      "realCPIAUCNS": -6.938,
+      "realPCEPI": -7.25,
+      "realPCEPILFE": -7.423
+    },
+    "2018-01": {
+      "nominal": -10.344,
+      "realCPI": -8.507,
+      "realCPIAUCNS": -8.58,
+      "realPCEPI": -8.86,
+      "realPCEPILFE": -8.972
+    },
+    "2018-02": {
+      "nominal": -6.292,
+      "realCPI": -4.363,
+      "realCPIAUCNS": -4.411,
+      "realPCEPI": -4.761,
+      "realPCEPILFE": -4.942
+    },
+    "2018-03": {
+      "nominal": -4.945,
+      "realCPI": -2.924,
+      "realCPIAUCNS": -2.896,
+      "realPCEPI": -3.239,
+      "realPCEPILFE": -3.324
+    },
+    "2018-04": {
+      "nominal": -3.045,
+      "realCPI": -1.044,
+      "realCPIAUCNS": -1.052,
+      "realPCEPI": -1.454,
+      "realPCEPILFE": -1.611
+    },
+    "2018-05": {
+      "nominal": -0.177,
+      "realCPI": 2.093,
+      "realCPIAUCNS": 2.112,
+      "realPCEPI": 1.581,
+      "realPCEPILFE": 1.297
+    },
+    "2018-06": {
+      "nominal": 2.057,
+      "realCPI": 3.576,
+      "realCPIAUCNS": 3.641,
+      "realPCEPI": 3.033,
+      "realPCEPILFE": 2.698
+    },
+    "2018-07": {
+      "nominal": 2.659,
+      "realCPI": 4.13,
+      "realCPIAUCNS": 4.226,
+      "realPCEPI": 3.608,
+      "realPCEPILFE": 3.261
+    },
+    "2018-08": {
+      "nominal": 1.813,
+      "realCPI": 3.267,
+      "realCPIAUCNS": 3.324,
+      "realPCEPI": 2.802,
+      "realPCEPILFE": 2.516
+    },
+    "2018-09": {
+      "nominal": 1.56,
+      "realCPI": 2.7,
+      "realCPIAUCNS": 2.644,
+      "realPCEPI": 2.376,
+      "realPCEPILFE": 2.327
+    },
+    "2018-10": {
+      "nominal": 4.087,
+      "realCPI": 5.423,
+      "realCPIAUCNS": 5.455,
+      "realPCEPI": 4.972,
+      "realPCEPILFE": 4.784
+    },
+    "2018-11": {
+      "nominal": 5.352,
+      "realCPI": 6.342,
+      "realCPIAUCNS": 6.372,
+      "realPCEPI": 6.128,
+      "realPCEPILFE": 6.199
+    },
+    "2018-12": {
+      "nominal": 7.12,
+      "realCPI": 8.401,
+      "realCPIAUCNS": 8.303,
+      "realPCEPI": 8.255,
+      "realPCEPILFE": 8.439
+    },
+    "2019-01": {
+      "nominal": 7.707,
+      "realCPI": 8.01,
+      "realCPIAUCNS": 8.078,
+      "realPCEPI": 7.951,
+      "realPCEPILFE": 8.39
+    },
+    "2019-02": {
+      "nominal": 3.775,
+      "realCPI": 4.1,
+      "realCPIAUCNS": 4.101,
+      "realPCEPI": 3.978,
+      "realPCEPILFE": 4.33
+    },
+    "2019-03": {
+      "nominal": 4.318,
+      "realCPI": 4.812,
+      "realCPIAUCNS": 4.791,
+      "realPCEPI": 4.441,
+      "realPCEPILFE": 4.538
+    },
+    "2019-04": {
+      "nominal": 1.584,
+      "realCPI": 2.286,
+      "realCPIAUCNS": 2.282,
+      "realPCEPI": 1.85,
+      "realPCEPILFE": 1.921
+    },
+    "2019-05": {
+      "nominal": 0.061,
+      "realCPI": 0.354,
+      "realCPIAUCNS": 0.348,
+      "realPCEPI": 0.028,
+      "realPCEPILFE": 0.124
+    },
+    "2019-06": {
+      "nominal": -0.2,
+      "realCPI": 0.662,
+      "realCPIAUCNS": 0.639,
+      "realPCEPI": 0.419,
+      "realPCEPILFE": 0.647
+    },
+    "2019-07": {
+      "nominal": -2.762,
+      "realCPI": -1.48,
+      "realCPIAUCNS": -1.494,
+      "realPCEPI": -1.84,
+      "realPCEPILFE": -1.661
+    },
+    "2019-08": {
+      "nominal": -4.233,
+      "realCPI": -3.152,
+      "realCPIAUCNS": -3.14,
+      "realPCEPI": -3.444,
+      "realPCEPILFE": -3.144
+    },
+    "2019-09": {
+      "nominal": -1.906,
+      "realCPI": -0.556,
+      "realCPIAUCNS": -0.529,
+      "realPCEPI": -0.947,
+      "realPCEPILFE": -0.607
+    },
+    "2019-10": {
+      "nominal": -3.74,
+      "realCPI": -2.466,
+      "realCPIAUCNS": -2.437,
+      "realPCEPI": -2.893,
+      "realPCEPILFE": -2.571
+    },
+    "2019-11": {
+      "nominal": -6.014,
+      "realCPI": -4.338,
+      "realCPIAUCNS": -4.376,
+      "realPCEPI": -5.025,
+      "realPCEPILFE": -4.895
+    },
+    "2019-12": {
+      "nominal": -7.394,
+      "realCPI": -5.811,
+      "realCPIAUCNS": -5.843,
+      "realPCEPI": -6.507,
+      "realPCEPILFE": -6.525
+    },
+    "2020-01": {
+      "nominal": -6.153,
+      "realCPI": -4.001,
+      "realCPIAUCNS": -4.107,
+      "realPCEPI": -4.754,
+      "realPCEPILFE": -4.944
+    },
+    "2020-02": {
+      "nominal": -5.313,
+      "realCPI": -3.192,
+      "realCPIAUCNS": -3.198,
+      "realPCEPI": -3.809,
+      "realPCEPILFE": -3.801
+    },
+    "2020-03": {
+      "nominal": -0.02,
+      "realCPI": 1.473,
+      "realCPIAUCNS": 1.519,
+      "realPCEPI": 1.146,
+      "realPCEPILFE": 1.507
+    },
+    "2020-04": {
+      "nominal": -0.746,
+      "realCPI": 0.16,
+      "realCPIAUCNS": 0.176,
+      "realPCEPI": 0.309,
+      "realPCEPILFE": 0.842
+    },
+    "2020-05": {
+      "nominal": -2.108,
+      "realCPI": -0.346,
+      "realCPIAUCNS": -0.426,
+      "realPCEPI": -0.056,
+      "realPCEPILFE": 0.449
+    },
+    "2020-06": {
+      "nominal": -3.864,
+      "realCPI": -2.109,
+      "realCPIAUCNS": -2.178,
+      "realPCEPI": -2.068,
+      "realPCEPILFE": -1.863
+    },
+    "2020-07": {
+      "nominal": -3.145,
+      "realCPI": -1.593,
+      "realCPIAUCNS": -1.604,
+      "realPCEPI": -1.666,
+      "realPCEPILFE": -1.382
+    },
+    "2020-08": {
+      "nominal": -3.142,
+      "realCPI": -1.118,
+      "realCPIAUCNS": -1.09,
+      "realPCEPI": -1.239,
+      "realPCEPILFE": -1.009
+    },
+    "2020-09": {
+      "nominal": -3.024,
+      "realCPI": -0.987,
+      "realCPIAUCNS": -1.006,
+      "realPCEPI": -1.099,
+      "realPCEPILFE": -0.9
+    },
+    "2020-10": {
+      "nominal": -3.529,
+      "realCPI": -1.563,
+      "realCPIAUCNS": -1.61,
+      "realPCEPI": -1.605,
+      "realPCEPILFE": -1.377
+    },
+    "2020-11": {
+      "nominal": -3.539,
+      "realCPI": -1.82,
+      "realCPIAUCNS": -1.821,
+      "realPCEPI": -1.81,
+      "realPCEPILFE": -1.551
+    },
+    "2020-12": {
+      "nominal": -6.558,
+      "realCPI": -4.662,
+      "realCPIAUCNS": -4.623,
+      "realPCEPI": -4.649,
+      "realPCEPILFE": -4.485
+    },
+    "2021-01": {
+      "nominal": -6.881,
+      "realCPI": -5.223,
+      "realCPIAUCNS": -5.199,
+      "realPCEPI": -5.025,
+      "realPCEPILFE": -4.92
+    },
+    "2021-02": {
+      "nominal": -4.774,
+      "realCPI": -3.184,
+      "realCPIAUCNS": -3.178,
+      "realPCEPI": -3.019,
+      "realPCEPILFE": -3.146
+    },
+    "2021-03": {
+      "nominal": -8.476,
+      "realCPI": -6.223,
+      "realCPIAUCNS": -6.267,
+      "realPCEPI": -6.222,
+      "realPCEPILFE": -6.651
+    },
+    "2021-04": {
+      "nominal": -8.194,
+      "realCPI": -5.158,
+      "realCPIAUCNS": -5.134,
+      "realPCEPI": -5.607,
+      "realPCEPILFE": -6.071
+    },
+    "2021-05": {
+      "nominal": -7.256,
+      "realCPI": -4.135,
+      "realCPIAUCNS": -4.067,
+      "realPCEPI": -4.908,
+      "realPCEPILFE": -5.393
+    },
+    "2021-06": {
+      "nominal": -5.974,
+      "realCPI": -2.653,
+      "realCPIAUCNS": -2.565,
+      "realPCEPI": -3.568,
+      "realPCEPILFE": -3.979
+    },
+    "2021-07": {
+      "nominal": -4.735,
+      "realCPI": -1.609,
+      "realCPIAUCNS": -1.496,
+      "realPCEPI": -2.33,
+      "realPCEPILFE": -2.841
+    },
+    "2021-08": {
+      "nominal": -5.211,
+      "realCPI": -2.475,
+      "realCPIAUCNS": -2.383,
+      "realPCEPI": -3.005,
+      "realPCEPILFE": -3.582
+    },
+    "2021-09": {
+      "nominal": -6.144,
+      "realCPI": -3.537,
+      "realCPIAUCNS": -3.501,
+      "realPCEPI": -4.099,
+      "realPCEPILFE": -4.762
+    },
+    "2021-10": {
+      "nominal": -5.288,
+      "realCPI": -1.643,
+      "realCPIAUCNS": -1.655,
+      "realPCEPI": -2.475,
+      "realPCEPILFE": -3.308
+    },
+    "2021-11": {
+      "nominal": -7.111,
+      "realCPI": -3.029,
+      "realCPIAUCNS": -3.113,
+      "realPCEPI": -3.911,
+      "realPCEPILFE": -4.853
+    },
+    "2021-12": {
+      "nominal": -3.557,
+      "realCPI": 0.542,
+      "realCPIAUCNS": 0.413,
+      "realPCEPI": -0.426,
+      "realPCEPILFE": -1.296
+    },
+    "2022-01": {
+      "nominal": -2.724,
+      "realCPI": 1.474,
+      "realCPIAUCNS": 1.399,
+      "realPCEPI": 0.26,
+      "realPCEPILFE": -0.602
+    },
+    "2022-02": {
+      "nominal": -1.709,
+      "realCPI": 2.505,
+      "realCPIAUCNS": 2.442,
+      "realPCEPI": 1.183,
+      "realPCEPILFE": 0.288
+    },
+    "2022-03": {
+      "nominal": -2.052,
+      "realCPI": 2.769,
+      "realCPIAUCNS": 2.741,
+      "realPCEPI": 1.211,
+      "realPCEPILFE": -0.051
+    },
+    "2022-04": {
+      "nominal": -1.014,
+      "realCPI": 3.049,
+      "realCPIAUCNS": 3.074,
+      "realPCEPI": 1.576,
+      "realPCEPILFE": 0.3
+    },
+    "2022-05": {
+      "nominal": 3.67,
+      "realCPI": 8.042,
+      "realCPIAUCNS": 8.086,
+      "realPCEPI": 6.307,
+      "realPCEPILFE": 4.704
+    },
+    "2022-06": {
+      "nominal": 4.992,
+      "realCPI": 9.557,
+      "realCPIAUCNS": 9.638,
+      "realPCEPI": 7.812,
+      "realPCEPILFE": 5.874
+    },
+    "2022-07": {
+      "nominal": 5.959,
+      "realCPI": 9.238,
+      "realCPIAUCNS": 9.301,
+      "realPCEPI": 7.514,
+      "realPCEPILFE": 5.859
+    },
+    "2022-08": {
+      "nominal": 2.331,
+      "realCPI": 5.872,
+      "realCPIAUCNS": 5.911,
+      "realPCEPI": 4.323,
+      "realPCEPILFE": 3.074
+    },
+    "2022-09": {
+      "nominal": 7.316,
+      "realCPI": 11.008,
+      "realCPIAUCNS": 11.017,
+      "realPCEPI": 9.444,
+      "realPCEPILFE": 8.355
+    },
+    "2022-10": {
+      "nominal": 10.338,
+      "realCPI": 13.153,
+      "realCPIAUCNS": 13.139,
+      "realPCEPI": 11.791,
+      "realPCEPILFE": 10.739
+    },
+    "2022-11": {
+      "nominal": 11.507,
+      "realCPI": 13.46,
+      "realCPIAUCNS": 13.447,
+      "realPCEPI": 12.303,
+      "realPCEPILFE": 11.432
+    },
+    "2022-12": {
+      "nominal": 10.203,
+      "realCPI": 11.398,
+      "realCPIAUCNS": 11.451,
+      "realPCEPI": 10.472,
+      "realPCEPILFE": 9.893
+    },
+    "2023-01": {
+      "nominal": 9.921,
+      "realCPI": 10.904,
+      "realCPIAUCNS": 10.99,
+      "realPCEPI": 10.049,
+      "realPCEPILFE": 9.454
+    },
+    "2023-02": {
+      "nominal": 10.246,
+      "realCPI": 11.058,
+      "realCPIAUCNS": 11.139,
+      "realPCEPI": 10.261,
+      "realPCEPILFE": 9.902
+    },
+    "2023-03": {
+      "nominal": 11.614,
+      "realCPI": 11.543,
+      "realCPIAUCNS": 11.614,
+      "realPCEPI": 11.022,
+      "realPCEPILFE": 11.4
+    },
+    "2023-04": {
+      "nominal": 12.218,
+      "realCPI": 12.174,
+      "realCPIAUCNS": 12.153,
+      "realPCEPI": 11.667,
+      "realPCEPILFE": 12.002
+    },
+    "2023-05": {
+      "nominal": 8.223,
+      "realCPI": 7.744,
+      "realCPIAUCNS": 7.656,
+      "realPCEPI": 7.611,
+      "realPCEPILFE": 8.364
+    },
+    "2023-06": {
+      "nominal": 6.754,
+      "realCPI": 5.597,
+      "realCPIAUCNS": 5.493,
+      "realPCEPI": 5.816,
+      "realPCEPILFE": 6.942
+    },
+    "2023-07": {
+      "nominal": 5.853,
+      "realCPI": 5.81,
+      "realCPIAUCNS": 5.698,
+      "realPCEPI": 5.935,
+      "realPCEPILFE": 6.846
+    },
+    "2023-08": {
+      "nominal": 13.552,
+      "realCPI": 13.123,
+      "realCPIAUCNS": 13.061,
+      "realPCEPI": 12.807,
+      "realPCEPILFE": 13.239
+    },
+    "2023-09": {
+      "nominal": 10.98,
+      "realCPI": 10.836,
+      "realCPIAUCNS": 10.85,
+      "realPCEPI": 10.582,
+      "realPCEPILFE": 10.837
+    },
+    "2023-10": {
+      "nominal": 12.129,
+      "realCPI": 11.606,
+      "realCPIAUCNS": 11.595,
+      "realPCEPI": 11.36,
+      "realPCEPILFE": 11.847
+    },
+    "2023-11": {
+      "nominal": 9.375,
+      "realCPI": 9.152,
+      "realCPIAUCNS": 9.157,
+      "realPCEPI": 8.763,
+      "realPCEPILFE": 9.319
+    },
+    "2023-12": {
+      "nominal": 6.357,
+      "realCPI": 6.727,
+      "realCPIAUCNS": 6.764,
+      "realPCEPI": 6.16,
+      "realPCEPILFE": 6.516
+    },
+    "2024-01": {
+      "nominal": 7.78,
+      "realCPI": 8.251,
+      "realCPIAUCNS": 8.254,
+      "realPCEPI": 7.842,
+      "realPCEPILFE": 8.325
+    },
+    "2024-02": {
+      "nominal": 2.899,
+      "realCPI": 3.529,
+      "realCPIAUCNS": 3.525,
+      "realPCEPI": 3.075,
+      "realPCEPILFE": 3.431
+    },
+    "2024-03": {
+      "nominal": 0.218,
+      "realCPI": 0.973,
+      "realCPIAUCNS": 0.964,
+      "realPCEPI": 0.427,
+      "realPCEPILFE": 0.617
+    },
+    "2024-04": {
+      "nominal": 2.885,
+      "realCPI": 3.458,
+      "realCPIAUCNS": 3.454,
+      "realPCEPI": 2.923,
+      "realPCEPILFE": 3.103
+    },
+    "2024-05": {
+      "nominal": 1.295,
+      "realCPI": 1.749,
+      "realCPIAUCNS": 1.773,
+      "realPCEPI": 1.175,
+      "realPCEPILFE": 1.283
+    },
+    "2024-06": {
+      "nominal": 2.198,
+      "realCPI": 2.288,
+      "realCPIAUCNS": 2.289,
+      "realPCEPI": 1.869,
+      "realPCEPILFE": 2.073
+    },
+    "2024-07": {
+      "nominal": 0.357,
+      "realCPI": 0.146,
+      "realCPIAUCNS": 0.101,
+      "realPCEPI": -0.192,
+      "realPCEPILFE": 0.015
+    },
+    "2024-08": {
+      "nominal": -0.377,
+      "realCPI": -1.35,
+      "realCPIAUCNS": -1.423,
+      "realPCEPI": -1.536,
+      "realPCEPILFE": -1.094
+    },
+    "2024-09": {
+      "nominal": -2.287,
+      "realCPI": -3.325,
+      "realCPIAUCNS": -3.312,
+      "realPCEPI": -3.482,
+      "realPCEPILFE": -2.936
+    },
+    "2024-10": {
+      "nominal": -5.698,
+      "realCPI": -6.547,
+      "realCPIAUCNS": -6.529,
+      "realPCEPI": -6.639,
+      "realPCEPILFE": -6.175
+    },
+    "2024-11": {
+      "nominal": -2.285,
+      "realCPI": -2.952,
+      "realCPIAUCNS": -2.924,
+      "realPCEPI": -3.076,
+      "realPCEPILFE": -2.705
+    },
+    "2024-12": {
+      "nominal": -1.453,
+      "realCPI": -1.804,
+      "realCPIAUCNS": -1.787,
+      "realPCEPI": -1.94,
+      "realPCEPILFE": -1.691
+    },
+    "2025-01": {
+      "nominal": -2.64,
+      "realCPI": -3.418,
+      "realCPIAUCNS": -3.409,
+      "realPCEPI": -3.778,
+      "realPCEPILFE": -3.616
+    },
+    "2025-02": {
+      "nominal": -2.141,
+      "realCPI": -2.732,
+      "realCPIAUCNS": -2.713,
+      "realPCEPI": -2.818,
+      "realPCEPILFE": -2.574
+    },
+    "2025-03": {
+      "nominal": 0.751,
+      "realCPI": -0.19,
+      "realCPIAUCNS": -0.181,
+      "realPCEPI": -0.212,
+      "realPCEPILFE": 0.091
+    },
+    "2025-04": {
+      "nominal": -1.225,
+      "realCPI": -2.423,
+      "realCPIAUCNS": -2.437,
+      "realPCEPI": -2.469,
+      "realPCEPILFE": -2.147
+    },
+    "2025-05": {
+      "nominal": -3.905,
+      "realCPI": -4.567,
+      "realCPIAUCNS": -4.588,
+      "realPCEPI": -4.492,
+      "realPCEPILFE": -4.188
+    },
+    "2025-06": {
+      "nominal": -6.501,
+      "realCPI": -7.055,
+      "realCPIAUCNS": -7.065,
+      "realPCEPI": -7.133,
+      "realPCEPILFE": -6.94
+    },
+    "2025-07": {
+      "nominal": -8.944,
+      "realCPI": -9.273,
+      "realCPIAUCNS": -9.307,
+      "realPCEPI": -9.395,
+      "realPCEPILFE": -9.167
+    },
+    "2025-08": {
+      "nominal": -9.004,
+      "realCPI": -8.934,
+      "realCPIAUCNS": -8.953,
+      "realPCEPI": -9.102,
+      "realPCEPILFE": -8.957
+    },
+    "2025-09": {
+      "nominal": -10.437,
+      "realCPI": -9.941,
+      "realCPIAUCNS": -9.95,
+      "realPCEPI": -10.147,
+      "realPCEPILFE": -10.114
+    },
+    "2025-11": {
+      "nominal": -12.477,
+      "realCPI": -12.191,
+      "realCPIAUCNS": -12.158,
+      "realPCEPI": -12.085,
+      "realPCEPILFE": -12.077
     },
     "2025-12": {
-      "nominal": -1.218,
-      "realCPI": -0.924,
-      "realCPIAUCNS": -1.239,
-      "realPCEPI": -0.892,
-      "realPCEPILFE": -0.895
+      "nominal": -11.127,
+      "realCPI": -11.119,
+      "realCPIAUCNS": -11.098,
+      "realPCEPI": -10.924,
+      "realPCEPILFE": -10.844
     },
     "2026-01": {
-      "nominal": -2.164,
-      "realCPI": -1.712,
-      "realCPIAUCNS": -1.517,
-      "realPCEPI": -1.539,
-      "realPCEPILFE": -1.443
+      "nominal": -12.992,
+      "realCPI": -12.464,
+      "realCPIAUCNS": -12.468,
+      "realPCEPI": -12.05,
+      "realPCEPILFE": -11.854
     },
     "2026-02": {
-      "nominal": -1.365,
-      "realCPI": -1.292,
-      "realCPIAUCNS": -1.091,
-      "realPCEPI": -1.161,
-      "realPCEPILFE": -1.167
+      "nominal": -13.037,
+      "realCPI": -12.642,
+      "realCPIAUCNS": -12.659,
+      "realPCEPI": -12.268,
+      "realPCEPILFE": -12.117
     },
     "2026-03": {
-      "nominal": 0.417,
-      "realCPI": 0.896,
-      "realCPIAUCNS": 1.08,
-      "realPCEPI": 0.698,
-      "realPCEPILFE": 0.327
+      "nominal": -14.76,
+      "realCPI": -13.569,
+      "realCPIAUCNS": -13.594,
+      "realPCEPI": -13.354,
+      "realPCEPILFE": -13.596
     },
     "2026-04": {
-      "nominal": -3.221,
-      "realCPI": -3.714,
-      "realCPIAUCNS": -3.513,
-      "realPCEPI": -3.927,
-      "realPCEPILFE": -4.076
+      "nominal": -18.451,
+      "realCPI": -16.98,
+      "realCPIAUCNS": -16.954,
+      "realPCEPI": -16.962,
+      "realPCEPILFE": -17.339
     },
     "2026-05": {
-      "nominal": -3.796,
-      "realCPI": -3.064,
-      "realCPIAUCNS": -2.911,
-      "realPCEPI": -3.056,
-      "realPCEPILFE": -3.174
+      "nominal": -18.579,
+      "realCPI": -16.805,
+      "realCPIAUCNS": -16.739,
+      "realPCEPI": -16.849,
+      "realPCEPILFE": -17.366
     },
     "2026-06": {
-      "nominal": 1.212,
-      "realCPI": 0.785,
-      "realCPIAUCNS": 0.859,
-      "realPCEPI": 1.118,
-      "realPCEPILFE": 1.361
+      "nominal": -15.696,
+      "realCPI": -14.191,
+      "realCPIAUCNS": -14.135,
+      "realPCEPI": -13.981,
+      "realPCEPILFE": -14.291
     },
     "2026-07": {
-      "nominal": 3.25,
-      "realCPI": 3.031,
-      "realCPIAUCNS": 2.944,
-      "realPCEPI": 3.116,
-      "realPCEPILFE": 3.208
+      "nominal": -9.57,
+      "realCPI": -8.005,
+      "realCPIAUCNS": -7.95,
+      "realPCEPI": -7.651,
+      "realPCEPILFE": -7.969
     }
   },
   "meta": {
@@ -6418,7 +6418,7 @@
       2026
     ],
     "latestCommonMonth": "2026-07",
-    "generatedAt": "2026-09-02T10:52:26+00:00",
+    "generatedAt": "2026-09-02T11:01:02+00:00",
     "sources": {
       "usCpi": "FRED CPIAUCSL (Consumer Price Index for All Urban Consumers). Published monthly. Seasonally adjusted",
       "usPcepi": "FRED PCEPI (Personal Consumption Expenditures, Chain-Type Price Index). Published monthly. Seasonally adjusted",

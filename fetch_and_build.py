@@ -173,20 +173,6 @@ def yoy_inflation_pct(series, ym):
     return round((cur / prev - 1) * 100, 3)
 
 
-def mom_pct_change(series, ym):
-    """Month-over-month % change. Also scale-invariant -- any constant a
-    base-year choice would introduce cancels out in the ratio, same as for
-    yoy_inflation_pct -- so this works identically on raw or rebased input."""
-    y, m = map(int, ym.split("-"))
-    prev_y, prev_m = (y - 1, 12) if m == 1 else (y, m - 1)
-    prev_ym = f"{prev_y:04d}-{prev_m:02d}"
-    prev = series.get(prev_ym)
-    cur = series.get(ym)
-    if prev is None or cur is None or prev == 0:
-        return None
-    return round((cur / prev - 1) * 100, 3)
-
-
 def build_dataset():
     print("Fetching FRED (US CPI, PCEPI, CPI-NS, PCEPILFE)...")
     cpi_us_raw, pcepi_us_raw, cpi_us_ns_raw, pcepilfe_us_raw = fetch_fred()
@@ -223,7 +209,7 @@ def build_dataset():
         for ym in price_common_dates
     }
 
-    # Month-over-month % change in nominal and Real EXR (vs. each US index).
+    # Year-over-year % change in nominal and Real EXR (vs. each US index).
     # Like inflation, this is scale-invariant, so it's computed once here
     # directly from the raw (unrebased) series -- no base year needed at
     # all, and it never needs recomputing when the base-year toggle changes.
@@ -242,11 +228,11 @@ def build_dataset():
     )
     exr_change = {
         ym: {
-            "nominal": mom_pct_change(nominal, ym),
-            "realCPI": mom_pct_change(raw_real_cpiaucsl, ym),
-            "realCPIAUCNS": mom_pct_change(raw_real_cpiaucns, ym),
-            "realPCEPI": mom_pct_change(raw_real_pcepi, ym),
-            "realPCEPILFE": mom_pct_change(raw_real_pcepilfe, ym),
+            "nominal": yoy_inflation_pct(nominal, ym),
+            "realCPI": yoy_inflation_pct(raw_real_cpiaucsl, ym),
+            "realCPIAUCNS": yoy_inflation_pct(raw_real_cpiaucns, ym),
+            "realPCEPI": yoy_inflation_pct(raw_real_pcepi, ym),
+            "realPCEPILFE": yoy_inflation_pct(raw_real_pcepilfe, ym),
         }
         for ym in exr_change_dates
     }

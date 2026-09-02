@@ -516,69 +516,12 @@
   </header>
 
   <div class="tabs" id="tabs">
-    <button class="tab-btn" type="button" data-tab="change" data-title="Real &amp; Nominal EXR: Monthly Change" aria-pressed="false">EXR Monthly Change</button>
     <button class="tab-btn" type="button" data-tab="exr" data-title="Real &amp; Nominal Exchange Rate: ILS / USD" aria-pressed="true">Exchange Rate, ILS / USD</button>
+    <button class="tab-btn" type="button" data-tab="change" data-title="Real &amp; Nominal EXR: Annual Change" aria-pressed="false">EXR Annual Change</button>
     <button class="tab-btn" type="button" data-tab="prices" data-title="Israel vs. US Price Indices" aria-pressed="false">Price Indices</button>
     <button class="tab-btn" type="button" data-tab="inflation" data-title="Annual Inflation: Israel vs. US" aria-pressed="false">Annual Inflation</button>
     <button class="tab-btn" type="button" data-tab="about" data-title="About These Price Indices" aria-pressed="false">About the Indices</button>
   </div>
-
-  <section class="tab-page" id="page-change" hidden>
-    <div class="how-to-use">
-      <b>How to use these charts:</b> drag the year-range handles below to zoom into a period · click a name in the legend to show or hide that line · click two points on the same line to draw a trend line with its average annual change · click "Show data table" below the chart to see the exact numbers · use the "Base year" dropdown at the top of the page to re-rebase every index (all sheets) so a different year = 100.
-    </div>
-
-    <div class="card">
-      <div class="card-title">Real &amp; Nominal EXR: Monthly Change</div>
-      <div class="legend" id="legendChange"></div>
-
-      <div class="chart-area" id="chartAreaChange">
-        <svg id="chartChange" class="chart-svg" viewBox="0 0 900 420" preserveAspectRatio="xMidYMid meet"></svg>
-        <div class="tooltip" id="tooltipChange"></div>
-      </div>
-
-      <div class="range-controls">
-        <div class="range-header">
-          <span class="lbl">Year range</span>
-          <span class="range-years" id="rangeYearsChange"></span>
-          <button class="reset-link" id="resetRangeChange" type="button">Reset</button>
-        </div>
-        <div class="slider-track-wrap">
-          <div class="slider-track"></div>
-          <div class="slider-fill" id="sliderFillChange"></div>
-          <input type="range" class="thumb" id="thumbFromChange">
-          <input type="range" class="thumb" id="thumbToChange">
-        </div>
-      </div>
-    </div>
-
-    <button class="table-toggle" id="tableToggleChange" type="button">Show data table</button>
-    <div class="data-table-wrap" id="tableWrapChange">
-      <table class="data-table">
-        <thead>
-          <tr>
-            <th>Month</th>
-            <th>Nominal EXR (ILS/USD)</th>
-            <th>Real EXR (vs US CPIAUCSL)</th>
-            <th>Real EXR (vs US CPIAUCNS)</th>
-            <th>Real EXR (vs US PCEPI)</th>
-            <th>Real EXR (vs US PCEPILFE)</th>
-          </tr>
-        </thead>
-        <tbody id="tableBodyChange"></tbody>
-      </table>
-    </div>
-
-    <div class="formulas" id="formulasChange">
-      <div class="formulas-title">How this is calculated</div>
-      <div class="formula">Monthly change &nbsp;=&nbsp; (this month &divide; previous month &minus; 1) &times; 100%</div>
-      <div class="formula-note" id="formulaNoteChange">Base-year independent: these percentages come out identical no matter which year is selected as 100 on the Exchange Rate sheet.</div>
-    </div>
-
-    <footer class="foot" id="sourcesFootChange">
-      <div class="foot-title">Data Sources</div>
-    </footer>
-  </section>
 
   <section class="tab-page" id="page-exr">
     <div class="how-to-use">
@@ -634,6 +577,63 @@
     </div>
 
     <footer class="foot" id="sourcesFoot">
+      <div class="foot-title">Data Sources</div>
+    </footer>
+  </section>
+
+  <section class="tab-page" id="page-change" hidden>
+    <div class="how-to-use">
+      <b>How to use these charts:</b> drag the year-range handles below to zoom into a period · click a name in the legend to show or hide that line · click two points on the same line to draw a trend line with its average annual change · click "Show data table" below the chart to see the exact numbers · use the "Base year" dropdown at the top of the page to re-rebase every index (all sheets) so a different year = 100.
+    </div>
+
+    <div class="card">
+      <div class="card-title">Real &amp; Nominal EXR: Annual Change</div>
+      <div class="legend" id="legendChange"></div>
+
+      <div class="chart-area" id="chartAreaChange">
+        <svg id="chartChange" class="chart-svg" viewBox="0 0 900 420" preserveAspectRatio="xMidYMid meet"></svg>
+        <div class="tooltip" id="tooltipChange"></div>
+      </div>
+
+      <div class="range-controls">
+        <div class="range-header">
+          <span class="lbl">Year range</span>
+          <span class="range-years" id="rangeYearsChange"></span>
+          <button class="reset-link" id="resetRangeChange" type="button">Reset</button>
+        </div>
+        <div class="slider-track-wrap">
+          <div class="slider-track"></div>
+          <div class="slider-fill" id="sliderFillChange"></div>
+          <input type="range" class="thumb" id="thumbFromChange">
+          <input type="range" class="thumb" id="thumbToChange">
+        </div>
+      </div>
+    </div>
+
+    <button class="table-toggle" id="tableToggleChange" type="button">Show data table</button>
+    <div class="data-table-wrap" id="tableWrapChange">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Month</th>
+            <th>Nominal EXR (ILS/USD)</th>
+            <th>Real EXR (vs US CPIAUCSL)</th>
+            <th>Real EXR (vs US CPIAUCNS)</th>
+            <th>Real EXR (vs US PCEPI)</th>
+            <th>Real EXR (vs US PCEPILFE)</th>
+          </tr>
+        </thead>
+        <tbody id="tableBodyChange"></tbody>
+      </table>
+    </div>
+
+    <div class="formulas" id="formulasChange">
+      <div class="formulas-title">How this is calculated</div>
+      <div class="formula">Annual change &nbsp;=&nbsp; (this month &divide; same month last year &minus; 1) &times; 100%</div>
+      <div class="formula-note" id="formulaNoteChange">Base-year independent: these percentages come out identical no matter which year is selected as 100 on the Exchange Rate sheet.</div>
+    </div>
+
+    <footer class="foot" id="sourcesFootChange">
       <div class="foot-title">Data Sources</div>
     </footer>
   </section>
@@ -863,7 +863,7 @@ const DASHBOARD_DATA = __DASHBOARD_DATA__;
   let selectedBaseYear = meta.defaultBaseYear;
   let { rows, priceRows } = computeDatasets(selectedBaseYear);
 
-  // Month-over-month % change is scale-invariant just like inflation, so
+  // Year-over-year % change is scale-invariant just like inflation, so
   // it's precomputed server-side and never needs recomputing when the
   // base year changes -- this is a static dataset, built once.
   const exrChangeRows = Object.keys(EXR_CHANGE).sort().map(d => ({ date: d, ...EXR_CHANGE[d] }));
@@ -969,7 +969,7 @@ const DASHBOARD_DATA = __DASHBOARD_DATA__;
 
   // ---------- tabs ----------
   const pageTitle = document.getElementById("pageTitle");
-  const TAB_IDS = ["change", "exr", "prices", "inflation", "about"];
+  const TAB_IDS = ["exr", "change", "prices", "inflation", "about"];
   document.querySelectorAll(".tab-btn").forEach(btn => {
     btn.addEventListener("click", () => {
       document.querySelectorAll(".tab-btn").forEach(b => b.setAttribute("aria-pressed", String(b === btn)));
@@ -1012,7 +1012,7 @@ const DASHBOARD_DATA = __DASHBOARD_DATA__;
     toggleId: "tableToggle", wrapId: "tableWrap", bodyId: "tableBody",
   });
 
-  // Month-over-month change is base-year-invariant, so this table never
+  // Year-over-year change is base-year-invariant, so this table never
   // needs to be rebuilt when the base year changes.
   buildDataTable({
     dataRows: exrChangeRows, keys: ["nominal", "realCPI", "realCPIAUCNS", "realPCEPI", "realPCEPILFE"],
@@ -1426,19 +1426,6 @@ const DASHBOARD_DATA = __DASHBOARD_DATA__;
     return { fullMinYear: indexToYear(idxs[0]), fullMaxYear: indexToYear(idxs[idxs.length - 1]) };
   }
 
-  // ---------- Sheet 0: EXR Monthly Change (base-year-invariant, like Annual Inflation) ----------
-  const changeRange = yearRangeOf(exrChangeRows);
-  const sliderChange = createSlider({
-    thumbFromId: "thumbFromChange", thumbToId: "thumbToChange", sliderFillId: "sliderFillChange",
-    rangeYearsId: "rangeYearsChange", resetId: "resetRangeChange", ...changeRange,
-  });
-  const chartChange = createChart({
-    rows: exrChangeRows, series: EXR_CHANGE_SERIES, svgId: "chartChange", tooltipId: "tooltipChange",
-    legendId: "legendChange", chartAreaId: "chartAreaChange", getRange: () => sliderChange.state, unit: "%",
-  });
-  sliderChange.onChange(chartChange.draw);
-  chartChange.draw();
-
   // ---------- Sheet 1: Real EXR ----------
   const exrRange = yearRangeOf(rows);
   const sliderExr = createSlider({
@@ -1452,7 +1439,20 @@ const DASHBOARD_DATA = __DASHBOARD_DATA__;
   sliderExr.onChange(chartExr.draw);
   chartExr.draw();
 
-  // ---------- Sheet 2: Price Indices ----------
+  // ---------- Sheet 2: EXR Annual Change (base-year-invariant, like Annual Inflation) ----------
+  const changeRange = yearRangeOf(exrChangeRows);
+  const sliderChange = createSlider({
+    thumbFromId: "thumbFromChange", thumbToId: "thumbToChange", sliderFillId: "sliderFillChange",
+    rangeYearsId: "rangeYearsChange", resetId: "resetRangeChange", ...changeRange,
+  });
+  const chartChange = createChart({
+    rows: exrChangeRows, series: EXR_CHANGE_SERIES, svgId: "chartChange", tooltipId: "tooltipChange",
+    legendId: "legendChange", chartAreaId: "chartAreaChange", getRange: () => sliderChange.state, unit: "%",
+  });
+  sliderChange.onChange(chartChange.draw);
+  chartChange.draw();
+
+  // ---------- Sheet 3: Price Indices ----------
   const pricesRange = yearRangeOf(priceRows);
   const sliderPrices = createSlider({
     thumbFromId: "thumbFromPrices", thumbToId: "thumbToPrices", sliderFillId: "sliderFillPrices",
@@ -1465,7 +1465,7 @@ const DASHBOARD_DATA = __DASHBOARD_DATA__;
   sliderPrices.onChange(chartPrices.draw);
   chartPrices.draw();
 
-  // ---------- Sheet 3: Annual Inflation ----------
+  // ---------- Sheet 4: Annual Inflation ----------
   const sliderInflation = createSlider({
     thumbFromId: "thumbFromInflation", thumbToId: "thumbToInflation", sliderFillId: "sliderFillInflation",
     rangeYearsId: "rangeYearsInflation", resetId: "resetRangeInflation", ...pricesRange,

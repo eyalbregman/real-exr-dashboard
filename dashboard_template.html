@@ -535,11 +535,11 @@
         <thead>
           <tr>
             <th>Month</th>
-            <th>Nominal EXR</th>
-            <th>Real EXR (CPIAUCSL)</th>
-            <th>Real EXR (PCEPI)</th>
-            <th>Real EXR (CPIAUCNS)</th>
-            <th>Real EXR (PCEPILFE)</th>
+            <th>Nominal EXR (ILS/USD)</th>
+            <th>Real EXR (vs US CPIAUCSL)</th>
+            <th>Real EXR (vs US CPIAUCNS)</th>
+            <th>Real EXR (vs US PCEPI)</th>
+            <th>Real EXR (vs US PCEPILFE)</th>
           </tr>
         </thead>
         <tbody id="tableBody"></tbody>
@@ -593,10 +593,10 @@
           <tr>
             <th>Month</th>
             <th>Israel CPI</th>
-            <th>US CPI</th>
-            <th>US CPI (NSA)</th>
-            <th>US PCE</th>
-            <th>US Core PCE</th>
+            <th>US CPIAUCSL</th>
+            <th>US CPIAUCNS</th>
+            <th>US PCEPI</th>
+            <th>US PCEPILFE</th>
           </tr>
         </thead>
         <tbody id="tableBodyPrices"></tbody>
@@ -648,11 +648,11 @@
         <thead>
           <tr>
             <th>Month</th>
-            <th>Israel Infl.</th>
-            <th>US CPI Infl.</th>
-            <th>US CPI (NSA) Infl.</th>
-            <th>US PCE Infl.</th>
-            <th>US Core PCE Infl.</th>
+            <th>Israel CPI</th>
+            <th>US CPIAUCSL</th>
+            <th>US CPIAUCNS</th>
+            <th>US PCEPI</th>
+            <th>US PCEPILFE</th>
           </tr>
         </thead>
         <tbody id="tableBodyInflation"></tbody>
@@ -715,11 +715,12 @@ const DASHBOARD_DATA = __DASHBOARD_DATA__;
   const SERIES = [
     // Colors match each series' counterpart on the Price Indices / Annual
     // Inflation sheets: nominal EXR <-> Israel CPI, each Real EXR variant
-    // <-> the US price index it's computed from.
-    { key: "realCPI", name: "Real EXR (vs US CPIAUCSL)", color: "var(--series-3)" },
-    { key: "realPCEPI", name: "Real EXR (vs US PCEPI)", color: "var(--series-4)" },
+    // <-> the US price index it's computed from. Order matches those
+    // sheets too: base series first, then CPIAUCSL, CPIAUCNS, PCEPI, PCEPILFE.
     { key: "nominal", name: "Nominal EXR (ILS/USD)", color: "var(--series-1)" },
+    { key: "realCPI", name: "Real EXR (vs US CPIAUCSL)", color: "var(--series-3)" },
     { key: "realCPIAUCNS", name: "Real EXR (vs US CPIAUCNS)", color: "var(--series-2)" },
+    { key: "realPCEPI", name: "Real EXR (vs US PCEPI)", color: "var(--series-4)" },
     { key: "realPCEPILFE", name: "Real EXR (vs US PCEPILFE)", color: "var(--series-5)" },
   ];
 
@@ -831,7 +832,7 @@ const DASHBOARD_DATA = __DASHBOARD_DATA__;
   }
 
   buildDataTable({
-    dataRows: rows, keys: ["nominal", "realCPI", "realPCEPI", "realCPIAUCNS", "realPCEPILFE"],
+    dataRows: rows, keys: ["nominal", "realCPI", "realCPIAUCNS", "realPCEPI", "realPCEPILFE"],
     toggleId: "tableToggle", wrapId: "tableWrap", bodyId: "tableBody",
   });
 

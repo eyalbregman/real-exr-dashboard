@@ -322,9 +322,10 @@
       "2026-07": 3.031364,
       "2026-08": 2.991952,
       "2026-09": 3.0334,
-      "2026-10": 3.08
+      "2026-10": 3.088
     },
     "israelCPI": {
+      "2026-09": 105.3,
       "2026-08": 105.8,
       "2026-07": 105.1,
       "2026-06": 104.8,
@@ -965,7 +966,8 @@
       "2026-05": 333.979,
       "2026-06": 332.568,
       "2026-07": 332.813,
-      "2026-08": 334.131
+      "2026-08": 334.131,
+      "2026-09": 336.298
     },
     "usCPIAUCNS": {
       "2000-01": 168.8,
@@ -1286,7 +1288,8 @@
       "2026-05": 335.123,
       "2026-06": 333.952,
       "2026-07": 333.918,
-      "2026-08": 334.98
+      "2026-08": 334.98,
+      "2026-09": 336.94
     },
     "usPCEPI": {
       "2000-01": 72.961,
@@ -1607,8 +1610,9 @@
       "2026-04": 130.672,
       "2026-05": 131.241,
       "2026-06": 131.106,
-      "2026-07": 131.172,
-      "2026-08": 131.579
+      "2026-07": 131.187,
+      "2026-08": 131.611,
+      "2026-09": 132.257
     },
     "usPCEPILFE": {
       "2000-01": 74.306,
@@ -1929,8 +1933,9 @@
       "2026-04": 129.395,
       "2026-05": 129.796,
       "2026-06": 129.969,
-      "2026-07": 130.133,
-      "2026-08": 130.455
+      "2026-07": 130.148,
+      "2026-08": 130.489,
+      "2026-09": 130.902
     }
   },
   "inflation": {
@@ -4157,15 +4162,22 @@
       "israel": 1.546,
       "usCPIAUCSL": 3.304,
       "usCPIAUCNS": 3.365,
-      "usPCEPI": 3.362,
-      "usPCEPILFE": 2.983
+      "usPCEPI": 3.373,
+      "usPCEPILFE": 2.995
     },
     "2026-08": {
       "israel": 1.536,
       "usCPIAUCSL": 3.353,
       "usCPIAUCNS": 3.397,
-      "usPCEPI": 3.419,
-      "usPCEPILFE": 3.008
+      "usPCEPI": 3.444,
+      "usPCEPILFE": 3.034
+    },
+    "2026-09": {
+      "israel": 1.641,
+      "usCPIAUCSL": 3.717,
+      "usCPIAUCNS": 3.738,
+      "usPCEPI": 3.649,
+      "usPCEPILFE": 3.121
     }
   },
   "exrChange": {
@@ -6392,15 +6404,22 @@
       "nominal": -9.57,
       "realCPI": -8.005,
       "realCPIAUCNS": -7.95,
-      "realPCEPI": -7.953,
-      "realPCEPILFE": -8.29
+      "realPCEPI": -7.943,
+      "realPCEPILFE": -8.279
     },
     "2026-08": {
       "nominal": -11.892,
       "realCPI": -10.314,
       "realCPIAUCNS": -10.277,
-      "realPCEPI": -10.257,
-      "realPCEPILFE": -10.614
+      "realPCEPI": -10.235,
+      "realPCEPILFE": -10.591
+    },
+    "2026-09": {
+      "nominal": -9.267,
+      "realCPI": -7.413,
+      "realCPIAUCNS": -7.395,
+      "realPCEPI": -7.474,
+      "realPCEPILFE": -7.945
     }
   },
   "meta": {
@@ -6437,8 +6456,8 @@
     "partialBaseYears": [
       2026
     ],
-    "latestCommonMonth": "2026-08",
-    "generatedAt": "2026-10-01T12:00:06+00:00",
+    "latestCommonMonth": "2026-09",
+    "generatedAt": "2026-10-30T11:49:24+00:00",
     "sources": {
       "usCpi": "FRED CPIAUCSL (Consumer Price Index for All Urban Consumers). Published monthly. Seasonally adjusted",
       "usPcepi": "FRED PCEPI (Personal Consumption Expenditures, Chain-Type Price Index). Published monthly. Seasonally adjusted",
